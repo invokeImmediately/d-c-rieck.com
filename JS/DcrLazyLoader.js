@@ -89,18 +89,21 @@ class LazyLoadImgsOnPage {
 		this.lazyLoadThrottleTO = setTimeout( function() {
 			// Make sure to note the web browser's current scrolling offset.
 			const scrollTop = inst.browser.pageYOffset;
-			let imgsLoaded = 0
+			let imgsLoaded = 0;
 
 			// Check each of the lazy-loading images 
 			inst.imgs.forEach( function( img ) {
 				// If the image has grown into view, load it and remove the lazy loading trigger class.
 				if ( img.offsetTop < ( inst.browser.innerHeight * 1.5 + scrollTop ) ) {
+					imgsLoaded++;
 					img.src = img.dataset.src;
 					img.classList.remove( inst.lazyClass );
 				}
 			} );
 
-			// Obtain a fresh list of the web page's lazy-loading images that have yet to be processed.
+			// If any images were loaded, that means our list of lazy-loaded images is outdated; when this
+			//   occurs, obtain a fresh list of the web page's lazy-loading images that have yet to come
+			//   into the loading area and be processed.
 			if ( imgsLoaded ) {
 				inst.imgs = inst.webPage.querySelectorAll( inst.imgQStr );
 			}
@@ -116,7 +119,6 @@ class LazyLoadImgsOnPage {
 
 	SetUpLazyLoading() {
 		this.imgs = this.webPage.querySelectorAll( this.imgQStr );
-		console.log( this.imgQStr + ": " + this.imgs.length );
 		if ( this.imgs.length ) {
 			this.lazyLoadThrottleTO = undefined;
 			const inst = this;
