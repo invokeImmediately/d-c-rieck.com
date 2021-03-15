@@ -6,7 +6,7 @@
  * Object-oriented vanilla ES6 implementation of an lazy image loader. Lazy loading of both image
  *   tags and background images is handled by the module.
  *
- * @version 0.0.0
+ * @version 0.0.1
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/master…
