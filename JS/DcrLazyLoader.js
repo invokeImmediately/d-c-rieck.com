@@ -64,6 +64,7 @@ class LazyLoadImgsOnPage {
 					settings.timeOutDelay :
 					20;
 				this.lazyLoadThrottleTO = undefined;
+				this.isLoading = false;
 
 				// Now that properties have been set, proceed to setting up lazy loading of images.
 				this.SetUpLazyLoading();
@@ -77,24 +78,28 @@ class LazyLoadImgsOnPage {
 	}
 
 	LazyLoad() {
-		// Check on whether the timer for lazy loading needs to be throttled.
+		// Create a reference to the instance that can be utilized when the reference in `this` is lost
+		//   because of a change in lexical environment.
+		const inst = this;
+
+		// Check on whether lazy loading behavior needs to be throttled while events are still firing.
 		if ( this.lazyLoadThrottleTO ) {
 			clearTimeout( this.lazyLoadThrottleTO );
 		}
 
-		// Once the events that trigger this function have finished, check on whether any of the lazy-
-		//   loading images have come into view.
-		const inst = this;
-		console.log( this );
-		this.lazyLoadThrottleTO = setTimeout( function() {
+		// If we are not already loading images, proceed with checking for images to be loaded;
+		//   otherwise, throttle further loading as needed during rapid, back-to-back event firing.
+		if ( !this.isLoading ) {
+			this.isLoading = true;
+
 			// Make sure to note the web browser's current scrolling offset.
-			const scrollTop = inst.browser.pageYOffset;
-			let imgsLoaded = 0;
+			const scrollTop = this.browser.pageYOffset;
+			let imgsLoaded = 0
 
 			// Check each of the lazy-loading images 
-			inst.imgs.forEach( function( img ) {
+			this.imgs.forEach( function( img ) {
 				// If the image has grown into view, load it and remove the lazy loading trigger class.
-				if ( img.offsetTop < ( inst.browser.innerHeight * 1.5 + scrollTop ) ) {
+				if ( img.offsetTop < ( inst.browser.innerHeight * 2 + scrollTop ) ) {
 					imgsLoaded++;
 					img.src = img.dataset.src;
 					img.classList.remove( inst.lazyClass );
@@ -105,15 +110,21 @@ class LazyLoadImgsOnPage {
 			//   occurs, obtain a fresh list of the web page's lazy-loading images that have yet to come
 			//   into the loading area and be processed.
 			if ( imgsLoaded ) {
-				inst.imgs = inst.webPage.querySelectorAll( inst.imgQStr );
+				this.imgs = this.webPage.querySelectorAll( this.imgQStr );
 			}
 
 			// Remove event listeners once all the lazy-loading images on the page are processed.
-			if ( inst.imgs.length == 0 ) {
-				inst.webPage.removeEventListener( 'scroll', inst.lazyLoad );
-				inst.browser.removeEventListener( 'resize', inst.lazyLoad );
-				inst.browser.removeEventListener( 'orientationChange', inst.lazyLoad );
+			if ( this.imgs.length == 0 ) {
+				this.webPage.removeEventListener( 'scroll', this.lazyLoad );
+				this.browser.removeEventListener( 'resize', this.lazyLoad );
+				this.browser.removeEventListener( 'orientationChange', this.lazyLoad );
 			}
+		}
+
+		// Reset the instance to enable further lazy-loading after an appropraite delay between event
+		//   firings that induce lazy-loading.
+		this.lazyLoadThrottleTO = setTimeout( function() {
+			inst.isLoading = false;
 		}, this.delay4TO );
 	}
 
@@ -140,8 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	let lazyLoader = new LazyLoadImgsOnPage( {
 		browser: window,
 		webPage: document,
-		lazyLoadClass: 'lazy-loader',
-		timeOutDelay: 4
+		lazyLoadClass: 'lazy-loader'
 	} );
 } );
 
