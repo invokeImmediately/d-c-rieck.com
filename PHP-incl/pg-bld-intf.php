@@ -7,10 +7,10 @@
  * Provides an interface for building pages whose components are represented and maintained in a
  *   back-end database oriented to the latest HTML spec.
  *
- * @version 0.0.1
+ * @version 0.1.0
  * 
  * @author Daniel C. Rieck [danielcrieck@gmail.com] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/PHP-incl/pg-id-intf.php
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/PHP-incl/pg-bld-intf.php
  * @license MIT Copyright (c) 2021 Daniel C. Rieck
  *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  *     and associated documentation files (the "Software"), to deal in the Software without
@@ -45,7 +45,7 @@ require_once( ROOT_PATH . '/php-incl/pg-meta.php' );
 // require_once( ROOT_PATH . '/php-incl/pg-content.php' );
 
 // Declare the DcrdcPgDbIntf class.
-class DcrdcPgIdIntf {
+class DcrdcPgBldIntf {
   private $indtnBldBlk = "  ";
   protected $dbConn;
   protected $pgMeta
@@ -76,6 +76,7 @@ class DcrdcPgIdIntf {
   }
 
   public function DescStgOut( $indtnLvl = 0, $indtn1stLn = false ) {
+    // Todo: Finish writing.
   }
 
   public function FavIcoLnsOut( $indtnLvl = 0, $indtn1stLn = false ) {
