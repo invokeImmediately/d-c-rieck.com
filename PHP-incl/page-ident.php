@@ -1,15 +1,16 @@
 <?php
 /**
- * █▀▀▄ ▄▀▀▄ █▀▀▀ █▀▀▀    ▀█▀ █▀▀▄ █▀▀▀ ▐▀▀▄▐▀█▀▌  █▀▀▄ █  █ █▀▀▄
- * █▄▄▀ █▄▄█ █ ▀▄ █▀▀  ▀▀  █  █  █ █▀▀  █  ▐  █    █▄▄▀ █▀▀█ █▄▄▀
- * █    █  ▀ ▀▀▀▀ ▀▀▀▀    ▀▀▀ ▀▀▀  ▀▀▀▀ ▀  ▐  █  ▀ █    █  ▀ █
+ * █▀▀▄ █▀▀▀    █▀▀▄ █    █▀▀▄    ▀█▀ ▐▀▀▄▐▀█▀▌█▀▀▀   █▀▀▄ █  █ █▀▀▄
+ * █▄▄▀ █ ▀▄ ▀▀ █▀▀▄ █  ▄ █  █ ▀▀  █  █  ▐  █  █▀▀▀   █▄▄▀ █▀▀█ █▄▄▀
+ * █    ▀▀▀▀    ▀▀▀  ▀▀▀  ▀▀▀     ▀▀▀ ▀  ▐  █  ▀    ▀ █    █  ▀ █
  *
- * Identifies the page the user has visited based on the URL that was accessed.
+ * Provides an interface for building pages whose components are represented and maintained in a
+ *   back-end database oriented to the latest HTML spec.
  *
- * @version 0.0.0
+ * @version 0.0.1
  * 
  * @author Daniel C. Rieck [danielcrieck@gmail.com] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/PHP-incl/pg-ident.php
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/PHP-incl/pg-id-intf.php
  * @license MIT Copyright (c) 2021 Daniel C. Rieck
  *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  *     and associated documentation files (the "Software"), to deal in the Software without
@@ -39,15 +40,18 @@ defineRootPath();
 // Pull in dependencies for making database connections and obtaining the configuration for the
 //   website.
 require_once( ROOT_PATH . '/php-incl/db-conn.php' );
-require_once( ROOT_PATH . '/php-incl/site-config.php' );
+require_once( ROOT_PATH . '/php-incl/res-id-loc.php' );
+require_once( ROOT_PATH . '/php-incl/pg-meta.php' );
+// require_once( ROOT_PATH . '/php-incl/pg-content.php' );
 
 // Declare the DcrdcPgDbIntf class.
-class DcrdcPgDbIntf {
+class DcrdcPgIdIntf {
   private $indtnBldBlk = "  ";
   protected $dbConn;
+  protected $pgMeta
   protected $pgUri;
   protected $pgId;
-  protected $siteCfg;
+  protected $resLocId;
 
   public function __construct( $pgUri, $dbConn = NULL ) {
     $this->pgUri = $pgUri;
@@ -59,18 +63,23 @@ class DcrdcPgDbIntf {
       $this->dbConn = $dbConn;
     }
 
+    // Set up the resource identifier and locator module.
+    $this->resLocId = new DcrdcResLocId( $this->dbConn );
+
     // Identify the ID of the page that is used in the database for tracking.  
     $this->pgId = $this->GetUriId( $pgUri );
 
     // Obtain configuration settings for the website.
-    $this->siteCfg = new DcrdcSiteConfig( $this->dbConn );
+    $this->pgMeta = new DcrdcPgMeta( $this->dbConn, $this->pgId );
 
-    // Finish writing.
+    // Todo: Finish writing.
+  }
+
+  public function DescStgOut( $indtnLvl = 0, $indtn1stLn = false ) {
   }
 
   public function FavIcoLnsOut( $indtnLvl = 0, $indtn1stLn = false ) {
-    $indtn = $this->GetIndtn( $indtnLvl );
-    $favIcons = $this->GetSiteFavIcos();
+    $this->pgMeta->FavIcoLnsOut( $indtnLvl, $indtn1stLn );
   }
 
   protected function GetIndtn( $indtnLvl ) {
@@ -80,9 +89,30 @@ class DcrdcPgDbIntf {
     return str_repeat( $this->$indtnBldBlk, $indtnLvl );
   }
 
+  public function GetPgId() {
+    return $this->pgId;
+  }
+
+  protected function GetUriFromId( $uriId ) {
+    $uriId = null;
+    $qRes = $this->dbConn->RunQuery( "SELECT `uri_val` FROM `uri_ids` WHERE `uri_id` = '$uriId'" );
+    if( $qRes->num_rows == 1 ) {
+      $row = $qRes->fetch_assoc();
+      $uri = $row[ "uri_val" ];
+    } else {
+      $possErrMsgs = array(
+        "The requested URI ID was not found in the site database.",
+        "A URI ID resulted in multiple URIs returned from the database; there should only be one."
+      );
+      $whichErr = $qRes->num_rows > 0;
+      $this->RepFatalErr( $possErrMsgs[ $whichErr ] );
+    }
+    return $uri;
+  }
+
   protected function GetUriId( $uri ) {
     $uriId = null;
-    $qRes = $this->dbConn->RunQuery( "SELECT `uri_id` FROM `uri_ids` WHERE `uri_val` = '/dcrdc/'" );
+    $qRes = $this->dbConn->RunQuery( "SELECT `uri_id` FROM `uri_ids` WHERE `uri_val` = '$uri'" );
     if( $qRes->num_rows == 1 ) {
       $row = $qRes->fetch_assoc();
       $uriId = $row[ "uri_id" ];
@@ -95,16 +125,6 @@ class DcrdcPgDbIntf {
       $this->RepFatalErr( $possErrMsgs[ $whichErr ] );
     }
     return $uriId;
-  }
-
-  public function GetPgId() {
-    return $this->pgId;
-  }
-
-  protected function GetSiteFavIcos() {
-    $qStr = "SELECT `uri_id` FROM `site_config` WHERE `setting_type`='favico' AND `active`=1";
-    $favIcos = $this->dbConn->RunQuery( $this->qStr );
-    return $favIcos;
   }
 
   protected function RepFatalDataErr( $msg = NULL ) {
