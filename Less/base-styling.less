@@ -1,0 +1,106 @@
+/** ================================================================================================
+*** █▀▀▄ ▄▀▀▄ ▄▀▀▀ █▀▀▀    ▄▀▀▀▐▀█▀▌█  █ █    ▀█▀ ▐▀▀▄ █▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+*** █▀▀▄ █▄▄█ ▀▀▀█ █▀▀  ▀▀ ▀▀▀█  █  ▀▄▄█ █  ▄  █  █  ▐ █ ▀▄   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+*** ▀▀▀  █  ▀ ▀▀▀  ▀▀▀▀    ▀▀▀   █  ▄▄▄▀ ▀▀▀  ▀▀▀ ▀  ▐ ▀▀▀▀ ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+***
+*** Settings to reset and sanitze default browser styling behaviors. Adapted from Richard Clark's
+***   HTML5 reset stylesheet.
+***
+*** @link https://github.com/richclark/HTML5resetCSS
+***
+*** @version 0.0.0
+*** @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+*** @license MIT Copyright (c) 2022 Daniel C. Rieck.
+***   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+***     and associated documentation files (the "Software"), to deal in the Software without
+***     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+***     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+***     the Software is furnished to do so, subject to the following conditions:
+***   The above copyright notice and this permission notice shall be included in all copies or
+***     substantial portions of the Software.
+***   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+***     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+***     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+***     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+***     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+***     SOFTWARE.
+*** ================================================================================================
+**/
+
+dsgn-rs__css-reset: {
+  :where(a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video) {
+    background: transparent;
+    font-size: 100%;
+    margin:0;
+    padding:0;
+    vertical-align: baseline;
+  }
+
+  :where(abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video) {
+    border: 0;
+    outline: 0;
+  }
+
+  :where(abbr[title], dfn[title]) {
+    border-bottom: 1px dotted;
+    cursor: help;
+  }
+
+  :where(article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section) { 
+    display: block;
+  }
+
+  :where(body) {
+    line-height: 1;
+  }
+
+  :where(blockquote, q) {
+    quotes: none;
+  }
+
+  :where(blockquote:before, blockquote:after, q:before, q:after) {
+    content: '';
+    content: none;
+  }
+
+  :where(del) {
+    text-decoration: line-through;
+  }
+
+  :where(hr) {
+    display: block;
+    height: 1px;
+    border: 0;   
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+  }
+
+  :where(ins) {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+  }
+
+  :where(mark) {
+    background-color: #ff9;
+    color: #000; 
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  :where(nav ul) {
+    list-style:none;
+  }
+
+  :where(table) {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  :where(input, select) {
+    vertical-align: middle;
+  }
+};
+
+.decl-dsgn-maybe( @dsgn-rs__css-reset, @use-dsgn__css-reset );
