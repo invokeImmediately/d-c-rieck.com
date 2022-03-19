@@ -5,7 +5,7 @@
 ***
 *** Articulates a logical scheme for declaration modular styling designs based on boolean flags.
 ***
-*** @version 0.0.0
+*** @version 0.1.0
 *** @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
 *** @license MIT Copyright (c) 2022 Daniel C. Rieck.
 ***   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -24,17 +24,17 @@
 *** ================================================================================================
 ***  TABLE OF CONTENTS:
 ***  ────────────────────────────────────────────────────────────────────────────────────────────
-***  §1: decl-dsgn-maybe: Mixin for declaring modular designs..................................00
-***  §2: Boolean switches controlling design declarations......................................00
-***    §2.1: Additional fonts..................................................................00
-*** ================================================================================================
+***  §1: decl-dsgn-maybe: Mixin for declaring modular designs..................................34
+***  §2: Boolean switches controlling design declarations......................................42
+***    §2.1: Additional fonts..................................................................46
+*** ────────────────────────────────────────────────────────────────────────────────────────────────
 **/
 
 /** ================================================================================================
 *** §1: decl-dsgn-maybe: Mixin for declaring modular designs
 **/
 
-.decl-dsgn-maybe(@dsgn-rs, @use-dsgn) when (isruleset(@dsgn-rs)) and (isnumber(@use-dsgn)) and (@use-dsgn) {
+.decl-dsgn-maybe(@dsgn-rs, @use-dsgn) when (isruleset(@dsgn-rs)) and (@use-dsgn) {
 	@dsgn-rs();
 }
 
@@ -48,3 +48,4 @@
 
 @use-dsgn__css-reset: true;
 @use-dsgn__sanitize-css: true;
+@use-dsgn__css-nrmlz: true;
