@@ -1,0 +1,7 @@
+{
+  "files": ["TS/tlstckAnim.ts"],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es6"
+  }
+}
