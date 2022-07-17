@@ -1,0 +1,75 @@
+/*!***************************************************************
+ * ▐▀█▀▌█▀▀▄ █▀▀▀ █    █    ▄▀▀▄   ▄▀▀▀▐▀█▀▌█  █ █    █▀▀▀ ▄▀▀▀ █  █ █▀▀▀ █▀▀▀▐▀█▀▌
+ *   █  █▄▄▀ █▀▀  █  ▄ █  ▄ █  █   ▀▀▀█  █  ▀▄▄█ █  ▄ █▀▀  ▀▀▀█ █▀▀█ █▀▀  █▀▀   █
+ *   █  ▀  ▀▄▀▀▀▀ ▀▀▀  ▀▀▀   ▀▀    ▀▀▀   █  ▄▄▄▀ ▀▀▀  ▀▀▀▀ ▀▀▀  █  ▀ ▀▀▀▀ ▀▀▀▀  █
+ *
+ *      ▄▀▀▄▐   ▌█▀▀▀ █▀▀▄ █▀▀▄ ▀█▀ █▀▀▄ █▀▀▀ ▄▀▀▀
+ *      █  █ █ █ █▀▀  █▄▄▀ █▄▄▀  █  █  █ █▀▀  ▀▀▀█
+ *       ▀▀   █  ▀▀▀▀ ▀  ▀▄▀  ▀▄▀▀▀ ▀▀▀  ▀▀▀▀ ▀▀▀
+ *
+ * Make aesthetic improvements to how Trello is styled by default.
+ *
+ * Designed for use with the Stylus web browser extension. Typically applied to the Trello
+ *   website using the value « trello.com » for the setting « Applies to: URLs on the
+ *   Domain ↓ ».
+ *
+ * @version 0.0.0
+ *
+ * @author Daniel C. Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
+ * @license MIT - Copyright © 2022 Daniel C. Rieck
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this
+ *     software and associated documentation files (the “Software”), to deal in the Software
+ *     without restriction, including without limitation the rights to use, copy, modify,
+ *     merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ *     permit persons to whom the Software is furnished to do so, subject to the following
+ *     conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies
+ *     or substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ *     INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ *     PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ *     CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+ *     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *****************************************************************/
+
+/* --»  Google Font import string  «-- */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+/* --»  Card Descriptions  «-- */
+
+.js-fill-card-detail-desc .description-content,
+.js-fill-card-detail-desc  .js-description-draft {
+  font-family: 'Source Code Pro';
+}
+
+.js-fill-card-detail-desc  .js-description-draft {
+  font-size: .9em;
+}
+
+.js-fill-card-detail-desc .description-content p {
+  white-space: pre-wrap;
+}
+
+/* --»  Code  «-- */
+
+.js-fill-card-detail-desc pre,
+.js-fill-card-detail-desc code {
+  background-color: rgb( 0 0 0 / 5% );
+}
+
+.js-fill-card-detail-desc code {
+  color: #c52a16;
+}
+
+.js-fill-card-detail-desc pre code {
+  background-color: transparent;
+}
+
+/* --»  Active card highlighting  «-- */
+
+.list-card.active-card {
+  outline: 2px solid rgb( 0 0 0 / 65% );
+  outline-offset: -2px;
+}
