@@ -1,0 +1,264 @@
+﻿/** ================================================================================================
+*** ▐▀█▀▌▄▀▀▄ ▄▀▀▄ █       ▄▀▀▀▐▀█▀▌▄▀▀▄ ▄▀▀▀ █ ▄▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+***   █  █  █ █  █ █  ▄ ▀▀ ▀▀▀█  █  █▄▄█ █    █▀▄    █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+***   █   ▀▀   ▀▀  ▀▀▀     ▀▀▀   █  █  ▀  ▀▀▀ ▀  ▀▄▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+***
+*** Rules for styling an animated, growing stack of icons representing the tools used in development
+***   and design work.
+***
+*** @version 0.0.0
+*** @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+*** @license MIT Copyright (c) 2022 Daniel C. Rieck.
+***   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+***     and associated documentation files (the "Software"), to deal in the Software without
+***     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+***     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+***     the Software is furnished to do so, subject to the following conditions:
+***   The above copyright notice and this permission notice shall be included in all copies or
+***     substantial portions of the Software.
+***   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+***     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+***     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+***     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+***     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+***     SOFTWARE.
+*** ================================================================================================
+**/
+
+@dsgn-rs__tool-stack-anim: {
+
+  /*! -------- Animations: Tool stacks -------- */
+
+  @keyframes tlstck-anim-ico-appear {
+    0% {
+      opacity: 0;
+      transform: scale(.5);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes tlstck-anim-ico-sat-cycle {
+    0% {
+      filter: blur(0) brightness(1) saturate(1);
+    }
+    10% {
+      filter: blur(0) brightness(.9) saturate(.8);
+    }
+    50% {
+      filter: blur(5px) brightness(.5) saturate(0);
+    }
+    90% {
+      filter: blur(0) brightness(.9) saturate(.8);
+    }
+    100% {
+      filter: blur(0) brightness(1) saturate(1);
+    }
+  }
+
+  .tlstck-anim {
+    @tlstck-ico-sz: 4rem;
+    @tlstck-srcimg-w: (1280 / 4 / 16rem);
+    @tlstck-srcimg-h: (2048 / 4 / 16rem);
+    @tlstck-appear-dt: .333s;
+    @tlstck-sat-cycle-dt: 9s;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: (@tlstck-ico-sz / 8);
+    list-style-type: none;
+    transition: all @tlstck-appear-dt ease;
+
+    &__icon {
+      animation: tlstck-anim-ico-appear @tlstck-appear-dt, tlstck-anim-ico-sat-cycle @tlstck-sat-cycle-dt infinite;
+      background: transparent url(/imgs/icons/software-expertise-examples_1280w2048h.png) no-repeat top left / @tlstck-srcimg-w @tlstck-srcimg-h;
+      color: transparent;
+      display: inline-block;
+      filter: saturate(0);
+      overflow: hidden;
+      height: @tlstck-ico-sz;
+      width: @tlstck-ico-sz;
+
+      &--adobe-ac {
+        background-position: 0 0;
+      }
+
+      &--adobe-ai {
+        background-position: (@tlstck-ico-sz * -1) 0;
+      }
+
+      &--adobe-id {
+        background-position: (@tlstck-ico-sz * -2) 0;
+      }
+
+      &--adobe-lr {
+        background-position: (@tlstck-ico-sz * -3) 0;
+      }
+
+      &--adobe-ps {
+        background-position: (@tlstck-ico-sz * -4) 0;
+      }
+
+      &--apache {
+        background-position: 0 (@tlstck-ico-sz * -1);
+      }
+
+      &--ahk {
+        background-position: (@tlstck-ico-sz * -1) (@tlstck-ico-sz * -1);
+      }
+
+      &--audacity {
+        background-position: (@tlstck-ico-sz * -2) (@tlstck-ico-sz * -1);
+      }
+
+      &--blender {
+        background-position: (@tlstck-ico-sz * -3) (@tlstck-ico-sz * -1);
+      }
+
+      &--bootstrap {
+        background-position: (@tlstck-ico-sz * -4) (@tlstck-ico-sz * -1);
+      }
+
+      &--c-lang {
+        background-position: 0 (@tlstck-ico-sz * -2);
+      }
+
+      &--cpp-lang {
+        background-position: (@tlstck-ico-sz * -1) (@tlstck-ico-sz * -2);
+      }
+
+      &--css3 {
+        background-position: (@tlstck-ico-sz * -2) (@tlstck-ico-sz * -2);
+      }
+
+      &--ditto {
+        background-position: (@tlstck-ico-sz * -3) (@tlstck-ico-sz * -2);
+      }
+
+      &--ms-xl {
+        background-position: (@tlstck-ico-sz * -4) (@tlstck-ico-sz * -2);
+      }
+
+      &--gimp {
+        background-position: 0 (@tlstck-ico-sz * -3);
+      }
+
+      &--git {
+        background-position: (@tlstck-ico-sz * -1) (@tlstck-ico-sz * -3);
+      }
+
+      &--gulp {
+        background-position: (@tlstck-ico-sz * -2) (@tlstck-ico-sz * -3);
+      }
+
+      &--handbrake {
+        background-position: (@tlstck-ico-sz * -3) (@tlstck-ico-sz * -3);
+      }
+
+      &--html5 {
+        background-position: (@tlstck-ico-sz * -4) (@tlstck-ico-sz * -3);
+      }
+
+      &--inkscape {
+        background-position: 0 (@tlstck-ico-sz * -4);
+      }
+
+      &--jquery {
+        background-position: (@tlstck-ico-sz * -1) (@tlstck-ico-sz * -4);
+      }
+
+      &--js-lang {
+        background-position: (@tlstck-ico-sz * -2) (@tlstck-ico-sz * -4);
+      }
+
+      &--less-lang {
+        background-position: (@tlstck-ico-sz * -3) (@tlstck-ico-sz * -4);
+      }
+
+      &--mathematica {
+        background-position: (@tlstck-ico-sz * -4) (@tlstck-ico-sz * -4);
+      }
+
+      &--matlab {
+        background-position: 0 (@tlstck-ico-sz * -5);
+      }
+
+      &--mysql {
+        background-position: (@tlstck-ico-sz * -1) (@tlstck-ico-sz * -5);
+      }
+
+      &--node-js {
+        background-position: (@tlstck-ico-sz * -2) (@tlstck-ico-sz * -5);
+      }
+
+      &--php-lang {
+        background-position: (@tlstck-ico-sz * -3) (@tlstck-ico-sz * -5);
+      }
+
+      &--ms-ppt {
+        background-position: (@tlstck-ico-sz * -4) (@tlstck-ico-sz * -5);
+      }
+
+      &--pwsh {
+        background-position: 0 (@tlstck-ico-sz * -6);
+      }
+
+      &--pymol {
+        background-position: (@tlstck-ico-sz * -1) (@tlstck-ico-sz * -6);
+      }
+
+      &--python-lang {
+        background-position: (@tlstck-ico-sz * -2) (@tlstck-ico-sz * -6);
+      }
+
+      &--sass-lang {
+        background-position: (@tlstck-ico-sz * -3) (@tlstck-ico-sz * -6);
+      }
+
+      &--scribus {
+        background-position: (@tlstck-ico-sz * -4) (@tlstck-ico-sz * -6);
+      }
+
+      &--subl {
+        background-position: 0 (@tlstck-ico-sz * -7);
+      }
+
+      &--type-script-lang {
+        background-position: (@tlstck-ico-sz * -1) (@tlstck-ico-sz * -7);
+      }
+
+      &--vim {
+        background-position: (@tlstck-ico-sz * -2) (@tlstck-ico-sz * -7);
+      }
+
+      &--ms-vs {
+        background-position: (@tlstck-ico-sz * -3) (@tlstck-ico-sz * -7);
+      }
+
+      &--ms-word {
+        background-position: (@tlstck-ico-sz * -4) (@tlstck-ico-sz * -7);
+      }
+
+      &--delay-1 {
+        animation: tlstck-anim-ico-appear 0.333s linear 1s forwards, tlstck-anim-ico-sat-cycle 5s linear 1s infinite;
+      }
+
+      &--delay-2 {
+        animation: tlstck-anim-ico-appear 0.333s linear 2s forwards, tlstck-anim-ico-sat-cycle 5s linear 2s infinite;
+      }
+
+      &--delay-3 {
+        animation: tlstck-anim-ico-appear 0.333s linear 3s forwards, tlstck-anim-ico-sat-cycle 5s linear 3s infinite;
+      }
+
+      &--delay-4 {
+        animation: tlstck-anim-ico-appear 0.333s linear 4s forwards, tlstck-anim-ico-sat-cycle 5s linear 4s infinite;
+      }
+    }
+  }
+};
+
+.decl-dsgn-maybe( @dsgn-rs__tool-stack-anim, @use-dsgn__tool-stack-anim );

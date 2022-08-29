@@ -1,0 +1,574 @@
+﻿/** ================================================================================================
+*** §3: Custom CSS still in process
+**/
+
+/*! -------- d-c-rieck.com Pages -------- */
+
+.dcrdc-pg {
+  background: var(--bg-clr-pg);
+  color: var(--fg-clr-pg);
+  display: grid;
+  grid-gap: 1px 0;
+  grid-template-rows: minmax(4rem, auto) 1fr minmax(4rem, auto);
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.dcrdc-pg--voronoi-bg {
+  background: var(--bg-clr-pg) url(/imgs/hdri-lighting-experiment_voronoi-plane_2022-02-05-n1_r2-seamless.jpg) repeat;
+}
+
+/*! -------- Page header and components -------- */
+
+.pg-hdr {
+  background: var(--bg-clr-site-hdr);
+  border-bottom: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-site-hdr);
+  box-sizing: border-box;
+  display: grid;
+  grid-area: 1 / 1 / 2 / 2;
+  grid-template-rows: minmax(4rem, auto);
+  grid-template-columns: 4rem auto;
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.pg-hdr__ws-home-link {
+  align-items: center;
+  background: var(--bg-clr-pg);
+  border-right: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-site-hdr);
+  display: grid;
+  grid-area: 1 / 1 / 2 / 2;
+  margin-right: -1px;
+  transition: outline .2s;
+}
+
+.pg-hdr__ws-home-link:focus,
+.pg-hdr__ws-home-link:hover {
+  outline: 2px solid var(--fg-clr-page);
+}
+
+.pg-hdr__ws-logo {
+  height: auto;
+  width: 100%;
+}
+
+.pri-nav {
+  align-content: center;
+  display: grid;
+  justify-self: end;
+}
+
+.pri-nav__menu {
+  column-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.pri-nav__dest {
+  background-color: var(--bg-clr-pg);
+  border-bottom: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-pnav);
+  color: white;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  transition: .2s all;
+}
+
+.pri-nav__dest:focus,
+.pri-nav__dest:hover {
+  background-color: var(--bg-clr-pg-hi6t);
+  border-bottom-color: var(--brdr-clr-hi6t);
+}
+
+.pri-nav__dest:active {
+  color: var(--brdr-clr-ac3e);
+  border-bottom-color: var(--brdr-clr-ac3e);
+}
+
+/*! -------- Main content -------- */
+
+.main-pg-content {
+  display: grid;
+  grid-area: 2 / 1 / 3 / 2;
+  grid-template-columns: 2rem 1fr 2rem;
+  grid-template-rows: auto;
+}
+
+@media all and (max-width: 414px) {
+  .main-pg-content {
+    grid-template-columns: 1rem 1fr 1rem;
+  }
+}
+
+/*! -------- Custom row layouts -------- */
+
+@media all and (max-width: 1080px) {
+  .grdr--home-intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*! -------- Backgrounds -------- */
+
+.bgi-dcr-at-work-1 {
+  background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_960w540.jpg) no-repeat 75% top/cover;
+}
+
+@media all and (min-width: 961px) {
+  .bgi-dcr-at-work-1 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_1920w1080.jpg) no-repeat center top/cover;
+  }  
+}
+
+@media all and (min-width: 1921px) {
+  .bgi-dcr-at-work-1 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_2880w1620.jpg) no-repeat center top/cover;
+  }  
+}
+
+@media all and (min-width: 2889px) {
+  .bgi-dcr-at-work-1 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_3840w2160.jpg) no-repeat center top/cover;
+  }  
+}
+
+.bgi-dcr-at-work-2 {
+  background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_960w540.jpg) no-repeat 75% top/cover;
+}
+
+@media all and (min-width: 961px) {
+  .bgi-dcr-at-work-2 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_1920w1080.jpg) no-repeat center top/cover;
+  }  
+}
+
+@media all and (min-width: 1921px) {
+  .bgi-dcr-at-work-2 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_2880w1620.jpg) no-repeat center top/cover;
+  }  
+}
+
+@media all and (min-width: 2889px) {
+  .bgi-dcr-at-work-2 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_3840w2160.jpg) no-repeat center top/cover;
+  }  
+}
+
+/*! -------- Article header -------- */
+
+.article-hdr {
+  box-sizing: border-box;
+  padding: 1em;
+  text-align: center;
+}
+
+.article-hdr__all-content {
+  background-color: var(--bg-clr-hero);
+  border-radius: .5rem;
+  font-size: 3em;
+  line-height: 1.25em;
+  margin: 1em auto;
+  max-width: 40ch;
+  padding: 1em;
+}
+
+@media all and (max-width: 460px) {
+  .article-hdr__all-content {
+    font-size: 2em;
+  }
+}
+
+.article-hdr__title {
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+}
+
+.article-hdr__sub-title {
+  display: block;
+  font-size: .85em;
+  font-weight: 400;
+  line-height: inherit;
+  margin-top: .5em;
+}
+
+/*! -------- Page footer -------- */
+
+.pg-ftr {
+  align-items: center;
+  background: var(--bg-clr-site-hdr);
+  border-top: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-site-hdr);
+  color: var(--fg-clr-ftr);
+  display:  grid;
+  grid-area: 3 / 1 / 4 / 2;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  margin-top: -1px;
+  padding: 0 2rem;
+}
+
+.pg-ftr__cn {
+  grid-area: 1 / 1 / 2 / 2;
+  position: relative;
+  justify-self: end;
+}
+
+.pg-ftr__cn:after {
+  content: "/";
+  left: 100%;
+  position: absolute;
+  transform: translateX(1rem) translateX(-50%);
+}
+
+.pg-ftr__tools-notice {
+  grid-area: 1 / 2 / 2 / 3;
+  justify-self: start;
+}
+
+@media screen and (max-width: 768px) {
+  .pg-ftr {
+    grid-template-columns: 1fr;
+    grid-gap: .5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  .pg-ftr__cn,
+  .pg-ftr__tools-notice {
+    grid-area: auto;
+    justify-self: center;
+  }
+
+  .pg-ftr__cn:after {
+    content: '';
+  }
+}
+
+/*! -------- Headings -------- */
+
+h1,
+.fs-h1 {
+  font-size: var(--fs-h1)
+}
+
+h2,
+.fs-h2 {
+  font-size: var(--fs-h2)
+}
+
+h3,
+.fs-h3 {
+  font-size: var(--fs-h3)
+}
+
+h4,
+.fs-h4 {
+  font-size: var(--fs-h4)
+}
+
+h5,
+.fs-h5 {
+  font-size: var(--fs-h5)
+}
+
+h6,
+.fs-h6 {
+  font-size: var(--fs-h6)
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2em;
+  font-family: "Oswald", sans-serif;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+/*! -------- Width constraints -------- */
+
+blockquote,
+ol,
+p,
+ul,
+figcaption {
+  max-width: 80ch;
+}
+
+/*! -------- Skip links -------- */
+
+.pg-hdr__skip-link {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important; 
+}
+
+.pg-hdr__skip-link:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 99352;
+}
+
+/*! -------- Images -------- */
+
+img {
+  height: auto;
+  width: 100%;
+}
+
+.abl-motto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1459px;
+}
+
+/*! -------- Image swapper -------- */
+
+.img-swapper {
+  position: relative;
+}
+
+@keyframes img-swapper-fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.img-swapper__front {
+  animation: 10s linear 0s infinite alternate img-swapper-fade;
+  left: 0;
+  opacity: 0;
+  position:  absolute;
+  top: 0;
+  z-index: 1;
+}
+
+/*! -------- Screen readers -------- */
+
+.for-scr-rdr {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important; 
+}
+
+/*! -------- Atomic CSS: Max width -------- */
+
+.mw-0 {
+  max-width: none;
+}
+
+.mw-100pct {
+  max-width: 100%;
+}
+
+.mw-40ch {
+  max-width: 40ch;
+}
+
+.mw-60ch {
+  max-width: 60ch;
+}
+
+.mw-80ch {
+  max-width: 80ch;
+}
+
+/*! -------- Atomic CSS: Margins -------- */
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-1xs {
+  margin-top: .25rem;
+}
+
+.mt-1xs {
+  margin-top: .5rem;
+}
+
+.mt-1xs {
+  margin-top: .75rem;
+}
+
+.mt-1x {
+  margin-top: 1rem;
+}
+
+.mt-1xl {
+  margin-top: 1.25rem;
+}
+
+.mt-2xl {
+  margin-top: 1.5rem;
+}
+
+.mt-3xl {
+  margin-top: 1.75rem;
+}
+
+.mt-4xl {
+  margin-top: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-3xs {
+  margin-bottom: .25rem;
+}
+
+.mb-2xs {
+  margin-bottom: .5rem;
+}
+
+.mb-1xs {
+  margin-bottom: .75rem;
+}
+
+.mb-1x {
+  margin-bottom: 1rem;
+}
+
+.mb-1xl {
+  margin-bottom: 1.25rem;
+}
+
+.mb-2xl {
+  margin-bottom: 1.5rem;
+}
+
+.mb-3xl {
+  margin-bottom: 1.75rem;
+}
+
+.mb-4xl {
+  margin-bottom: 2rem;
+}
+
+/*! -------- Atomic CSS: Line-heights -------- */
+
+.lh-0 {
+  line-height: 0;
+}
+
+.lh-5xs {
+  line-height: 1em;
+}
+
+.lh-4xs {
+  line-height: 1.1em;
+}
+
+.lh-3xs {
+  line-height: 1.2em;
+}
+
+.lh-2xs {
+  line-height: 1.3em;
+}
+
+.lh-1xs {
+  line-height: 1.4em;
+}
+
+.lh-1x {
+  line-height: 1.5em;
+}
+
+.lh-1xl {
+  line-height: 1.6em;
+}
+
+.lh-2xl {
+  line-height: 1.7em;
+}
+
+.lh-3xl {
+  line-height: 1.8em;
+}
+
+.lh-4xl {
+  line-height: 1.9em;
+}
+
+.lh-5xl {
+  line-height: 2em;
+}
+
+/*! -------- Atomic CSS: Maximum Width -------- */
+
+.mw-40ch {
+  max-width: 40ch;
+}
+
+.mw-50ch {
+  max-width: 50ch;
+}
+
+.mw-60ch {
+  max-width: 60ch;
+}
+
+.mw-70ch {
+  max-width: 70ch;
+}
+
+.mw-80ch {
+  max-width: 80ch;
+}
+
+.mw-1160 {
+  max-width: 1160px;
+}
