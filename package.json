@@ -26,6 +26,8 @@
     "gulp-extname": "^0.2.2",
     "gulp-less": "^5.0.0",
     "gulp-notify": "^4.0.0",
+    "gulp-preserve-typescript-whitespace": "^1.0.3",
+    "gulp-prettier": "^4.0.0",
     "gulp-replace": "^1.1.3",
     "gulp-terser": "^2.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
