@@ -6,7 +6,7 @@
 *** Entry point for building the stylesheet for d-c-rieck.com from source files written in the
 ***   Less/Leaner Style Sheets language extension of CSS.
 ***
-*** @version 0.1.0
+*** @version 0.2.0
 ***
 *** @author Daniel Rieck [danielcrieck@gmail.com] (https://github.com/invokeImmediately)
 *** @license MIT — Copyright (c) 2022 Daniel C. Rieck. (See §1 for full license.)
@@ -16,10 +16,10 @@
 ***  §1: Mixins................................................................................27
 ***  §2: Build settings........................................................................33
 ***  §3: Base styling..........................................................................41
-***  §4: Site components.......................................................................48
-***  §5: Animations............................................................................56
-***  §6: Atomic CSS............................................................................62
-***  §7: Additional code.......................................................................72
+***  §4: First-draft code......................................................................48
+***  §5: Site components.......................................................................54
+***  §6: Animations............................................................................64
+***  §7: Atomic CSS............................................................................70
 *** ================================================================================================
 **/
 
@@ -45,31 +45,32 @@
 @import "Settings\root.less";
 
 /** ================================================================================================
-*** §4: Site components
+*** §4: First-draft code
 **/
 
-// @import "Components/footer.less";
-@import "Components/grid.less";
-// @import "Components/header.less";
+@import "Code4RevEng/styles_2022-07-24.less";
 
 /** ================================================================================================
-*** §5: Animations
+*** §5: Site components
+**/
+
+// @import "Components/headers.less";
+@import "Components/grid.less";
+// @import "Components/footers.less";
+
+@import "Presentation/bgis.less";
+
+/** ================================================================================================
+*** §6: Animations
 **/
 
 @import "Animations/tool-stack.less";
 
 /** ================================================================================================
-*** §6: Atomic CSS
+*** §7: Atomic CSS
 **/
 
 @import "Atomic/alignment.less";
 @import "Atomic/dimensions.less";
 @import "Atomic/grid.less";
 // @import "Atomic/spacing.less";
-
-
-/** ================================================================================================
-*** §7: Additional code
-**/
-
-@import "Code4RevEng/styles_2022-07-24.less";
