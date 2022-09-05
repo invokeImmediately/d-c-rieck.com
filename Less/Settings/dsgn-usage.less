@@ -6,7 +6,7 @@
  * Specifies default values for the boolean flags that control the declaration of modular Less
  *   rulesets that implement styling designs.
  *
- * @version 0.3.0
+ * @version 0.4.0
  * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/dsgn-usage.less
  * @license MIT Copyright (c) 2022 Daniel C. Rieck.
@@ -27,9 +27,9 @@
  *   ─────────────────────────────────────────────────────────────────────────────────────────────
  *   §1: Base styling...........................................................................37
  *   §2: Layout of page components..............................................................46
- *   §3: Presentation of components.............................................................52
- *   §4: Animations.............................................................................59
- *   §5: Atomic CSS.............................................................................65
+ *   §3: Thematic presentation of components....................................................54
+ *   §4: Animations.............................................................................61
+ *   §5: Atomic CSS.............................................................................67
  * =================================================================================================
  */
 
@@ -46,10 +46,12 @@
  *  >>> §2: Layout of page components
  */
 
+@use-dsgn__std-pg-hdrs: true;
+@use-dsgn__std-artcl-hdrs: true;
 @use-dsgn__bem-grid: true;
 
 /*  ----------------------------------------------------------------------------------------------
- *  >>> §3: Presentation of page components
+ *  >>> §3: Thematic presentation of page components
  */
 
 @use-dsgn__lght-in-drk-bgis: true;

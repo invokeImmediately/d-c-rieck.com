@@ -1,0 +1,139 @@
+/**=================================================================================================
+ * █  █ █▀▀▀ ▄▀▀▄ █▀▀▄ █▀▀▀ █▀▀▄ ▄▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▀▀█ █▀▀  █▄▄█ █  █ █▀▀  █▄▄▀ ▀▀▀█   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * █  ▀ ▀▀▀▀ █  ▀ ▀▀▀  ▀▀▀▀ ▀  ▀▄▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Less modules providing BEM style rulesets for laying components out using CSS grid.
+ *
+ * @version 0.0.0
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Components/headers.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ *   TABLE OF CONTENTS:
+ *   ────────────────────────────────────────────────────────────────────────────────────────────
+ *   §1: Page header designs...................................................................33
+ *   §2: Article header designs................................................................63
+ * =================================================================================================
+ */
+
+/**=================================================================================================
+ * §1: Page header designs
+ */
+
+@dsgn-rs__std-pg-hdrs: {
+
+  /* —→ Component: Page header ←— */
+
+  .pg-hdr {
+    background: var(--bg-clr-site-hdr);
+    border-bottom: 1px solid rgba(255, 255, 255, .85);
+    box-shadow: 0 1px 3px #fff,
+      0px 0.4px 1.4px rgb(255 255 255 / 3%),
+      0px 1.1px 3.3px rgb(255 255 255 / 4%),
+      0px 2px 6.3px rgb(255 255 255 / 5%),
+      0px 3.6px 11.2px rgb(255 255 255 / 6%),
+      0px 6.7px 20.9px rgb(255 255 255 / 7%),
+      0px 16px 50px rgb(255 255 255 / 10%);
+    box-sizing: border-box;
+    display: grid;
+    grid-area: 1/1/2/2;
+    grid-template-rows: minmax(4rem,auto);
+    grid-template-columns: 4.25rem auto;
+    margin-bottom: -1px;
+    position: relative;
+
+    &__ws-home-link {
+      align-items: center;
+      background: var(--bg-clr-pg);
+      border-right: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-site-hdr);
+      display: grid;
+      grid-area: 1 / 1 / 2 / 2;
+      margin-left: .25rem;
+      transition: outline .2s;
+
+      &:focus,
+      &:hover {
+        outline: 2px solid var(--fg-clr-page);
+      }
+    }
+
+    &__ws-logo {
+      height: auto;
+      width: 100%;
+    }
+  }
+};
+
+.decl-dsgn-maybe(@dsgn-rs__std-pg-hdrs, @use-dsgn__std-pg-hdrs);
+
+/**=================================================================================================
+ * §2: Article header designs
+ */
+
+@dsgn-rs__std-artcl-hdrs: {
+
+  /* —→ Component: Standard article headers ←— */
+
+  .article-hdr {
+    --artcl-hdr-bg: rgba(41, 41, 41, 0.85);
+    --artcl-hdr-fs: 3em;
+    --artcl-hdr-lh: 1.25em;
+    box-sizing: border-box;
+    padding: 1em;
+    text-align: center;
+
+    @media all and (max-width: @brkpt-w__tablet) {
+      --artcl-hdr-fs: 1.5em;
+    }
+
+    &__all-content {
+      background-color: var(--artcl-hdr-bg);
+      border-radius: .5rem;
+      font-size: var(--artcl-hdr-fs);
+      line-height: var(--artcl-hdr-lh);
+      margin: 1em auto;
+      max-width: 50ch;
+      padding: 1em;
+    }
+
+    &--home &__all-content {
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-top-color: rgb(255 255 255 / 50%);
+      border-bottom-color: rgb(255 255 255 / 85%);
+      box-shadow: 0 2px 4px white,
+        0px 1.8px 2.2px rgba(255 255 255 / 2.8%),
+        0px 4.3px 5.3px rgba(255 255 255 / 4%),
+        0px 8px 10px rgba(255 255 255 / 5%),
+        0px 14.3px 17.9px rgba(255 255 255 / 6%),
+        0px 26.7px 33.4px rgba(255 255 255 / 7.2%),
+        0px 64px 80px rgba(255 255 255 / 10%);
+    }
+
+    &__title {
+      font-size: inherit;
+      font-weight: 700;
+      line-height: inherit;
+
+      &--pop-out {
+        display: block;
+        font-size: 2em;
+        line-height: var(--artcl-hdr-lh);
+      }
+    }
+  }
+};
+
+.decl-dsgn-maybe(@dsgn-rs__std-artcl-hdrs, @use-dsgn__std-artcl-hdrs);
