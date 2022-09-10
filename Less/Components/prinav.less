@@ -1,0 +1,68 @@
+/**=================================================================================================
+ * █▀▀▄ █▀▀▄ ▀█▀ ▐▀▀▄ ▄▀▀▄▐   ▌  █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▄▄▀ █▄▄▀  █  █  ▐ █▄▄█ █ █   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * █    ▀  ▀▄▀▀▀ ▀  ▐ █  ▀  █  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Less modules providing BEM style rulesets for the website's primary navigation component.
+ *
+ * @version 0.0.0
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Components/prinav.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ */
+
+@dsgn-rs__std-prinav: {
+
+  /*! —→ Component: Primary navigation ←— */
+
+  .pri-nav {
+    align-content: center;
+    display: grid;
+    justify-self: end;
+
+    &__dest {
+      background-color: #e0e0e0;
+      border-bottom: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-pnav);
+      color: #000;
+      font-weight: 600;
+      padding: .5rem 1rem;
+      text-decoration: none;
+      transition: .2s all;
+
+      &:focus,
+      &:hover {
+        background-color: var(--bg-clr-pg-hi6t);
+        border-bottom-color: var(--brdr-clr-hi6t);
+        color: #fff;
+      }
+
+      &:active{
+        color: var(--brdr-clr-ac3e);
+        border-bottom-color: var(--brdr-clr-ac3e);
+      }
+    }
+
+    &__menu {
+      column-gap: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
+      margin-right: 1rem;
+    }
+  }
+};
+
+.decl-dsgn-maybe(@dsgn-rs__std-prinav, @use-dsgn__std-prinav);
