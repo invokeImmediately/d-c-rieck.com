@@ -1,7 +1,17 @@
 {
-  "files": ["TS/tlstckAnim.ts"],
+  "files": [
+    // "TS/tlstckAnim.ts"
+    "TS/AdjusterMonkey.ts"
+  ],
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
     "noImplicitAny": true,
-    "target": "es6"
+    "target": "es6",
+    "types": [
+      "jquery",
+      "react",
+      "react-dom",
+    ],
   }
 }
