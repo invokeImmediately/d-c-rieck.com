@@ -6,7 +6,7 @@
  * Userscript designed for use with the TamperMonkey web browser extension that implements a
  *   contextual, adaptable user interface for adjusting web browsing experiences.
  *
- * @version 0.0.0
+ * @version 0.1.0
  * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/TS/TamperMonkey/AdjusterMonkey
  *   .ts
@@ -31,6 +31,7 @@
 
 ( function(
       scriptNm: string,
+      scriptHotKey: string,
       reactElId: string,
       cdnSrc4React: string,
       reactDOMElId: string,
@@ -38,14 +39,33 @@
 ) {
   'use strict';
 
+  let adjMnkyIntf: undefined | null = undefined;
+
   //////////////////
   // § Provide a message logging interface
   function logAdjMnkyMsg( msg: string, ...subst: any[] ) {
-    console.log( scriptNm + ' —» ' + msg, subst );
+    console.log( scriptNm + ' —» ' + msg, ...subst );
   }
 
   //////////////////
-  // § Ensure React modules are loaded
+  // § Set up triggering hotkey for activation of the Adjuster Monkey UI
+
+  function chk4AdjMnkyHotKey( evt: KeyboardEvent ) {
+    if ( evt.key == scriptHotKey && evt.ctrlKey && evt.altKey ) {
+      logAdjMnkyMsg( 'My UI has been triggered.' );
+      toggleAdjMnkyIntf();
+    }
+  }
+
+  function toggleAdjMnkyIntf() {
+    if ( adjMnkyIntf === undefined ) {
+      adjMnkyIntf = null;
+      loadReactViaCDN();
+    }
+  }
+
+  //////////////////
+  // § When triggered, ensure React modules are loaded
 
   function addScriptToBodyTag( elId: string, isCo: boolean, olCb: any, srcUrl: string ) {
     const newScript: HTMLElement = document.createElement( 'script' );
@@ -97,12 +117,20 @@
   }
 
   //////////////////
-  // § Begin execution by ensuring necessary React modules are loaded
-  loadReactViaCDN();
+  // § Begin execution by adding a window load event handler.
+
+  function respToPgLoad( evt: Event ) {
+    window.addEventListener( 'keydown', chk4AdjMnkyHotKey );
+  }
+
+  window.addEventListener('load', respToPgLoad );
 } )(
 
   // scriptNm: string ↓
   'AdjusterMonkey.js',
+
+  // scriptHotKey: string ↓
+  'j',
 
   // reactElId: string ↓
   'react-src-code',
