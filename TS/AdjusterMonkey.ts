@@ -6,7 +6,7 @@
  * Userscript designed for use with the TamperMonkey web browser extension that implements a
  *   contextual, adaptable user interface for adjusting web browsing experiences.
  *
- * @version 0.1.0
+ * @version 0.2.0
  * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/TS/TamperMonkey/AdjusterMonkey
  *   .ts
@@ -30,12 +30,14 @@
 // import React from 'react';
 
 ( function(
-      scriptNm: string,
-      scriptHotKey: string,
-      reactElId: string,
-      cdnSrc4React: string,
-      reactDOMElId: string,
-      cdnSrc4ReactDOM: string,
+  scriptNm: string,
+  scriptHotKey: string,
+  reactElId: string,
+  cdnSrc4React: string,
+  reactDOMElId: string,
+  cdnSrc4ReactDOM: string,
+  adjMnkyJsId: string,
+  extHostSrc4AdjMnkyIntf: string,
 ) {
   'use strict';
 
@@ -101,6 +103,7 @@
     logAdjMnkyMsg( 'Now checking for the presence of ReactDOM.' );
     if ( typeof ReactDOM !== 'undefined' || document.getElementById( reactDOMElId ) !== null ) {
       reportReactDOMPresent();
+      loadAdjMnkyIntfByExtHost();
       // TODO: doNextThing( … );
       return;
     }
@@ -113,7 +116,25 @@
 
   function reportReactDOMLoadedByCDN() {
     logAdjMnkyMsg( 'ReactDOM was not found, so I loaded it via CDN.' );
-      // TODO: doNextThing( … );
+    loadAdjMnkyIntfByExtHost();
+    // TODO: doNextThing( … );
+  }
+
+  //////////////////
+  // § When triggered, load the AdjusterMonkey interface
+
+  function loadAdjMnkyIntfByExtHost() {
+    logAdjMnkyMsg("Now that React is present, I will load my interface.");
+    addScriptToBodyTag(
+      adjMnkyJsId,
+      true,
+      reportAdjMnkyJsLoadedByExtHost,
+      extHostSrc4AdjMnkyIntf
+    );
+  }
+
+  function reportAdjMnkyJsLoadedByExtHost() {
+    logAdjMnkyMsg("My interface is now loaded.");
   }
 
   //////////////////
@@ -143,4 +164,10 @@
 
   // cdnSrc4ReactDOM: string ↓  
   'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js',
+
+  // adjMnkyJsId ↓
+  "adj-mnky-intf-src",
+
+  // extHostSrc4AdjMnkyIntf ↓
+  "https://d-c-rieck.com/js-dist-xyz123/AdjMnkyIntf.js",
 );
