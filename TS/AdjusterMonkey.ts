@@ -6,7 +6,7 @@
  * Userscript designed for use with the TamperMonkey web browser extension that implements a
  *   contextual, adaptable user interface for adjusting web browsing experiences.
  *
- * @version 0.2.0
+ * @version 0.3.0
  * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/TS/TamperMonkey/AdjusterMonkey
  *   .ts
@@ -38,10 +38,12 @@
   cdnSrc4ReactDOM: string,
   adjMnkyJsId: string,
   extHostSrc4AdjMnkyIntf: string,
+  adjMnkyRootElId: string,
+  adjMnkyBlkClass: string,
 ) {
   'use strict';
 
-  let adjMnkyIntf: undefined | null = undefined;
+  let adjMnkyIntf: undefined | HTMLElement = undefined;
 
   //////////////////
   // § Provide a message logging interface
@@ -61,24 +63,23 @@
 
   function toggleAdjMnkyIntf() {
     if ( adjMnkyIntf === undefined ) {
-      adjMnkyIntf = null;
+      addAdjMnkyRootEl();
       loadReactViaCDN();
     }
   }
 
   //////////////////
-  // § When triggered, ensure React modules are loaded
+  // § Add the root element for the Adjuster Monkey interface to the DOM
 
-  function addScriptToBodyTag( elId: string, isCo: boolean, olCb: any, srcUrl: string ) {
-    const newScript: HTMLElement = document.createElement( 'script' );
-    newScript.setAttribute( 'id', elId );
-    if ( isCo ) {
-        newScript.setAttribute( 'crossorigin', '' );
-    }
-    newScript.onload = olCb;
-    newScript.setAttribute( 'src', srcUrl );
-    document.body.append( newScript );
+  function addAdjMnkyRootEl() {
+    adjMnkyIntf = document.createElement( 'div' );
+    adjMnkyIntf.id = adjMnkyRootElId;
+    adjMnkyIntf.className = adjMnkyBlkClass;
+    document.body.appendChild( adjMnkyIntf );
   }
+
+  //////////////////
+  // § When triggered, ensure React modules are loaded
 
   function loadReactViaCDN() {
     logAdjMnkyMsg( 'Now checking for the presence of React.' );
@@ -92,6 +93,17 @@
 
   function reportReactPresent() {
     logAdjMnkyMsg( 'I see that ReactJS is already present.' );
+  }
+
+  function addScriptToBodyTag( elId: string, isCo: boolean, olCb: any, srcUrl: string ) {
+    const newScript: HTMLElement = document.createElement( 'script' );
+    newScript.setAttribute( 'id', elId );
+    if ( isCo ) {
+        newScript.setAttribute( 'crossorigin', '' );
+    }
+    newScript.onload = olCb;
+    newScript.setAttribute( 'src', srcUrl );
+    document.body.append( newScript );
   }
 
   function reportReactLoadedByCDN() {
@@ -169,5 +181,11 @@
   "adj-mnky-intf-src",
 
   // extHostSrc4AdjMnkyIntf ↓
-  "https://d-c-rieck.com/js-dist-xyz123/AdjMnkyIntf.js",
+  "https://d-c-rieck.com/dist/adjmnky-wjb1y05v/AdjMnkyIntf.js",
+
+  // adjMnkyRootElId ↓
+  "dcrdc-adjmnky-cHXlHx1Q",
+
+  // adjMnkyBlkClass ↓
+  "adjmnky",
 );
