@@ -6,7 +6,7 @@
  * Userscript designed for use with the TamperMonkey web browser extension that implements a
  *   contextual, adaptable user interface for adjusting web browsing experiences.
  *
- * @version 0.3.0
+ * @version 0.3.1
  * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/TS/TamperMonkey/AdjusterMonkey
  *   .ts
@@ -26,10 +26,7 @@
  * =================================================================================================
  */
 
-// Is this workable/necessary? Probably just need to update the tsconfig w/ @types/react.
-// import React from 'react';
-
-( function(
+interface iifeOpts {
   scriptNm: string,
   scriptHotKey: string,
   reactElId: string,
@@ -40,7 +37,9 @@
   extHostSrc4AdjMnkyIntf: string,
   adjMnkyRootElId: string,
   adjMnkyBlkClass: string,
-) {
+}
+
+( function( iife: iifeOpts ) {
   'use strict';
 
   let adjMnkyIntf: undefined | HTMLElement = undefined;
@@ -48,14 +47,14 @@
   //////////////////
   // § Provide a message logging interface
   function logAdjMnkyMsg( msg: string, ...subst: any[] ) {
-    console.log( scriptNm + ' —» ' + msg, ...subst );
+    console.log( iife.scriptNm + ' —» ' + msg, ...subst );
   }
 
   //////////////////
   // § Set up triggering hotkey for activation of the Adjuster Monkey UI
 
   function chk4AdjMnkyHotKey( evt: KeyboardEvent ) {
-    if ( evt.key == scriptHotKey && evt.ctrlKey && evt.altKey ) {
+    if ( evt.key == iife.scriptHotKey && evt.ctrlKey && evt.altKey ) {
       logAdjMnkyMsg( 'My UI has been triggered.' );
       toggleAdjMnkyIntf();
     }
@@ -73,8 +72,8 @@
 
   function addAdjMnkyRootEl() {
     adjMnkyIntf = document.createElement( 'div' );
-    adjMnkyIntf.id = adjMnkyRootElId;
-    adjMnkyIntf.className = adjMnkyBlkClass;
+    adjMnkyIntf.id = iife.adjMnkyRootElId;
+    adjMnkyIntf.className = iife.adjMnkyBlkClass;
     document.body.appendChild( adjMnkyIntf );
   }
 
@@ -83,12 +82,12 @@
 
   function loadReactViaCDN() {
     logAdjMnkyMsg( 'Now checking for the presence of React.' );
-    if ( typeof React !== 'undefined' || document.getElementById( reactElId ) !== null  ) {
+    if ( typeof React !== 'undefined' || document.getElementById( iife.reactElId ) !== null  ) {
       reportReactPresent();
       loadReactDOMViaCDN();
       return;
     }
-    addScriptToBodyTag( reactElId, true, reportReactLoadedByCDN, cdnSrc4React );
+    addScriptToBodyTag( iife.reactElId, true, reportReactLoadedByCDN, iife.cdnSrc4React );
   }
 
   function reportReactPresent() {
@@ -113,13 +112,13 @@
 
   function loadReactDOMViaCDN() {
     logAdjMnkyMsg( 'Now checking for the presence of ReactDOM.' );
-    if ( typeof ReactDOM !== 'undefined' || document.getElementById( reactDOMElId ) !== null ) {
+    if ( typeof ReactDOM !== 'undefined' || document.getElementById( iife.reactDOMElId ) !== null ) {
       reportReactDOMPresent();
       loadAdjMnkyIntfByExtHost();
       // TODO: doNextThing( … );
       return;
     }
-    addScriptToBodyTag( reactDOMElId, true, reportReactDOMLoadedByCDN, cdnSrc4ReactDOM );
+    addScriptToBodyTag( iife.reactDOMElId, true, reportReactDOMLoadedByCDN, iife.cdnSrc4ReactDOM );
   }
 
   function reportReactDOMPresent() {
@@ -138,10 +137,10 @@
   function loadAdjMnkyIntfByExtHost() {
     logAdjMnkyMsg("Now that React is present, I will load my interface.");
     addScriptToBodyTag(
-      adjMnkyJsId,
+      iife.adjMnkyJsId,
       true,
       reportAdjMnkyJsLoadedByExtHost,
-      extHostSrc4AdjMnkyIntf
+      iife.extHostSrc4AdjMnkyIntf
     );
   }
 
@@ -157,35 +156,35 @@
   }
 
   window.addEventListener('load', respToPgLoad );
-} )(
+} )( {
 
   // scriptNm: string ↓
-  'AdjusterMonkey.js',
+  scriptNm: 'AdjusterMonkey.js',
 
   // scriptHotKey: string ↓
-  'j',
+  scriptHotKey: 'j',
 
   // reactElId: string ↓
-  'react-src-code',
+  reactElId: 'react-src-code',
 
   // cdnSrc4React: string ↓  
-  'https://unpkg.com/react@18/umd/react.production.min.js',
+  cdnSrc4React: 'https://unpkg.com/react@18/umd/react.production.min.js',
 
   // reactDOMElId: string ↓
-  'reactdom-src-code',
+  reactDOMElId: 'reactdom-src-code',
 
   // cdnSrc4ReactDOM: string ↓  
-  'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js',
+  cdnSrc4ReactDOM: 'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js',
 
   // adjMnkyJsId ↓
-  "adj-mnky-intf-src",
+  adjMnkyJsId: 'adj-mnky-intf-src',
 
   // extHostSrc4AdjMnkyIntf ↓
-  "https://d-c-rieck.com/dist/adjmnky-wjb1y05v/AdjMnkyIntf.js",
+  extHostSrc4AdjMnkyIntf: 'https://d-c-rieck.com/dist/adjmnky-wjb1y05v/AdjMnkyIntf.js',
 
   // adjMnkyRootElId ↓
-  "dcrdc-adjmnky-cHXlHx1Q",
+  adjMnkyRootElId: 'dcrdc-adjmnky-cHXlHx1Q',
 
   // adjMnkyBlkClass ↓
-  "adjmnky",
-);
+  adjMnkyBlkClass: 'adjmnky',
+} );
