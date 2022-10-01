@@ -7,7 +7,7 @@
  *   d-c-rieck.com website.
  *
  * @version 0.0.0
- * 
+ *
  * @author Daniel Rieck [danielcrieck@gmail.com] (https://github.com/invokeImmediately)
  * @license MIT — Copyright (c) 2022 Daniel C. Rieck.
  *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -22,6 +22,45 @@
  *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
  *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**=================================================================================================
+ * █▀▀▄ █    █▀▀▄    █▀▀▀ ▐▀▀▄▐▀█▀▌█▀▀▄ █  █    █▀▀▄▐▀█▀▌  █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▀▀▄ █  ▄ █  █ ▀▀ █▀▀  █  ▐  █  █▄▄▀ ▀▄▄█ ▀▀ █▄▄▀  █    █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * ▀▀▀  ▀▀▀  ▀▀▀     ▀▀▀▀ ▀  ▐  █  ▀  ▀▄▄▄▄▀    █     █  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Entry point for building the stylesheet for d-c-rieck.com from source files written in the
+ *   Less/Leaner Style Sheets language extension of CSS.
+ *
+ * @version 0.3.0
+ * @author Daniel Rieck [danielcrieck@gmail.com] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/bld-entry-pt.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * ================================================================================================
+ *   TABLE OF CONTENTS:
+ *   ────────────────────────────────────────────────────────────────────────────────────────────
+ *   §1: Mixins................................................................................39
+ *   §2: Build settings........................................................................45
+ *   §3: Base styling..........................................................................54
+ *   §4: First-draft code......................................................................61
+ *   §5: Site components.......................................................................67
+ *   §6: Animations............................................................................78
+ *   §7: Atomic CSS............................................................................84
+ * =================================================================================================
+ */
+/**=================================================================================================
+ * §1: Mixins
  */
 /* =================================================================================================
  * █▀▀▄ ▄▀▀▀ █▀▀▀ ▐▀▀▄    █  █ ▄▀▀▀ ▄▀▀▄ █▀▀▀ █▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
@@ -51,6 +90,34 @@
  *   §1: decl-dsgn-maybe: Mixin for declaring modular designs...................................34
  * =================================================================================================
  */
+/**=================================================================================================
+ * §2: Build settings
+ */
+/**=================================================================================================
+ * █▀▀▄ █▀▀▄ █ ▄▀ █▀▀▄▐▀█▀▌▄▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▀▀▄ █▄▄▀ █▀▄  █▄▄▀  █  ▀▀▀█   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * ▀▀▀  ▀  ▀▄▀  ▀▄█     █  ▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Less variables representing breakpoints for responsive layouts.
+ *
+ * @version 0.0.0
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/brkpts.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ */
 /* =================================================================================================
  * █▀▀▄ ▄▀▀▀ █▀▀▀ ▐▀▀▄    █  █ ▄▀▀▀ ▄▀▀▄ █▀▀▀ █▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
  * █  █ ▀▀▀█ █ ▀▄ █  ▐ ▀▀ █  █ ▀▀▀█ █▄▄█ █ ▀▄ █▀▀    █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
@@ -59,7 +126,7 @@
  * Specifies default values for the boolean flags that control the declaration of modular Less
  *   rulesets that implement styling designs.
  *
- * @version 0.2.0
+ * @version 0.4.0
  * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/dsgn-usage.less
  * @license MIT Copyright (c) 2022 Daniel C. Rieck.
@@ -78,23 +145,30 @@
  * =================================================================================================
  *   TABLE OF CONTENTS:
  *   ─────────────────────────────────────────────────────────────────────────────────────────────
- *   §1: Base styling...........................................................................36
- *   §2: Page components........................................................................45
- *   §3: Animations.............................................................................51
- *   §4: Atomic CSS.............................................................................57
+ *   §1: Base styling...........................................................................37
+ *   §2: Layout of page components..............................................................46
+ *   §3: Thematic presentation of components....................................................54
+ *   §4: Animations.............................................................................61
+ *   §5: Atomic CSS.............................................................................67
  * =================================================================================================
  */
 /*  ----------------------------------------------------------------------------------------------
  *  >>> §1: Base styling
  */
 /*  ----------------------------------------------------------------------------------------------
- *  >>> §2: Page components
+ *  >>> §2: Layout of page components
  */
 /*  ----------------------------------------------------------------------------------------------
- *  >>> §3: Animations
+ *  >>> §3: Thematic presentation of page components
  */
 /*  ----------------------------------------------------------------------------------------------
- *  >>> §4: Atomic CSS
+ *  >>> §4: Animations
+ */
+/*  ----------------------------------------------------------------------------------------------
+ *  >>> §5: Atomic CSS
+ */
+/* =================================================================================================
+ * §3: Base styling
  */
 /*! -------- Reset default browser styles -------- */
 :where(a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video) {
@@ -269,13 +343,38 @@ pre {
     /* 4 */
   }
 }
+/* =================================================================================================
+ * █▀▀▄ ▄▀▀▄ ▄▀▀▄▐▀█▀▌  █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▄▄▀ █  █ █  █  █    █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * ▀  ▀▄ ▀▀   ▀▀   █  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Provides settings for CSS variables used in the website's stylesheet.
+ *
+ * @version 0.0.2
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/root.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ */
 /*! -------- CSS Variables -------- */
 :root {
-  --bg-clr-pg: black;
+  --bg-clr-pg: #202020;
   --bg-clr-pg-hi6t: #292929;
   --bg-clr-pg-2: #181818;
-  --bg-clr-hero: rgba(41, 41, 41, 0.85);
-  --bg-clr-site-hdr: #e0e0e0;
+  --bg-clr-hero: rgba(0, 0, 0, 0.75);
+  --bg-clr-site-hdr: #000;
   --brdr-clr-pg: #707070;
   --brdr-clr-ac3e: #b5b5b5;
   --brdr-clr-hi6t: white;
@@ -284,7 +383,7 @@ pre {
   --brdr-wdth-site-hdr: 2px;
   --fg-clr-pg: white;
   --fg-clr-pg-2: #a3a3a3;
-  --fg-clr-ftr: #000;
+  --fg-clr-ftr: #fff;
   --fs-h1: 2.5rem;
   --fs-h2: 2.1rem;
   --fs-h3: 1.8rem;
@@ -292,7 +391,644 @@ pre {
   --fs-h5: 1.3rem;
   --fs-h6: 1.1rem;
 }
-/*! -------- Grid blocks -------- */
+/**=================================================================================================
+ * §4: First-draft code
+ */
+/*! -------- d-c-rieck.com Pages -------- */
+.dcrdc-pg {
+  background: var(--bg-clr-pg);
+  color: var(--fg-clr-pg);
+  display: grid;
+  grid-gap: 1px 0;
+  grid-template-rows: minmax(4rem, auto) 1fr minmax(4rem, auto);
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+.dcrdc-pg--voronoi-bg {
+  background: var(--bg-clr-pg) url(/imgs/hdri-lighting-experiment_voronoi-plane_2022-02-05-n1_r2-seamless.jpg) repeat;
+}
+/*! -------- Page header and components -------- */
+/*! -------- Main content -------- */
+.main-pg-content {
+  display: grid;
+  grid-area: 2 / 1 / 3 / 2;
+  grid-template-columns: 2rem 1fr 2rem;
+  grid-template-rows: auto;
+}
+@media all and (max-width: 414px) {
+  .main-pg-content {
+    grid-template-columns: 1rem 1fr 1rem;
+  }
+}
+/*! -------- Custom row layouts -------- */
+@media all and (max-width: 1080px) {
+  .grdr--home-intro {
+    grid-template-columns: 1fr;
+  }
+}
+/*! -------- Backgrounds -------- */
+.bgi-dcr-at-work-1 {
+  background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_960w540.jpg) no-repeat 75% top / cover;
+}
+@media all and (min-width: 961px) {
+  .bgi-dcr-at-work-1 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_1920w1080.jpg) no-repeat center top / cover;
+  }
+}
+@media all and (min-width: 1921px) {
+  .bgi-dcr-at-work-1 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_2880w1620.jpg) no-repeat center top / cover;
+  }
+}
+@media all and (min-width: 2889px) {
+  .bgi-dcr-at-work-1 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_3840w2160.jpg) no-repeat center top / cover;
+  }
+}
+.bgi-dcr-at-work-2 {
+  background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_960w540.jpg) no-repeat 75% top / cover;
+}
+@media all and (min-width: 961px) {
+  .bgi-dcr-at-work-2 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_1920w1080.jpg) no-repeat center top / cover;
+  }
+}
+@media all and (min-width: 1921px) {
+  .bgi-dcr-at-work-2 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_2880w1620.jpg) no-repeat center top / cover;
+  }
+}
+@media all and (min-width: 2889px) {
+  .bgi-dcr-at-work-2 {
+    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_3840w2160.jpg) no-repeat center top / cover;
+  }
+}
+/*! -------- Article header -------- */
+.article-hdr {
+  box-sizing: border-box;
+  padding: 1em;
+  text-align: center;
+}
+.article-hdr__all-content {
+  background-color: var(--bg-clr-hero);
+  border-radius: 0.5rem;
+  font-size: 3em;
+  line-height: 1.25em;
+  margin: 1em auto;
+  max-width: 40ch;
+  padding: 1em;
+}
+@media all and (max-width: 460px) {
+  .article-hdr__all-content {
+    font-size: 2em;
+  }
+}
+.article-hdr__title {
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+}
+.article-hdr__sub-title {
+  display: block;
+  font-size: 0.85em;
+  font-weight: 400;
+  line-height: inherit;
+  margin-top: 0.5em;
+}
+/*! -------- Page footer -------- */
+.pg-ftr {
+  align-items: center;
+  background: var(--bg-clr-site-hdr);
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 -1px 3px #fff, 0px -0.4px 1.4px rgba(255, 255, 255, 0.03), 0px -1.1px 3.3px rgba(255, 255, 255, 0.04), 0px -2px 6.3px rgba(255, 255, 255, 0.05), 0px -3.6px 11.2px rgba(255, 255, 255, 0.06), 0px -6.7px 20.9px rgba(255, 255, 255, 0.07), 0px -16px 50px rgba(255, 255, 255, 0.1);
+  color: var(--fg-clr-ftr);
+  display: grid;
+  grid-area: 3 / 1 / 4 / 2;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  margin-top: -1px;
+  padding: 0 2rem;
+}
+.pg-ftr__cn {
+  grid-area: 1 / 1 / 2 / 2;
+  position: relative;
+  justify-self: end;
+}
+.pg-ftr__cn:after {
+  content: "/";
+  left: 100%;
+  position: absolute;
+  transform: translateX(1rem) translateX(-50%);
+}
+.pg-ftr__tools-notice {
+  grid-area: 1 / 2 / 2 / 3;
+  justify-self: start;
+}
+@media screen and (max-width: 768px) {
+  .pg-ftr {
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+  .pg-ftr__cn,
+  .pg-ftr__tools-notice {
+    grid-area: auto;
+    justify-self: center;
+  }
+  .pg-ftr__cn:after {
+    content: '';
+  }
+}
+/*! -------- Headings -------- */
+h1,
+.fs-h1 {
+  font-size: var(--fs-h1);
+}
+h2,
+.fs-h2 {
+  font-size: var(--fs-h2);
+}
+h3,
+.fs-h3 {
+  font-size: var(--fs-h3);
+}
+h4,
+.fs-h4 {
+  font-size: var(--fs-h4);
+}
+h5,
+.fs-h5 {
+  font-size: var(--fs-h5);
+}
+h6,
+.fs-h6 {
+  font-size: var(--fs-h6);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2em;
+  font-family: "Oswald", sans-serif;
+}
+h1 {
+  font-weight: 800;
+}
+h2 {
+  font-weight: 700;
+}
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+/*! -------- Width constraints -------- */
+blockquote,
+ol,
+p,
+ul,
+figcaption {
+  max-width: 80ch;
+}
+/*! -------- Skip links -------- */
+.pg-hdr__skip-link {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+.pg-hdr__skip-link:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 99352;
+}
+/*! -------- Images -------- */
+img {
+  height: auto;
+  width: 100%;
+}
+.abl-motto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1459px;
+}
+/*! -------- Image swapper -------- */
+/*! -------- Screen readers -------- */
+.for-scr-rdr {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+/*! -------- Atomic CSS: Max width -------- */
+.mw-0 {
+  max-width: none;
+}
+.mw-100pct {
+  max-width: 100%;
+}
+.mw-40ch {
+  max-width: 40ch;
+}
+.mw-60ch {
+  max-width: 60ch;
+}
+.mw-80ch {
+  max-width: 80ch;
+}
+/*! -------- Atomic CSS: Margins -------- */
+.mt-0 {
+  margin-top: 0;
+}
+.mt-1xs {
+  margin-top: 0.25rem;
+}
+.mt-1xs {
+  margin-top: 0.5rem;
+}
+.mt-1xs {
+  margin-top: 0.75rem;
+}
+.mt-1x {
+  margin-top: 1rem;
+}
+.mt-1xl {
+  margin-top: 1.25rem;
+}
+.mt-2xl {
+  margin-top: 1.5rem;
+}
+.mt-3xl {
+  margin-top: 1.75rem;
+}
+.mt-4xl {
+  margin-top: 2rem;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-3xs {
+  margin-bottom: 0.25rem;
+}
+.mb-2xs {
+  margin-bottom: 0.5rem;
+}
+.mb-1xs {
+  margin-bottom: 0.75rem;
+}
+.mb-1x {
+  margin-bottom: 1rem;
+}
+.mb-1xl {
+  margin-bottom: 1.25rem;
+}
+.mb-2xl {
+  margin-bottom: 1.5rem;
+}
+.mb-3xl {
+  margin-bottom: 1.75rem;
+}
+.mb-4xl {
+  margin-bottom: 2rem;
+}
+/*! -------- Atomic CSS: Line-heights -------- */
+.lh-0 {
+  line-height: 0;
+}
+.lh-5xs {
+  line-height: 1em;
+}
+.lh-4xs {
+  line-height: 1.1em;
+}
+.lh-3xs {
+  line-height: 1.2em;
+}
+.lh-2xs {
+  line-height: 1.3em;
+}
+.lh-1xs {
+  line-height: 1.4em;
+}
+.lh-1x {
+  line-height: 1.5em;
+}
+.lh-1xl {
+  line-height: 1.6em;
+}
+.lh-2xl {
+  line-height: 1.7em;
+}
+.lh-3xl {
+  line-height: 1.8em;
+}
+.lh-4xl {
+  line-height: 1.9em;
+}
+.lh-5xl {
+  line-height: 2em;
+}
+/*! -------- Atomic CSS: Maximum Width -------- */
+.mw-40ch {
+  max-width: 40ch;
+}
+.mw-50ch {
+  max-width: 50ch;
+}
+.mw-60ch {
+  max-width: 60ch;
+}
+.mw-70ch {
+  max-width: 70ch;
+}
+.mw-80ch {
+  max-width: 80ch;
+}
+.mw-1160 {
+  max-width: 1160px;
+}
+/*! -------- Hr elements -------- */
+hr {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 3px;
+}
+/*! -------- Image swapper -------- */
+.img-swapper {
+  position: relative;
+}
+@keyframes img-swapper-fade-i2 {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  67% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes img-swapper-fade-i3 {
+  0% {
+    opacity: 0;
+  }
+  63% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.img-swapper__i2 {
+  animation: 15s linear 0s infinite img-swapper-fade-i2;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.img-swapper__i3 {
+  animation: 15s linear 0s infinite img-swapper-fade-i3;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+/**=================================================================================================
+ * §5: Site components
+ */
+/**=================================================================================================
+ * █  █ █▀▀▀ ▄▀▀▄ █▀▀▄ █▀▀▀ █▀▀▄ ▄▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▀▀█ █▀▀  █▄▄█ █  █ █▀▀  █▄▄▀ ▀▀▀█   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * █  ▀ ▀▀▀▀ █  ▀ ▀▀▀  ▀▀▀▀ ▀  ▀▄▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Less modules providing BEM style rulesets for laying components out using CSS grid.
+ *
+ * @version 0.0.2
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Components/headers.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ *   TABLE OF CONTENTS:
+ *   ────────────────────────────────────────────────────────────────────────────────────────────
+ *   §1: Page header designs...................................................................33
+ *   §2: Article header designs................................................................82
+ * =================================================================================================
+ */
+/**=================================================================================================
+ * §1: Page header designs
+ */
+/* —→ Component: Page header ←— */
+.pg-hdr {
+  background: var(--bg-clr-site-hdr);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 3px #fff, 0px 0.4px 1.4px rgba(255, 255, 255, 0.03), 0px 1.1px 3.3px rgba(255, 255, 255, 0.04), 0px 2px 6.3px rgba(255, 255, 255, 0.05), 0px 3.6px 11.2px rgba(255, 255, 255, 0.06), 0px 6.7px 20.9px rgba(255, 255, 255, 0.07), 0px 16px 50px rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  display: grid;
+  grid-area: 1/1/2/2;
+  grid-template-rows: minmax(4rem, auto);
+  grid-template-columns: 4.25rem auto;
+  margin-bottom: -1px;
+  position: relative;
+}
+.pg-hdr__ws-home-link {
+  align-items: center;
+  background: var(--bg-clr-pg);
+  display: grid;
+  grid-area: 1 / 1 / 2 / 2;
+  margin-left: 0.25rem;
+  transition: outline 0.2s;
+}
+.pg-hdr__ws-home-link:focus,
+.pg-hdr__ws-home-link:hover {
+  outline: 2px solid var(--fg-clr-page);
+}
+.pg-hdr__ws-logo {
+  height: auto;
+  width: 100%;
+}
+/**=================================================================================================
+ * §2: Article header designs
+ */
+/* —→ Component: Standard article headers ←— */
+.article-hdr {
+  --artcl-hdr-bg: rgba(0, 0, 0, 0.85);
+  --artcl-hdr-fs: 3em;
+  --artcl-hdr-lh: 1.25em;
+  box-sizing: border-box;
+  padding: 1em;
+  text-align: center;
+}
+@media all and (max-width: 768px) {
+  .article-hdr {
+    --artcl-hdr-fs: 1.5em;
+  }
+}
+.article-hdr__all-content {
+  background-color: var(--artcl-hdr-bg);
+  border-radius: 0.5rem;
+  font-size: var(--artcl-hdr-fs);
+  line-height: var(--artcl-hdr-lh);
+  margin: 1em auto;
+  max-width: 50ch;
+  padding: 1em;
+}
+.article-hdr--home .article-hdr__all-content {
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 4px white, 0px 1.8px 2.2px rgba(255 255 255 / 2.8%), 0px 4.3px 5.3px rgba(255 255 255 / 4%), 0px 8px 10px rgba(255 255 255 / 5%), 0px 14.3px 17.9px rgba(255 255 255 / 6%), 0px 26.7px 33.4px rgba(255 255 255 / 7.2%), 0px 64px 80px rgba(255 255 255 / 10%);
+}
+.article-hdr__title {
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+}
+.article-hdr__title--pop-out {
+  display: block;
+  font-size: 2em;
+  line-height: var(--artcl-hdr-lh);
+}
+/**=================================================================================================
+ * █▀▀▄ █▀▀▄ ▀█▀ ▐▀▀▄ ▄▀▀▄▐   ▌  █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▄▄▀ █▄▄▀  █  █  ▐ █▄▄█ █ █   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * █    ▀  ▀▄▀▀▀ ▀  ▐ █  ▀  █  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Less modules providing BEM style rulesets for the website's primary navigation component.
+ *
+ * @version 0.0.0
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Components/prinav.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ */
+/*! —→ Component: Primary navigation ←— */
+.pri-nav {
+  align-content: center;
+  display: grid;
+  justify-self: end;
+}
+.pri-nav__dest {
+  background-color: #e0e0e0;
+  border-bottom: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-pnav);
+  color: #000;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: 0.2s all;
+}
+.pri-nav__dest:focus,
+.pri-nav__dest:hover {
+  background-color: var(--bg-clr-pg-hi6t);
+  border-bottom-color: var(--brdr-clr-hi6t);
+  color: #fff;
+}
+.pri-nav__dest:active {
+  color: var(--brdr-clr-ac3e);
+  border-bottom-color: var(--brdr-clr-ac3e);
+}
+.pri-nav__menu {
+  column-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin-right: 1rem;
+}
+/* =================================================================================================
+ * █▀▀▀ █▀▀▄ ▀█▀ █▀▀▄   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █ ▀▄ █▄▄▀  █  █  █   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * ▀▀▀▀ ▀  ▀▄▀▀▀ ▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Less modules providing BEM style rulesets for laying components out using CSS grid.
+ *
+ * @version 0.1.1
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/dsgn-usage.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ */
+/*! —→ Component: Grid blocks ←— */
 .grid {
   display: grid;
   grid-column: 2 / 3;
@@ -308,7 +1044,7 @@ pre {
 .grid--full-hght {
   min-height: 100vh;
 }
-/*! -------- Grid Cells -------- */
+/*! —→ Component: Grid Cells ←— */
 .grid__cell {
   display: grid;
   grid-column: 1 / 13;
@@ -383,6 +1119,71 @@ pre {
     grid-column: 1 / 13;
   }
 }
+/* =================================================================================================
+ * █▀▀▄ █▀▀▀ ▀█▀ ▄▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ * █▀▀▄ █ ▀▄  █  ▀▀▀█   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ * ▀▀▀  ▀▀▀▀ ▀▀▀ ▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Optionally declared Less modules providing BEM style rulesets for presenting page components
+ *   with to thematic backgrounds.
+ *
+ * @version 0.0.1
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/dsgn-usage.less
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ */
+/*! —→ Presentation: "Light in the Dark" visual backgrounds ←— */
+.bgi-voronoi-tiles {
+  background: var(--bg-clr-pg) url(/imgs/hdri-lighting-experiment_voronoi-plane_2022-02-05-n1_r2-seamless.jpg) repeat;
+}
+.bgi-digital-sand {
+  background: var(--bg-clr-pg) url(/imgs/bg/pexels-daniel-absi-952670_digital-sand_tileable_960w640h.jpg) repeat;
+}
+/*! —→ Presentation: "Sandbox" visual backgrounds ←— */
+.bgi-volcanic-sand {
+  background: var(--bg-clr-pg) url(/imgs/bg/pexels-daniel-absi-952670_sand-grains_tileable_960w640h.jpg) repeat;
+}
+/**=================================================================================================
+ * §6: Animations
+ */
+/* =================================================================================================
+ * ▐▀█▀▌▄▀▀▄ ▄▀▀▄ █       ▄▀▀▀▐▀█▀▌▄▀▀▄ ▄▀▀▀ █ ▄▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
+ *   █  █  █ █  █ █  ▄ ▀▀ ▀▀▀█  █  █▄▄█ █    █▀▄    █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
+ *   █   ▀▀   ▀▀  ▀▀▀     ▀▀▀   █  █  ▀  ▀▀▀ ▀  ▀▄▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ *
+ * Rules for styling an animated, growing stack of icons representing the tools used in development
+ *   and design work.
+ *
+ * @version 0.0.2
+ * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
+ * @license MIT Copyright (c) 2022 Daniel C. Rieck.
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *     and associated documentation files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *     the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or
+ *     substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * =================================================================================================
+ */
 /*! -------- Animations: Tool stacks -------- */
 @keyframes tlstck-anim-ico-appear {
   0% {
@@ -549,17 +1350,20 @@ pre {
   background-position: -16rem -28rem;
 }
 .tlstck-anim__icon--delay-1 {
-  animation: tlstck-anim-ico-appear 0.333s linear 1s forwards, tlstck-anim-ico-sat-cycle 5s linear 1s infinite;
+  animation: tlstck-anim-ico-appear 0.333s linear 1s, tlstck-anim-ico-sat-cycle 5s linear 1s infinite;
 }
 .tlstck-anim__icon--delay-2 {
-  animation: tlstck-anim-ico-appear 0.333s linear 2s forwards, tlstck-anim-ico-sat-cycle 5s linear 2s infinite;
+  animation: tlstck-anim-ico-appear 0.333s linear 2s, tlstck-anim-ico-sat-cycle 5s linear 2s infinite;
 }
 .tlstck-anim__icon--delay-3 {
-  animation: tlstck-anim-ico-appear 0.333s linear 3s forwards, tlstck-anim-ico-sat-cycle 5s linear 3s infinite;
+  animation: tlstck-anim-ico-appear 0.333s linear 3s, tlstck-anim-ico-sat-cycle 5s linear 3s infinite;
 }
 .tlstck-anim__icon--delay-4 {
-  animation: tlstck-anim-ico-appear 0.333s linear 4s forwards, tlstck-anim-ico-sat-cycle 5s linear 4s infinite;
+  animation: tlstck-anim-ico-appear 0.333s linear 4s, tlstck-anim-ico-sat-cycle 5s linear 4s infinite;
 }
+/**=================================================================================================
+ * §7: Atomic CSS
+ */
 /* =================================================================================================
  * ▄▀▀▄ █    ▀█▀ █▀▀▀ ▐▀▀▄ ▐▀▄▀▌█▀▀▀ ▐▀▀▄▐▀█▀▌  █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
  * █▄▄█ █  ▄  █  █ ▀▄ █  ▐ █ ▀ ▌█▀▀  █  ▐  █    █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
@@ -793,464 +1597,4 @@ pre {
 }
 .ggap-col-2xl {
   grid-column-gap: [3rem, 4rem];
-}
-/*! -------- d-c-rieck.com Pages -------- */
-.dcrdc-pg {
-  background: var(--bg-clr-pg);
-  color: var(--fg-clr-pg);
-  display: grid;
-  grid-gap: 1px 0;
-  grid-template-rows: minmax(4rem, auto) 1fr minmax(4rem, auto);
-  font-family: "Source Sans Pro", sans-serif;
-  margin: 0;
-  min-height: 100vh;
-}
-.dcrdc-pg--voronoi-bg {
-  background: var(--bg-clr-pg) url(/imgs/hdri-lighting-experiment_voronoi-plane_2022-02-05-n1_r2-seamless.jpg) repeat;
-}
-/*! -------- Page header and components -------- */
-.pg-hdr {
-  background: var(--bg-clr-site-hdr);
-  border-bottom: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-site-hdr);
-  box-sizing: border-box;
-  display: grid;
-  grid-area: 1 / 1 / 2 / 2;
-  grid-template-rows: minmax(4rem, auto);
-  grid-template-columns: 4rem auto;
-  margin-bottom: -1px;
-  position: relative;
-}
-.pg-hdr__ws-home-link {
-  align-items: center;
-  background: var(--bg-clr-pg);
-  border-right: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-site-hdr);
-  display: grid;
-  grid-area: 1 / 1 / 2 / 2;
-  margin-right: -1px;
-  transition: outline 0.2s;
-}
-.pg-hdr__ws-home-link:focus,
-.pg-hdr__ws-home-link:hover {
-  outline: 2px solid var(--fg-clr-page);
-}
-.pg-hdr__ws-logo {
-  height: auto;
-  width: 100%;
-}
-.pri-nav {
-  align-content: center;
-  display: grid;
-  justify-self: end;
-}
-.pri-nav__menu {
-  column-gap: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-}
-.pri-nav__dest {
-  background-color: var(--bg-clr-pg);
-  border-bottom: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-pnav);
-  color: white;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  transition: 0.2s all;
-}
-.pri-nav__dest:focus,
-.pri-nav__dest:hover {
-  background-color: var(--bg-clr-pg-hi6t);
-  border-bottom-color: var(--brdr-clr-hi6t);
-}
-.pri-nav__dest:active {
-  color: var(--brdr-clr-ac3e);
-  border-bottom-color: var(--brdr-clr-ac3e);
-}
-/*! -------- Main content -------- */
-.main-pg-content {
-  display: grid;
-  grid-area: 2 / 1 / 3 / 2;
-  grid-template-columns: 2rem 1fr 2rem;
-  grid-template-rows: auto;
-}
-@media all and (max-width: 414px) {
-  .main-pg-content {
-    grid-template-columns: 1rem 1fr 1rem;
-  }
-}
-/*! -------- Custom row layouts -------- */
-@media all and (max-width: 1080px) {
-  .grdr--home-intro {
-    grid-template-columns: 1fr;
-  }
-}
-/*! -------- Backgrounds -------- */
-.bgi-dcr-at-work-1 {
-  background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_960w540.jpg) no-repeat 75% top / cover;
-}
-@media all and (min-width: 961px) {
-  .bgi-dcr-at-work-1 {
-    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_1920w1080.jpg) no-repeat center top / cover;
-  }
-}
-@media all and (min-width: 1921px) {
-  .bgi-dcr-at-work-1 {
-    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_2880w1620.jpg) no-repeat center top / cover;
-  }
-}
-@media all and (min-width: 2889px) {
-  .bgi-dcr-at-work-1 {
-    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_desat_3840w2160.jpg) no-repeat center top / cover;
-  }
-}
-.bgi-dcr-at-work-2 {
-  background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_960w540.jpg) no-repeat 75% top / cover;
-}
-@media all and (min-width: 961px) {
-  .bgi-dcr-at-work-2 {
-    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_1920w1080.jpg) no-repeat center top / cover;
-  }
-}
-@media all and (min-width: 1921px) {
-  .bgi-dcr-at-work-2 {
-    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_2880w1620.jpg) no-repeat center top / cover;
-  }
-}
-@media all and (min-width: 2889px) {
-  .bgi-dcr-at-work-2 {
-    background: black url(/imgs/d-c-rieck-at-work_fed-project_pxl6-20220108-052905620_3840w2160.jpg) no-repeat center top / cover;
-  }
-}
-/*! -------- Article header -------- */
-.article-hdr {
-  box-sizing: border-box;
-  padding: 1em;
-  text-align: center;
-}
-.article-hdr__all-content {
-  background-color: var(--bg-clr-hero);
-  border-radius: 0.5rem;
-  font-size: 3em;
-  line-height: 1.25em;
-  margin: 1em auto;
-  max-width: 40ch;
-  padding: 1em;
-}
-@media all and (max-width: 460px) {
-  .article-hdr__all-content {
-    font-size: 2em;
-  }
-}
-.article-hdr__title {
-  font-size: inherit;
-  font-weight: 700;
-  line-height: inherit;
-}
-.article-hdr__sub-title {
-  display: block;
-  font-size: 0.85em;
-  font-weight: 400;
-  line-height: inherit;
-  margin-top: 0.5em;
-}
-/*! -------- Page footer -------- */
-.pg-ftr {
-  align-items: center;
-  background: var(--bg-clr-site-hdr);
-  border-top: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-site-hdr);
-  color: var(--fg-clr-ftr);
-  display: grid;
-  grid-area: 3 / 1 / 4 / 2;
-  grid-gap: 2rem;
-  grid-template-columns: 1fr 1fr;
-  margin-top: -1px;
-  padding: 0 2rem;
-}
-.pg-ftr__cn {
-  grid-area: 1 / 1 / 2 / 2;
-  position: relative;
-  justify-self: end;
-}
-.pg-ftr__cn:after {
-  content: "/";
-  left: 100%;
-  position: absolute;
-  transform: translateX(1rem) translateX(-50%);
-}
-.pg-ftr__tools-notice {
-  grid-area: 1 / 2 / 2 / 3;
-  justify-self: start;
-}
-@media screen and (max-width: 768px) {
-  .pg-ftr {
-    grid-template-columns: 1fr;
-    grid-gap: 0.5rem;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-  }
-  .pg-ftr__cn,
-  .pg-ftr__tools-notice {
-    grid-area: auto;
-    justify-self: center;
-  }
-  .pg-ftr__cn:after {
-    content: '';
-  }
-}
-/*! -------- Headings -------- */
-h1,
-.fs-h1 {
-  font-size: var(--fs-h1);
-}
-h2,
-.fs-h2 {
-  font-size: var(--fs-h2);
-}
-h3,
-.fs-h3 {
-  font-size: var(--fs-h3);
-}
-h4,
-.fs-h4 {
-  font-size: var(--fs-h4);
-}
-h5,
-.fs-h5 {
-  font-size: var(--fs-h5);
-}
-h6,
-.fs-h6 {
-  font-size: var(--fs-h6);
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.2em;
-  font-family: "Oswald", sans-serif;
-}
-h1 {
-  font-weight: 800;
-}
-h2 {
-  font-weight: 700;
-}
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-}
-/*! -------- Width constraints -------- */
-blockquote,
-ol,
-p,
-ul,
-figcaption {
-  max-width: 80ch;
-}
-/*! -------- Skip links -------- */
-.pg-hdr__skip-link {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  word-wrap: normal !important;
-}
-.pg-hdr__skip-link:focus {
-  background-color: #eee;
-  clip: auto !important;
-  clip-path: none;
-  color: #444;
-  display: block;
-  font-size: 1em;
-  height: auto;
-  left: 5px;
-  line-height: normal;
-  padding: 15px 23px 14px;
-  text-decoration: none;
-  top: 5px;
-  width: auto;
-  z-index: 99352;
-}
-/*! -------- Images -------- */
-img {
-  height: auto;
-  width: 100%;
-}
-.abl-motto {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1459px;
-}
-/*! -------- Image swapper -------- */
-.img-swapper {
-  position: relative;
-}
-@keyframes img-swapper-fade {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-.img-swapper__front {
-  animation: 10s linear 0s infinite alternate img-swapper-fade;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-}
-/*! -------- Screen readers -------- */
-.for-scr-rdr {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  word-wrap: normal !important;
-}
-/*! -------- Atomic CSS: Max width -------- */
-.mw-0 {
-  max-width: none;
-}
-.mw-100pct {
-  max-width: 100%;
-}
-.mw-40ch {
-  max-width: 40ch;
-}
-.mw-60ch {
-  max-width: 60ch;
-}
-.mw-80ch {
-  max-width: 80ch;
-}
-/*! -------- Atomic CSS: Margins -------- */
-.mt-0 {
-  margin-top: 0;
-}
-.mt-1xs {
-  margin-top: 0.25rem;
-}
-.mt-1xs {
-  margin-top: 0.5rem;
-}
-.mt-1xs {
-  margin-top: 0.75rem;
-}
-.mt-1x {
-  margin-top: 1rem;
-}
-.mt-1xl {
-  margin-top: 1.25rem;
-}
-.mt-2xl {
-  margin-top: 1.5rem;
-}
-.mt-3xl {
-  margin-top: 1.75rem;
-}
-.mt-4xl {
-  margin-top: 2rem;
-}
-.mb-0 {
-  margin-bottom: 0;
-}
-.mb-3xs {
-  margin-bottom: 0.25rem;
-}
-.mb-2xs {
-  margin-bottom: 0.5rem;
-}
-.mb-1xs {
-  margin-bottom: 0.75rem;
-}
-.mb-1x {
-  margin-bottom: 1rem;
-}
-.mb-1xl {
-  margin-bottom: 1.25rem;
-}
-.mb-2xl {
-  margin-bottom: 1.5rem;
-}
-.mb-3xl {
-  margin-bottom: 1.75rem;
-}
-.mb-4xl {
-  margin-bottom: 2rem;
-}
-/*! -------- Atomic CSS: Line-heights -------- */
-.lh-0 {
-  line-height: 0;
-}
-.lh-5xs {
-  line-height: 1em;
-}
-.lh-4xs {
-  line-height: 1.1em;
-}
-.lh-3xs {
-  line-height: 1.2em;
-}
-.lh-2xs {
-  line-height: 1.3em;
-}
-.lh-1xs {
-  line-height: 1.4em;
-}
-.lh-1x {
-  line-height: 1.5em;
-}
-.lh-1xl {
-  line-height: 1.6em;
-}
-.lh-2xl {
-  line-height: 1.7em;
-}
-.lh-3xl {
-  line-height: 1.8em;
-}
-.lh-4xl {
-  line-height: 1.9em;
-}
-.lh-5xl {
-  line-height: 2em;
-}
-/*! -------- Atomic CSS: Maximum Width -------- */
-.mw-40ch {
-  max-width: 40ch;
-}
-.mw-50ch {
-  max-width: 50ch;
-}
-.mw-60ch {
-  max-width: 60ch;
-}
-.mw-70ch {
-  max-width: 70ch;
-}
-.mw-80ch {
-  max-width: 80ch;
-}
-.mw-1160 {
-  max-width: 1160px;
 }
