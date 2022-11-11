@@ -9,7 +9,7 @@ class AsciiArtLetter3h {
   }
 }
 
-class AsciiArtConverter {
+class AsciiArtGenerator {
   constructor() {
 
     // Establish the important settings for our ASCII art alphabet.
@@ -75,7 +75,7 @@ class AsciiArtConverter {
     this.alphabet[ "}" ] = new AsciiArtLetter3h( "▀█ ", " ▄▀", "▀▀ ", true );
   }
 
-  convertString( str, newlines = "rn" ) {
+  getArtFromTxt( txt, newlines = "rn" ) {
 
     // Determine how new lines should be encoded
     let nlChars;
@@ -88,8 +88,8 @@ class AsciiArtConverter {
     }
 
     // Loop through each row of the ASCII art that will represent the input string
-    let newStr = "";
-    const len = str.length;
+    let asciiArt = "";
+    const len = txt.length;
     let idx_i = 0;
     let whichChar, nextChar, artChars;
     while( idx_i < this.numArtRows ) {
@@ -100,14 +100,14 @@ class AsciiArtConverter {
 
         // Get the character to be converted at the current columnar position along the current row of ASCII art
         if ( idx_j == 0 ) {
-          whichChar = str.substring( idx_j, idx_j + 1 ).toLowerCase();
+          whichChar = txt.substring( idx_j, idx_j + 1 ).toLowerCase();
         } else {
           whichChar = nextChar;
         }
 
         // Look ahead for the next character to be converted; this is important for determining spacing between letters
         if ( idx_j < len - 1 ) {
-          nextChar = str.substring( idx_j + 1, idx_j + 2 ).toLowerCase();
+          nextChar = txt.substring( idx_j + 1, idx_j + 2 ).toLowerCase();
         }
 
         // Now obtain the appropriate row of ASCII art characters that represent the current character being converted
@@ -120,10 +120,10 @@ class AsciiArtConverter {
 
         // Add the art characters to the converted string we are building.
         if ( artChars.length > 0 ) {
-          newStr += artChars;
+          asciiArt += artChars;
           if ( idx_j < len - 1 && this.alphabet[ whichChar ].spaceRight
               && this.alphabet[ nextChar ].spaceLeft ) {
-            newStr += " ";
+            asciiArt += " ";
           }
         }
 
@@ -134,16 +134,16 @@ class AsciiArtConverter {
       // Proceed to building the next row of ASCII art.
       idx_i++;
       if ( idx_i < this.numArtRows ) {
-        newStr += nlChars;
+        asciiArt += nlChars;
       }
     }
 
     // Return the text block of ASCII art constructed from the string supplied to the function
-    return newStr;
+    return asciiArt;
   }
 }
 
 module.exports = {
   AsciiArtLetter3h,
-  AsciiArtConverter,
+  AsciiArtGenerator,
 };
