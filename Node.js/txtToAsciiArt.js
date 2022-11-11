@@ -1,6 +1,3 @@
-const proc = require( 'process' );
-const opts = proc.argv.slice( 2 );
-
 class AsciiArtLetter3h {
   constructor( row1chars, row2chars, row3chars, spaceRight, spaceLeft = true ) {
     this.rows = [];
@@ -146,10 +143,7 @@ class AsciiArtConverter {
   }
 }
 
-function convertCLToAsciiArt( cLTxt ) {
-  // Get the global object referencing the script's ASCII art converter
-  const converter = new AsciiArtConverter();
-  console.log( converter.convertString( cLTxt ) );
-}
-
-convertCLToAsciiArt( opts[0] );
+module.exports = {
+  AsciiArtLetter3h,
+  AsciiArtConverter,
+};
