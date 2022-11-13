@@ -143,7 +143,7 @@ class AsciiArtGenerator {
     }
 
     // Return the text block of ASCII art constructed from the string supplied to the function
-    this.artHist.push( asciiArt );
+    this.artHist.push( [asciiArt, txt, Date.now() ] );
     return asciiArt;
   }
 
@@ -151,7 +151,8 @@ class AsciiArtGenerator {
     if ( idx == -1 ) {
       console.log( JSON.stringify( this.artHist ) );
     } else {
-      console.log( this.artHist[ 0 ] );
+      console.log( `${this.artHist[ idx ][ 0 ] }
+Generated from "${this.artHist[ idx ][ 1 ]}" on ${ Date( this.artHist[ idx ][ 2 ] ).toString() }.` );
     }
   }
 }
