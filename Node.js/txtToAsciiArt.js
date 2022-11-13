@@ -89,6 +89,9 @@ class AsciiArtGenerator {
 
     // Loop through each row of the ASCII art that will represent the input string
     let asciiArt = "";
+    if ( typeof txt === 'undefined' ) {
+      return asciiArt;
+    }
     const len = txt.length;
     let idx_i = 0;
     let whichChar, nextChar, artChars;
