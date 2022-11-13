@@ -10,13 +10,14 @@ class AsciiArtLetter3h {
 }
 
 class AsciiArtGenerator {
-  constructor() {
+  constructor( loadHist = false ) {
 
     // Establish the important settings for our ASCII art alphabet.
     this.alphabet = {};
     this.numArtRows = 3;
+    this.artHist = [];
 
-    // Build our ASCII art alphabet by specifying: 1) the rows of ASCII characters that represent   ;   each glyph and 2) specifying left and right spacing for each glyph.
+    // Build our ASCII art alphabet by specifying: 1) the rows of ASCII characters that represent each glyph and 2) specifying left and right spacing for each glyph.
     this.alphabet[ "a" ] = new AsciiArtLetter3h( "▄▀▀▄", "█▄▄█", "█  ▀", true );
     this.alphabet[ "b" ] = new AsciiArtLetter3h( "█▀▀▄", "█▀▀▄", "▀▀▀ ", true );
     this.alphabet[ "c" ] = new AsciiArtLetter3h( "▄▀▀▀", "█   ", " ▀▀▀", true );
@@ -142,7 +143,16 @@ class AsciiArtGenerator {
     }
 
     // Return the text block of ASCII art constructed from the string supplied to the function
+    this.artHist.push( asciiArt );
     return asciiArt;
+  }
+
+  printArt( idx = 0 ) {
+    if ( idx == -1 ) {
+      console.log( JSON.stringify( this.artHist ) );
+    } else {
+      console.log( this.artHist[ 0 ] );
+    }
   }
 }
 
