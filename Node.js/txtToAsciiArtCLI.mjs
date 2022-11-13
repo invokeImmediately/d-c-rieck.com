@@ -3,7 +3,7 @@ const require = createRequire(import.meta.url);
 import clipboard from 'clipboardy';
 const proc = require( 'process' );
 const txtToArtIntf = require( './txtToAsciiArt.js' );
-const valInst = "«print» and «copy» (or aliases «cb» and «clipboard»)"
+const valInst = "«print», «copy» (or aliases «cb» and «clipboard»), and «test»."
 
 function printCLIHelp() {
   console.log( `⸿ txtToAsciiArtCLI.js —» Node.js project that generates ASCII art based on a simple text string using the personal alphabet of Daniel C. Rieck.
@@ -18,7 +18,7 @@ function processCLArgs( procArgs ) {
     opts[ 1 ] = "help";
   } else if ( opts.length < 2 ) {
     opts[ 1 ] = "print";
-  } else if ( !opts[ 1 ].match( /^print|cb|clipboard|copy$/ ) ) {
+  } else if ( !opts[ 1 ].match( /^print|cb|clipboard|copy|test$/ ) ) {
     throw new ReferenceError( `I do not recognize the instruction "${opts[ 1 ]}" for what to do with the ASCII art I am generating. Valid instructions are ${valInst}.` );
   }
   return opts;
@@ -33,6 +33,15 @@ function printArt( art ) {
   console.log( art );
 }
 
+function testPrintArtHist() {
+  const generator = new txtToArtIntf.AsciiArtGenerator();
+  generator.getArtFromTxt( "This is a test." );
+  generator.getArtFromTxt( "Testing 1 2 3." );
+  generator.getArtFromTxt( "Testing A B C." );
+  generator.getArtFromTxt( "Audio check." );
+  generator.printArt( -1 );
+}
+
 async function main() {
   const opts = processCLArgs( proc.argv );
   const art = convertCLToAsciiArt( opts[0] );
@@ -44,6 +53,9 @@ async function main() {
     break;
   case "help":
     printCLIHelp();
+    break;
+  case "test":
+    testPrintArtHist();
     break;
   case "print":
     printArt( art );
