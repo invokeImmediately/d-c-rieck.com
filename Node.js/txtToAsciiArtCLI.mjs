@@ -40,6 +40,7 @@ function testPrintArtHist() {
   generator.getArtFromTxt( "Testing A B C." );
   generator.getArtFromTxt( "Audio check." );
   generator.printArt( -1 );
+  generator.printArt( 1 );
 }
 
 async function main() {
