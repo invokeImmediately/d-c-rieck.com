@@ -18,7 +18,7 @@ function processCLArgs( procArgs ) {
     opts[ 1 ] = "help";
   } else if ( opts.length < 2 ) {
     opts[ 1 ] = "print";
-  } else if ( !opts[ 1 ].match( /^print|cb|clipboard|copy|test$/ ) ) {
+  } else if ( !opts[ 1 ].match( /^cb|clipboard|copy|file|print|test$/ ) ) {
     throw new ReferenceError( `I do not recognize the instruction "${opts[ 1 ]}" for what to do with the ASCII art I am generating. Valid instructions are ${valInst}.` );
   }
   return opts;
@@ -59,11 +59,12 @@ function prependToFile( path, maxLineLen = 80 ) {
 
 async function main() {
   const opts = processCLArgs( proc.argv );
+  let art;
   switch( opts[ 1 ] ) {
   case "cb":
   case "clipboard":
   case "copy":
-    const art = convertCLToAsciiArt( opts[0] );
+    art = convertCLToAsciiArt( opts[0] );
     clipboard.writeSync( art );
     break;
   case "help":
@@ -77,7 +78,7 @@ async function main() {
     testPrintArtHist();
     break;
   case "print":
-    const art = convertCLToAsciiArt( opts[0] );
+    art = convertCLToAsciiArt( opts[0] );
     printArt( art );
     break;
   }
