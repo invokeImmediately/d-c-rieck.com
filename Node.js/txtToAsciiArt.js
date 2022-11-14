@@ -76,6 +76,64 @@ class AsciiArtGenerator {
     this.alphabet[ "}" ] = new AsciiArtLetter3h( "▀█ ", " ▄▀", "▀▀ ", true );
   }
 
+  calcArtLenFromTxt( txt ) {
+    let asciiArtLen = 0;
+    if ( typeof txt === 'undefined' ) {
+      return asciiArtLen;
+    }
+    const len = txt.length;
+
+    // Based on how the glyphs are designed, only the first row of ASCII art glyphs is needed to determine final line length
+    let idx_i = 0;
+    let whichChar, nextChar, artCharsLen;
+
+    // Loop through each character in the first row of ASCII art to determine the length of the final string
+    let idx_j = 0;
+    while( idx_j < len ) {
+
+      // Get the character to be converted at the current columnar position along the current row of ASCII art
+      if ( idx_j == 0 ) {
+        whichChar = txt.substring( idx_j, idx_j + 1 ).toLowerCase();
+      } else {
+        whichChar = nextChar;
+      }
+
+      // Look ahead for the next character to be converted; this is important for determining spacing between letters
+      if ( idx_j < len - 1 ) {
+        nextChar = txt.substring( idx_j + 1, idx_j + 2 ).toLowerCase();
+      }
+
+      // Now obtain the appropriate row of ASCII art characters that represent the current character being converted
+      artCharsLen = this.alphabet[ whichChar ].rows[ idx_i ].length;
+
+      // Add the art characters to the converted string we are building.
+      if ( artCharsLen > 0 ) {
+        asciiArtLen += artCharsLen;
+        if ( idx_j < len - 1 && this.alphabet[ whichChar ].spaceRight
+            && this.alphabet[ nextChar ].spaceLeft ) {
+          // Add one to length to represent the extra space that is added between most characters
+          asciiArtLen += 1;
+        }
+      }
+
+      // Proceed to the next character in the string to hypothetically be converted to ASCII art
+      idx_j++;
+    }
+
+    // Return the overall length of the ASCII art that would be generated from the source string
+    return asciiArtLen;
+  }
+
+  getAvgArtCharLen() {
+    let avgCharLen = 0.0;
+    let numChars = 0;
+    for( let artChar in this.alphabet ) {
+      avgCharLen += this.alphabet[ artChar ].rows[0].length;
+      numChars++;
+    }
+    return  avgCharLen / numChars;
+  }
+
   getArtFromTxt( txt, newlines = "rn" ) {
 
     // Determine how new lines should be encoded
