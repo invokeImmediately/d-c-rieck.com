@@ -124,33 +124,21 @@ class AsciiArtGenerator {
     return asciiArtLen;
   }
 
-  getAvgArtCharLen() {
-    let avgCharLen = 0.0;
-    let numChars = 0;
-    for( let artChar in this.alphabet ) {
-      avgCharLen += this.alphabet[ artChar ].rows[0].length;
-      numChars++;
-    }
-    return  avgCharLen / numChars;
-  }
-
-  getArtFromTxt( txt, newlines = "rn" ) {
-
-    // Determine how new lines should be encoded
-    let nlChars;
-    if ( newlines == "r") {
-      nlChars = "\r";
-    } else if( newlines == "n" ) {
-      nlChars = "\n";
-    } else {
-      nlChars = "\r\n";
-    }
-
-    // Loop through each row of the ASCII art that will represent the input string
+  getArtFromTxt( txt, newlines = "rn", maxLineLen = 100 ) {
     let asciiArt = "";
     if ( typeof txt === 'undefined' ) {
       return asciiArt;
     }
+
+    // Check line length of hypothetical art generation
+    const hypArtLen = this.calcArtLenFromTxt( txt );
+    if ( hypArtLen > maxLineLen ) {
+      asciiArt = this.splitSrcTxtBefArtGen( txt, newlines, maxLineLen );
+      return asciiArt;
+    }
+
+    // Loop through each row of the ASCII art that will represent the input string
+    const nlChars = this.getNewLineChars( newlines );
     const len = txt.length;
     let idx_i = 0;
     let whichChar, nextChar, artChars;
@@ -205,6 +193,28 @@ class AsciiArtGenerator {
     return asciiArt;
   }
 
+  getAvgArtCharLen() {
+    let avgCharLen = 0.0;
+    let numChars = 0;
+    for( let artChar in this.alphabet ) {
+      avgCharLen += this.alphabet[ artChar ].rows[0].length;
+      numChars++;
+    }
+    return  avgCharLen / numChars;
+  }
+
+  getNewLineChars( newlines ) {
+    let nlChars;
+    if ( newlines == "r") {
+      nlChars = "\r";
+    } else if( newlines == "n" ) {
+      nlChars = "\n";
+    } else {
+      nlChars = "\r\n";
+    }
+    return nlChars;
+  }
+
   printArt( idx = 0 ) {
     if ( idx == -1 ) {
       console.log( JSON.stringify( this.artHist ) );
@@ -212,6 +222,40 @@ class AsciiArtGenerator {
       console.log( `${this.artHist[ idx ][ 0 ] }
 Generated from "${this.artHist[ idx ][ 1 ]}" on ${ Date( this.artHist[ idx ][ 2 ] ).toString() }.` );
     }
+  }
+
+  splitSrcTxtBefArtGen( txt, newlines, maxLineLen ) {
+    // TODO: Add a mode for splitting source string only along whitespace characters?
+    let asciiArt = "", txtSlice;
+    const nlChars = this.getNewLineChars();
+    let idx_s = 0;
+    let idx_e = idx_s + Math.ceil( maxLineLen / this.getAvgArtCharLen() );
+    while ( idx_e < txt.length ) {
+      txtSlice = txt.substring( idx_s, idx_e );
+      while ( idx_e > idx_s + 1 && this.calcArtLenFromTxt( txtSlice ) > maxLineLen ) {
+        idx_e--;
+        txtSlice = txt.substring( idx_s, idx_e );
+      }
+      if ( idx_s > 0 ) {
+        asciiArt += nlChars.repeat( 2 );
+      }
+      asciiArt += this.getArtFromTxt( txtSlice, newlines, maxLineLen );
+      idx_s = idx_e + 1;
+      idx_e = idx_s +  + Math.ceil( maxLineLen / this.getAvgArtCharLen() );
+    }
+    idx_e = txt.length;
+    txtSlice = txt.substring( idx_s, idx_e );
+    while ( idx_e > idx_s + 1 && this.calcArtLenFromTxt( txtSlice ) > maxLineLen ) {
+      idx_e--;
+      txtSlice = txt.substring( idx_s, idx_e );
+    }
+    asciiArt += nlChars.repeat( 2 );
+    asciiArt += this.getArtFromTxt( txtSlice, newlines, maxLineLen );
+    if ( idx_e < txt.length ) {
+      asciiArt += nlChars.repeat( 2 );
+      asciiArt += this.getArtFromTxt( txt.substring( idx_e + 1, txt.length ), newlines, maxLineLen );
+    }
+    return asciiArt;
   }
 }
 
