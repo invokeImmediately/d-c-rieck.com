@@ -18,7 +18,7 @@
  * ·································································································
  * Tampermonkey script designed to enhance Trello workflows with adjustments to CSS and JS.
  *
- * @version 0.1.1
+ * @version 0.2.1
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/JS/AdjusterMonkey.Trello.js
@@ -29,90 +29,90 @@
  **************************************************************************************************/
 
 ( function( iifeSettings ) {
-    'use strict';
+  'use strict';
 
-    console.log( 'AdjusterMonkey Script for enhancing Trello has loaded.' );
+  console.log( 'AdjusterMonkey Script for enhancing Trello has loaded.' );
 
-    function monitorTrelloLocation() {
-        let currentLocation = document.location.href;
-        const contentContainer = document.querySelector( '#content' );
-        let timerId = null;
-        const observer = new MutationObserver( ( mutations ) => {
-            mutations.forEach( ( mutation ) => {
-                if ( currentLocation == document.location.href ) {
-                    return;
-                }
-                currentLocation = document.location.href;
-                console.log( 'Updating location to %s.', currentLocation );
-                if ( timerId !== null ) {
-                    window.clearTimeout( timerId );
-                    console.log( 'Clearing timer %s.', timerId );
-                    timerId = null;
-                }
-                timerId = window.setTimeout( enhanceTrello, 1000 );
-            } );
-        } );
-        const cfg = {
-            childList: true,
-        };
-        observer.observe( contentContainer, cfg);
-    }
-
-    function enhanceTrello() {
-        setupListWidening();
-    }
-
-    function cycleWidenedList( cardList ) {
-        if ( cardList.classList.contains( "js-list--1xl-wide" ) ) {
-            cardList.classList.remove( "js-list--1xl-wide" )
-            cardList.classList.add( "js-list--2xl-wide" )
-        } else if ( cardList.classList.contains( "js-list--2xl-wide" ) ) {
-            cardList.classList.remove( "js-list--2xl-wide" )
-            cardList.classList.add( "js-list--3xl-wide" )
-        } else if ( cardList.classList.contains( "js-list--3xl-wide" ) ) {
-            cardList.classList.remove( "js-list--3xl-wide" )
+  function monitorTrelloLocation() {
+    let currentLocation = document.location.href;
+    const contentContainer = document.querySelector( '#content' );
+    let timerId = null;
+    const observer = new MutationObserver( ( mutations ) => {
+      mutations.forEach( ( mutation ) => {
+        if ( currentLocation == document.location.href ) {
+          return;
         }
-    }
-
-    function shouldClickWidenList( cardList, event ) {
-        const triggerLeft = iifeSettings.cardListPadding;
-        const triggerRight = cardList.clientWidth - iifeSettings.cardListPadding;
-        return event.offsetX <= triggerLeft || event.offsetX > triggerRight;
-    }
-
-    function widenNewList( cardList ) {
-        const otherCardLists = document.querySelectorAll( '.js-list' );
-        otherCardLists.forEach( ( otherList ) => {
-            otherList.classList.remove( "js-list--1xl-wide", "js-list--2xl-wide", "js-list--3xl-wide" );
-        } );
-        cardList.classList.add( "js-list--1xl-wide" );
-    }
-
-    function setupListWidening() {
-        console.log( 'AdjusterMonkey is setting up list widening.' );
-        const cardLists = document.querySelectorAll( '.js-list' );
-        cardLists.forEach( ( cardList ) => {
-            cardList.addEventListener( 'click', ( event ) => {
-                if ( !shouldClickWidenList( cardList, event ) ) {
-                    return;
-                }
-                if (
-                    cardList.classList.contains( "js-list--1xl-wide" ) ||
-                    cardList.classList.contains( "js-list--2xl-wide" ) ||
-                    cardList.classList.contains( "js-list--3xl-wide" )
-                ) {
-                    cycleWidenedList( cardList );
-                } else {
-                    widenNewList( cardList );
-                }
-            } );
-        } );
-    }
-
-    window.addEventListener( 'load', ( event ) => {
-        monitorTrelloLocation();
-        window.setTimeout( enhanceTrello, 250 );
+        currentLocation = document.location.href;
+        console.log( 'Updating location to %s.', currentLocation );
+        if ( timerId !== null ) {
+          window.clearTimeout( timerId );
+          console.log( 'Clearing timer %s.', timerId );
+          timerId = null;
+        }
+        timerId = window.setTimeout( enhanceTrello, 1000 );
+      } );
     } );
+    const cfg = {
+      childList: true,
+    };
+    observer.observe( contentContainer, cfg);
+  }
+
+  function enhanceTrello() {
+    setupListWidening();
+  }
+
+  function cycleWidenedList( cardList ) {
+    if ( cardList.classList.contains( "js-list--1xl-wide" ) ) {
+      cardList.classList.remove( "js-list--1xl-wide" )
+      cardList.classList.add( "js-list--2xl-wide" )
+    } else if ( cardList.classList.contains( "js-list--2xl-wide" ) ) {
+      cardList.classList.remove( "js-list--2xl-wide" )
+      cardList.classList.add( "js-list--3xl-wide" )
+    } else if ( cardList.classList.contains( "js-list--3xl-wide" ) ) {
+      cardList.classList.remove( "js-list--3xl-wide" )
+    }
+  }
+
+  function shouldClickWidenList( cardList, event ) {
+    const triggerLeft = iifeSettings.cardListPadding;
+    const triggerRight = cardList.clientWidth - iifeSettings.cardListPadding;
+    return event.offsetX <= triggerLeft || event.offsetX > triggerRight;
+  }
+
+  function widenNewList( cardList ) {
+    const otherCardLists = document.querySelectorAll( '.js-list' );
+    otherCardLists.forEach( ( otherList ) => {
+      otherList.classList.remove( "js-list--1xl-wide", "js-list--2xl-wide", "js-list--3xl-wide" );
+    } );
+    cardList.classList.add( "js-list--1xl-wide" );
+  }
+
+  function setupListWidening() {
+    console.log( 'AdjusterMonkey is setting up list widening.' );
+    const cardLists = document.querySelectorAll( '.js-list' );
+    cardLists.forEach( ( cardList ) => {
+      cardList.addEventListener( 'click', ( event ) => {
+        if ( !shouldClickWidenList( cardList, event ) ) {
+          return;
+        }
+        if (
+          cardList.classList.contains( "js-list--1xl-wide" ) ||
+          cardList.classList.contains( "js-list--2xl-wide" ) ||
+          cardList.classList.contains( "js-list--3xl-wide" )
+        ) {
+          cycleWidenedList( cardList );
+        } else {
+          widenNewList( cardList );
+        }
+      } );
+    } );
+  }
+
+  window.addEventListener( 'load', ( event ) => {
+    monitorTrelloLocation();
+    window.setTimeout( enhanceTrello, 250 );
+  } );
 } )( {
-    cardListPadding: 10,
+  cardListPadding: 10,
 } );
