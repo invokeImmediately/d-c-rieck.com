@@ -153,3 +153,25 @@
 .js-list--3xl-wide .list-cards {
   column-count: 4;
 }
+
+/* —» Label Trello lists and cards by numerical sequence «— */
+
+.list-card {
+  margin-left: .2em;
+  margin-top: 3px;
+}
+
+.list-card__number-marker {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: .8em;
+    font-weight: 700;
+    line-height: 1.5;
+    opacity: 50%;
+    padding: 0 .2em;
+    position: absolute;
+    right: 100%;
+    transform: translateX(50%);
+    top: -3px;
+}
