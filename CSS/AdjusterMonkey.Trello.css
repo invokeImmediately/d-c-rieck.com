@@ -175,3 +175,56 @@
     transform: translateX(50%);
     top: -3px;
 }
+
+/* —» Visually demark separate Kanban sub-boards present on a Trello board «— */
+
+#board {
+  --kanban-sub-board-border-w: 2px;
+  --kanban-sub-board-border-r: 5px;
+  --kanban-sub-board-edge-w: 4px;
+}
+
+.kanban-sub-board {
+  background-image: repeating-linear-gradient(135deg,rgba(0, 0, 0, .25) 0px,rgba(0, 0, 0, .25) 2px,rgba(0, 0, 0, 0) 3px,rgba(0, 0, 0, 0) 20px);
+}
+
+.kanban-sub-board--alt {
+  background-image: repeating-linear-gradient(45deg,rgba(0, 0, 0, .25) 0px,rgba(0, 0, 0, .25) 2px,rgba(0, 0, 0, 0) 3px,rgba(0, 0, 0, 0) 20px);
+}
+
+.kanban-sub-board--left {
+  border: var(--kanban-sub-board-border-w) solid rgba(0,0,0,.25);
+  border-radius: var(--kanban-sub-board-border-r);
+  border-right: 0;
+}
+
+.kanban-sub-board--left > .list {
+  border-left: var(--kanban-sub-board-edge-w) solid #555;
+}
+
+.kanban-sub-board--middle {
+  background-position-y: 7px;
+  border: var(--kanban-sub-board-border-w) solid rgba(0,0,0,.25);
+  border-left: 0;
+  border-radius: 3px;
+  border-right: 0;
+}
+
+.kanban-sub-board--alt.kanban-sub-board--middle {
+  background-position-y: 22px;
+}
+
+.kanban-sub-board--right {
+  background-position-y: 12px;
+  border: var(--kanban-sub-board-border-w) solid rgba(0,0,0,.25);
+  border-radius: var(--kanban-sub-board-border-r);
+  border-left: 0;
+}
+
+.kanban-sub-board--alt.kanban-sub-board--right {
+  background-position-y: 47px;
+}
+
+.kanban-sub-board--right > .list {
+  border-right: var(--kanban-sub-board-edge-w) solid #555;
+}
