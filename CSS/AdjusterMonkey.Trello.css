@@ -9,7 +9,7 @@
  *   website using the value « trello.com » for the setting « Applies to: URLs on the
  *   Domain ↓ ».
  *
- * @version 0.1.0
+ * @version 0.2.0
  *
  * @author Daniel C. Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/CSS/AdjusterMonkey.Trello.css
@@ -162,18 +162,18 @@
 }
 
 .list-card__number-marker {
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: .8em;
-    font-weight: 700;
-    line-height: 1.5;
-    opacity: 50%;
-    padding: 0 .2em;
-    position: absolute;
-    right: 100%;
-    transform: translateX(50%);
-    top: -3px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: .8em;
+  font-weight: 700;
+  line-height: 1.5;
+  opacity: 50%;
+  padding: 0 .2em;
+  position: absolute;
+  right: 100%;
+  transform: translateX(50%);
+  top: -3px;
 }
 
 /* —» Visually demark separate Kanban sub-boards present on a Trello board «— */
@@ -185,11 +185,16 @@
 }
 
 .kanban-sub-board {
-  background-image: repeating-linear-gradient(135deg,rgba(0, 0, 0, .25) 0px,rgba(0, 0, 0, .25) 2px,rgba(0, 0, 0, 0) 3px,rgba(0, 0, 0, 0) 20px);
+  background-image: repeating-linear-gradient(135deg,rgba(0, 0, 0, .25) 0px,rgba(0, 0, 0, .25) 18px,rgba(0, 0, 0, 0) 19px,rgba(0, 0, 0, 0) 38px);
 }
 
 .kanban-sub-board--alt {
-  background-image: repeating-linear-gradient(45deg,rgba(0, 0, 0, .25) 0px,rgba(0, 0, 0, .25) 2px,rgba(0, 0, 0, 0) 3px,rgba(0, 0, 0, 0) 20px);
+  background: linear-gradient(135deg, rgba(0, 0, 128, .25) 25%, transparent 25%) -25px 0,
+    linear-gradient(225deg, rgba(0, 0, 128, .25) 25%, transparent 25%) -25px 0,
+    linear-gradient(315deg, rgba(0, 0, 128, .25) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(0, 0, 128, .25) 25%, transparent 25%);
+  background-size: 50px 50px;
+  background-color: transparent;
 }
 
 .kanban-sub-board--left {
@@ -203,26 +208,23 @@
 }
 
 .kanban-sub-board--middle {
-  background-position-y: 7px;
+  background-position-y: 47px;
   border: var(--kanban-sub-board-border-w) solid rgba(0,0,0,.25);
   border-left: 0;
   border-radius: 3px;
   border-right: 0;
 }
 
-.kanban-sub-board--alt.kanban-sub-board--middle {
-  background-position-y: 22px;
+.kanban-sub-board--alt.kanban-sub-board--middle,
+.kanban-sub-board--alt.kanban-sub-board--right {
+  background-position-y: 0;
 }
 
 .kanban-sub-board--right {
-  background-position-y: 12px;
+  background-position-y: 38px;
   border: var(--kanban-sub-board-border-w) solid rgba(0,0,0,.25);
   border-radius: var(--kanban-sub-board-border-r);
   border-left: 0;
-}
-
-.kanban-sub-board--alt.kanban-sub-board--right {
-  background-position-y: 47px;
 }
 
 .kanban-sub-board--right > .list {
