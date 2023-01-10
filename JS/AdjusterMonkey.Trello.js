@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AdjusterMonkey: Trello
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  Enhance Trello workflows with adjustments to CSS and JS.
 // @author       Daniel Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
 // @match        https://trello.com/*
@@ -18,7 +18,7 @@
  * ·································································································
  * Tampermonkey script designed to enhance Trello workflows with adjustments to CSS and JS.
  *
- * @version 0.4.0
+ * @version 0.5.0
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/JS/AdjusterMonkey.Trello.js
@@ -69,6 +69,7 @@
       childList: true,
     };
     observer.observe( board, observerConfig );
+    // TODO: Monitor list titles for name changes?
   }
 
   function monitorTrelloLocation() {
@@ -145,6 +146,10 @@
         if ( !shouldClickWidenList( cardList, event ) ) {
           return;
         }
+        if( event.ctrlKey ) {
+          resetWidenedList( cardList );
+          return;
+        }
         if (
           cardList.classList.contains( "js-list--1xl-wide" ) ||
           cardList.classList.contains( "js-list--2xl-wide" ) ||
@@ -158,6 +163,10 @@
     } );
   }
 
+  function resetWidenedList( cardList ) {
+      cardList.classList.remove( "js-list--1xl-wide", "js-list--2xl-wide", "js-list--3xl-wide" );
+  }
+
   function shouldClickWidenList( cardList, event ) {
     const listRect = cardList.getBoundingClientRect();
     const triggerLeft = listRect.left + iifeSettings.cardListPadding;
@@ -168,7 +177,7 @@
   function widenNewList( cardList ) {
     const otherCardLists = document.querySelectorAll( '.js-list' );
     otherCardLists.forEach( ( otherList ) => {
-      otherList.classList.remove( "js-list--1xl-wide", "js-list--2xl-wide", "js-list--3xl-wide" );
+      resetWidenedList( otherList );
     } );
     cardList.classList.add( "js-list--1xl-wide" );
   }
