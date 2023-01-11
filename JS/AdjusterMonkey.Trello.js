@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AdjusterMonkey: Trello
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  Enhance Trello workflows with adjustments to CSS and JS.
 // @author       Daniel Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
 // @match        https://trello.com/*
@@ -18,7 +18,7 @@
  * ·································································································
  * Tampermonkey script designed to enhance Trello workflows with adjustments to CSS and JS.
  *
- * @version 0.5.0
+ * @version 0.6.0
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/JS/AdjusterMonkey.Trello.js
@@ -54,6 +54,8 @@
     console.log( 'AdjusterMonkey is monitoring the board for list changes.' );
     const board = document.querySelector( '#board' );
     let timerId = null;
+
+    // Monitor lists on the board for content changes so event handling can be set up in response
     const observer = new MutationObserver( ( mutations ) => {
       mutations.forEach( ( mutation ) => {
         console.log( 'Adjuster monkey detected a change to the lists present on the board.' );
@@ -102,6 +104,31 @@
       childList: true,
     };
     observer.observe( contentContainer, cfg);
+  }
+
+  function monitorForCustomTrelloHotkeys() {
+    console.log( 'AdjusterMonkey is adding additional hotkeys to Trello.' );
+    window.addEventListener( 'keydown', ( event ) => {
+      if( !( event.key == "PageDown" || event.key == "PageUp" ) ) {
+        return;
+      }
+      if ( windowOverlayIsActive() ) {
+        return;
+      }
+      // console.log(document.querySelector('#content-wrapper').clientWidth, ;
+      const contentWrapper = document.querySelector('#content-wrapper');
+      const board = document.querySelector('#board');
+      const contentWrapperWidth = contentWrapper.clientWidth;
+      const paddingValue = window.getComputedStyle( contentWrapper ).getPropertyValue('padding-left');
+      const paddingAmount = parseInt( paddingValue.replace( 'px', '' ), 10 );
+      const scrollAmount = contentWrapperWidth - paddingAmount;
+      const scrollPosition = board.scrollLeft;
+      if( event.key == "PageDown" ) {
+        board.scrollTo( scrollPosition + scrollAmount, 0 );
+      } else {
+        board.scrollTo( scrollPosition - scrollAmount, 0 );
+      }
+    } );
   }
 
   function setupKanbanSubBoards() {
@@ -174,6 +201,11 @@
     return event.pageX <= triggerLeft || event.pageX >= triggerRight;
   }
 
+  function windowOverlayIsActive() {
+    const windowOverlay = document.querySelector( '.window-overlay > .window' );
+    return window.getComputedStyle( windowOverlay ).getPropertyValue('display') != 'none';
+  }
+
   function widenNewList( cardList ) {
     const otherCardLists = document.querySelectorAll( '.js-list' );
     otherCardLists.forEach( ( otherList ) => {
@@ -184,8 +216,9 @@
 
   window.addEventListener( 'load', ( event ) => {
     monitorTrelloLocation();
+    monitorForCustomTrelloHotkeys();
     window.setTimeout( enhanceTrello, 250 );
-    window.setTimeout( monitorBoard, 250 );
+    window.setTimeout( monitorBoard, 500 );
   } );
 } )( {
   cardListPadding: 10,
