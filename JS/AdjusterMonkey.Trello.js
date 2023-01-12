@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AdjusterMonkey: Trello
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  Enhance Trello workflows with adjustments to CSS and JS.
 // @author       Daniel Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
 // @match        https://trello.com/*
@@ -18,7 +18,7 @@
  * ·································································································
  * Tampermonkey script designed to enhance Trello workflows with adjustments to CSS and JS.
  *
- * @version 0.6.1
+ * @version 0.7.0
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/JS/AdjusterMonkey.Trello.js
@@ -48,6 +48,14 @@
   function enhanceTrello() {
     setupListWidening();
     setupKanbanSubBoards();
+  }
+
+  function loadCustomFontFromGoogle() {
+    const newLink = document.createElement( 'link' );
+    newLink.type = 'text/css';
+    newLink.rel = 'stylesheet';
+    document.head.appendChild( newLink );
+    newLink.href = 'https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap';
   }
 
   function monitorBoard() {
@@ -220,6 +228,7 @@
   }
 
   window.addEventListener( 'load', ( event ) => {
+    loadCustomFontFromGoogle();
     monitorTrelloLocation();
     monitorForCustomTrelloHotkeys();
     window.setTimeout( enhanceTrello, 250 );

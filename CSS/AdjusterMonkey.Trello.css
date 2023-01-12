@@ -5,11 +5,9 @@
  * ·································································································
  * Make aesthetic improvements to how Trello is styled by default.
  *
- * Designed for use with the Stylus web browser extension. Typically applied to the Trello
- *   website using the value « trello.com » for the setting « Applies to: URLs on the
- *   Domain ↓ ».
+ * Designed for use with the Stylus web browser extension. Typically applied to the Trello website using the value « trello.com » for the setting « Applies to: URLs on the Domain ↓ ».
  *
- * @version 0.2.0
+ * @version 0.2.1
  *
  * @author Daniel C. Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/CSS/AdjusterMonkey.Trello.css
@@ -18,10 +16,6 @@
  *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *****************************************************************/
-
-/* —» Import fonts from Google «— */
-
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 /* —» Specify CSS variables «— */
 
@@ -34,7 +28,7 @@
 
 .js-fill-card-detail-desc .description-content,
 .js-fill-card-detail-desc  .js-description-draft {
-  font-family: 'Source Code Pro';
+  font-family: 'Source Code Pro', 'Courier New', monospace;
 }
 
 .js-fill-card-detail-desc  .js-description-draft {
