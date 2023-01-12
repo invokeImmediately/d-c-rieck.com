@@ -7,7 +7,7 @@
  *
  * Designed for use with the Stylus web browser extension. Typically applied to the Trello website using the value « trello.com » for the setting « Applies to: URLs on the Domain ↓ ».
  *
- * @version 0.2.1
+ * @version 0.2.2
  *
  * @author Daniel C. Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/CSS/AdjusterMonkey.Trello.css
@@ -155,10 +155,11 @@
   margin-top: 3px;
 }
 
-.list-card__number-marker {
+.list-card::before {
   background-color: #fff;
   border: 1px solid black;
   border-radius: 3px;
+  content: attr( data-card-number );
   font-size: .8em;
   font-weight: 700;
   line-height: 1.5;
