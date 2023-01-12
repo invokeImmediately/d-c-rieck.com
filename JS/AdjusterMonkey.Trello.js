@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AdjusterMonkey: Trello
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  Enhance Trello workflows with adjustments to CSS and JS.
 // @author       Daniel Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
 // @match        https://trello.com/*
@@ -18,7 +18,7 @@
  * ·································································································
  * Tampermonkey script designed to enhance Trello workflows with adjustments to CSS and JS.
  *
- * @version 0.7.0
+ * @version 0.8.0
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/JS/AdjusterMonkey.Trello.js
@@ -32,6 +32,27 @@
   'use strict';
 
   console.log( 'AdjusterMonkey Script for enhancing Trello has loaded.' );
+
+  function addNumbersToCards( cards ) {
+    let cardNumber = 1;
+    cards.forEach( ( card ) => {
+      card.dataset.cardNumber = cardNumber.toString();
+      cardNumber++;
+//      const existingNumberMarker = card.querySelector( '.list-card__number-marker' );
+//      if( existingNumberMarker !== null ) {
+//        if( existingNumberMarker.innerText != cardNumber.toString() ) {
+//          existingNumberMarker.innerText = cardNumber.toString();
+//        }
+//        cardNumber++;
+//        return;
+//      }
+//      const cardNumberIndicator = document.createElement( 'div' );
+//      cardNumberIndicator.className = 'list-card__number-marker';
+//      const cardNumberText = document.createTextNode( cardNumber.toString() );
+//      cardNumberIndicator.appendChild( cardNumberText );
+//      card.prepend( cardNumberIndicator );
+    } );
+  }
 
   function cycleWidenedList( cardList ) {
     if ( cardList.classList.contains( "js-list--1xl-wide" ) ) {
@@ -48,6 +69,7 @@
   function enhanceTrello() {
     setupListWidening();
     setupKanbanSubBoards();
+    setupCardNumbering();
   }
 
   function loadCustomFontFromGoogle() {
@@ -144,6 +166,40 @@
     } );
   }
 
+  function monitorListForCardChanges( cardList ) {
+    if ( cardList.dataset.isTrackingCardNumbers === 'yes' ) {
+      return;
+    } else {
+      cardList.dataset.isTrackingCardNumbers = 'yes';
+    }
+    const listCards = cardList.querySelector( '.list-cards' );
+    let timerId = null;
+    const observer = new MutationObserver( ( mutations ) => {
+      mutations.forEach( ( mutation ) => {
+        if ( timerId !== null ) {
+          window.clearTimeout( timerId );
+          timerId = null;
+        }
+        const cards = cardList.querySelectorAll( '.list-card' );
+        timerId = window.setTimeout( addNumbersToCards, 250, cards );
+      } );
+    } );
+    const config = {
+      childList: true,
+    };
+    observer.observe( listCards, config );
+  }
+
+  function setupCardNumbering() {
+    console.log( 'AdjusterMonkey is setting up numbering of cards.' );
+    const cardLists = document.querySelectorAll( '.js-list' );
+    cardLists.forEach( ( cardList ) => {
+      const cards = cardList.querySelectorAll( '.list-card' );
+      addNumbersToCards( cards );
+      monitorListForCardChanges( cardList );
+    } );
+  }
+
   function setupKanbanSubBoards() {
     console.log( 'AdjusterMonkey is setting up Kanban sub-boards.' );
     const cardLists = document.querySelectorAll( '.js-list' );
@@ -231,8 +287,8 @@
     loadCustomFontFromGoogle();
     monitorTrelloLocation();
     monitorForCustomTrelloHotkeys();
-    window.setTimeout( enhanceTrello, 250 );
-    window.setTimeout( monitorBoard, 500 );
+    window.setTimeout( enhanceTrello, 1000 );
+    window.setTimeout( monitorBoard, 1000 );
   } );
 } )( {
   cardListPadding: 10,
