@@ -18,7 +18,7 @@
  * ·································································································
  * Tampermonkey script designed to enhance Trello workflows with adjustments to CSS and JS.
  *
- * @version 0.6.0
+ * @version 0.6.1
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/JS/AdjusterMonkey.Trello.js
@@ -53,6 +53,9 @@
   function monitorBoard() {
     console.log( 'AdjusterMonkey is monitoring the board for list changes.' );
     const board = document.querySelector( '#board' );
+    if ( board === null ) {
+      return;
+    }
     let timerId = null;
 
     // Monitor lists on the board for content changes so event handling can be set up in response
@@ -115,9 +118,11 @@
       if ( windowOverlayIsActive() ) {
         return;
       }
-      // console.log(document.querySelector('#content-wrapper').clientWidth, ;
       const contentWrapper = document.querySelector('#content-wrapper');
       const board = document.querySelector('#board');
+      if( contentWrapper === null || board === null ) {
+        return;
+      }
       const contentWrapperWidth = contentWrapper.clientWidth;
       const paddingValue = window.getComputedStyle( contentWrapper ).getPropertyValue('padding-left');
       const paddingAmount = parseInt( paddingValue.replace( 'px', '' ), 10 );
