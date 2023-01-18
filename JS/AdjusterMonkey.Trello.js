@@ -18,7 +18,7 @@
  * ·································································································
  * Tampermonkey script designed to enhance Trello workflows with adjustments to CSS and JS.
  *
- * @version 0.8.0
+ * @version 0.8.1
  *
  * @author Daniel C. Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/JS/AdjusterMonkey.Trello.js
@@ -77,7 +77,7 @@
     newLink.type = 'text/css';
     newLink.rel = 'stylesheet';
     document.head.appendChild( newLink );
-    newLink.href = 'https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap';
+    newLink.href = 'https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i|Sofia+Sans::400,400i,700,700i,800,800i&display=swap';
   }
 
   function monitorBoard() {
@@ -190,6 +190,10 @@
     observer.observe( listCards, config );
   }
 
+  function resetWidenedList( cardList ) {
+      cardList.classList.remove( "js-list--1xl-wide", "js-list--2xl-wide", "js-list--3xl-wide" );
+  }
+
   function setupCardNumbering() {
     console.log( 'AdjusterMonkey is setting up numbering of cards.' );
     const cardLists = document.querySelectorAll( '.js-list' );
@@ -259,15 +263,14 @@
     } );
   }
 
-  function resetWidenedList( cardList ) {
-      cardList.classList.remove( "js-list--1xl-wide", "js-list--2xl-wide", "js-list--3xl-wide" );
-  }
-
   function shouldClickWidenList( cardList, event ) {
-    const listRect = cardList.getBoundingClientRect();
+    const cardContent = cardList.querySelector( '.js-list-content' );
+    const listRect = cardContent.getBoundingClientRect();
+    const triggerBottom = listRect.bottom;
     const triggerLeft = listRect.left + iifeSettings.cardListPadding;
     const triggerRight = listRect.right - iifeSettings.cardListPadding;
-    return event.pageX <= triggerLeft || event.pageX >= triggerRight;
+    const triggerTop = listRect.top;
+    return ( event.pageX <= triggerLeft || event.pageX >= triggerRight ) && ( event.pageY >= triggerTop && event.pageY <= triggerBottom );
   }
 
   function windowOverlayIsActive() {
