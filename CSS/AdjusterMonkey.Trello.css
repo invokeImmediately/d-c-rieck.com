@@ -7,7 +7,7 @@
  *
  * Designed for use with the Stylus web browser extension. Typically applied to the Trello website using the value « trello.com » for the setting « Applies to: URLs on the Domain ↓ ».
  *
- * @version 0.2.2
+ * @version 0.3.0
  *
  * @author Daniel C. Rieck <danielcrieck@gmail.com> (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/CSS/AdjusterMonkey.Trello.css
@@ -29,6 +29,40 @@
 .js-fill-card-detail-desc .description-content,
 .js-fill-card-detail-desc  .js-description-draft {
   font-family: 'Source Code Pro', 'Courier New', monospace;
+}
+
+.js-fill-card-detail-desc .description-content h1,
+.js-fill-card-detail-desc .description-content h2,
+.js-fill-card-detail-desc .description-content h3,
+.js-fill-card-detail-desc .description-content h4,
+.js-fill-card-detail-desc .description-content h5,
+.js-fill-card-detail-desc .description-content h6 {
+  font-family: 'Sofia Sans', 'Arial', sans;
+}
+
+.js-fill-card-detail-desc .description-content h1 {
+  font-size: 3em;
+  font-weight: 800;
+}
+
+.js-fill-card-detail-desc .description-content h2 {
+  font-size: 2.3em;
+  font-weight: 800;
+}
+
+.js-fill-card-detail-desc .description-content h3 {
+  font-size: 1.8em;
+  font-weight: 800;
+}
+
+.js-fill-card-detail-desc .description-content h4 {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.js-fill-card-detail-desc .description-content h5 {
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 .js-fill-card-detail-desc  .js-description-draft {
