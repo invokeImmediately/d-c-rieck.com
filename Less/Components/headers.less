@@ -5,7 +5,7 @@
  *
  * Less modules providing BEM style rulesets for laying components out using CSS grid.
  *
- * @version 0.0.3
+ * @version 0.0.4
  * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Components/headers.less
  * @license MIT Copyright (c) 2023 Daniel C. Rieck.
@@ -20,11 +20,11 @@
  * =============================================================================
  */
 
-/* =============================================================================
+/**=============================================================================
  * §1: Page header designs
  */
 
-@dsgn-rs__std-pg-hdrs: {
+@standard-page-headers-design: {
 
   /* ---—» Component: Page header «—--- */
 
@@ -67,13 +67,13 @@
   }
 };
 
-.decl-dsgn-maybe(@dsgn-rs__std-pg-hdrs, @use-dsgn__std-pg-hdrs);
+.declare-design-by-option(@standard-page-headers-design, @use-design__std-pg-hdrs);
 
-/* =============================================================================
+/**=============================================================================
  * §2: Article header designs
  */
 
-@dsgn-rs__std-artcl-hdrs: {
+@standard-article-headers: {
 
   /* ---—» Component: Standard article headers «—--- */
 
@@ -126,4 +126,4 @@
   }
 };
 
-.decl-dsgn-maybe(@dsgn-rs__std-artcl-hdrs, @use-dsgn__std-artcl-hdrs);
+.declare-design-by-option(@standard-article-headers, @use-design__std-artcl-hdrs);
