@@ -1,41 +1,24 @@
 <?php
 
 /**
- * █▀▀▄ █▀▀▄    ▄▀▀▀ ▄▀▀▄ ▐▀▀▄ ▐▀▀▄   █▀▀▄ █  █ █▀▀▄
- * █  █ █▀▀▄ ▀▀ █    █  █ █  ▐ █  ▐   █▄▄▀ █▀▀█ █▄▄▀
- * ▀▀▀  ▀▀▀      ▀▀▀  ▀▀  ▀  ▐ ▀  ▐ ▀ █    █  ▀ █  
+ * █▀▀▄ █▀▀▄    ▄▀▀▀ ▄▀▀▄ ▐▀▀▄ ▐▀▀▄ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓▓██
+ * █  █ █▀▀▄ ▀▀ █    █  █ █  ▐ █  ▐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓▓██
+ * ▀▀▀  ▀▀▀      ▀▀▀  ▀▀  ▀  ▐ ▀  ▐ .php ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓▓██
  * 
- * Facilitates a connection to the website's database and runs queries requested by the sript.
+ * Facilitates a connection to the website's database and runs queries requested by the index sript.
  * 
- * @version 0.1.0
+ * @version 0.1.1
  * 
  * @author Daniel C. Rieck [danielcrieck@gmail.com] (https://github.com/invokeImmediately)
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/PHP-incl/db-conn.php
- * @license MIT Copyright (c) 2021 Daniel C. Rieck
- *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software
- *     and associated documentation files (the "Software"), to deal in the Software without
- *     restriction, including without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
- *     the Software is furnished to do so, subject to the following conditions:
- *   The above copyright notice and this permission notice shall be included in all copies or
- *     substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
- *     BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
- *     CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *     SOFTWARE.
+ * @license MIT Copyright (c) 2023 Daniel C. Rieck
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 // Before pulling in code from source files, ensure we have a root path to work with.
-if( !function_exists( 'defineRootPath' ) ) {
-  function defineRootPath() {
-    if ( !defined( 'ROOT_PATH' ) ) {
-      define( 'ROOT_PATH', $_SERVER['DOCUMENT_ROOT'] . 'dcrdc' );
-    }
-  }
-}
-defineRootPath();
+require_once( $_SERVER['DOCUMENT_ROOT'] . '/php-incl/defineSitePaths.php' );
 
 class DcrdcDbConn {
   private $dbNm;
@@ -49,7 +32,7 @@ class DcrdcDbConn {
   protected $qStr;
   protected $qRes;
 
-  public function __construct( $iniFile = ROOT_PATH . "/../../dcrdc_dbConn.ini" ) {
+  public function __construct( $iniFile = INI_PATH . '/dcrdc_dbConn.ini' ) {
     // Obtain the settings for interacting with the database.
     // … Finish writing. (See example at https://www.php.net/manual/en/class.pdo.php.)
     if (!$this->iniStgs = parse_ini_file($iniFile)) throw new exception('Unable to open ' . $file . '.');
