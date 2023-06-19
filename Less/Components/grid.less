@@ -1,135 +1,170 @@
 ﻿/**=============================================================================
- * █▀▀▀ █▀▀▄ ▀█▀ █▀▀▄   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
- * █ ▀▄ █▄▄▀  █  █  █   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
- * ▀▀▀▀ ▀  ▀▄▀▀▀ ▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ * █▀▀▀ █▀▀▄ ▀█▀ █▀▀▄ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
+ * █ ▀▄ █▄▄▀  █  █  █ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
+ * ▀▀▀▀ ▀  ▀▄▀▀▀ ▀▀▀  .less ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
  *
- * Less modules providing BEM style rulesets for laying components out using CSS grid.
+ * Less modules providing BEM style rulesets for content grid containers
+ *   designed to lay out their contents using CSS grid.
  *
- * @version 0.1.3
- * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/dsgn-usage.less
+ * @version 0.2.0
+ *
+ * @author Daniel Rieck
+ *   [daniel.rieck@wsu.edu]
+ *   (https://github.com/invokeImmediately)
+ *
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
+ *   …/Less/Settings/dsgn-usage.less
+ *
  * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *   Permission is hereby granted, free of charge, to any person obtaining a
+ *     copy of this software and associated documentation files (the
+ *     "Software"), to deal in the Software without restriction, including
+ *     without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit
+ *     persons to whom the Software is furnished to do so, subject to the
+ *     following conditions:
+ *   The above copyright notice and this permission notice shall be included in
+ *     all copies or substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ *     OTHER DEALINGS IN THE SOFTWARE.
  * =============================================================================
  */
 
-@bem-grid-design: {
+@bem-content-grid-design: {
 
-  /*! ---—» Component: Grid blocks «—--- */
+  /*! ---—» Component: Page-level content grids «—--- */
 
-  .grid {
+  .content-grid {
     display: grid;
-    grid-column: 2 / 3;
     grid-gap: 2rem;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
+
+    .main-pg-content > & {
+      grid-column: 2 / 3;
+    }
+
+    &--full-width {
+      .main-pg-content > & {
+        grid-column: 1 / 4;
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+        @media all and (max-width: 414px) {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+    }
+
+    &--full-height {
+      min-height: 100vh;
+
+      .main-pg-content > &:first-child {
+        min-height: calc(100vh - 4rem);
+      }
+    }
   }
 
-  .grid--full-wdth {
-    grid-column: 1 / 4;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .grid--full-hght {
-    min-height: 100vh;
-  }
-
-  /*! ---—» Component: Grid Cells «—--- */
-
-  .grid__cell {
-    display: grid;
-    grid-column: 1 / 13;
-    grid-gap: 1rem;
-    line-height: 1.5em;
-  }
-
-  .grid__cell--half-l {
-    grid-column: 1 / 7;
-  }
-
-  .grid__cell--half-r {
-    grid-column: 7 / 13;
-  }
-
-  .grid__cell--thrd-l {
-    grid-column: 1 / 5;
-  }
-
-  .grid__cell--thrd-m {
-    grid-column: 5 / 9;
-  }
-
-  .grid__cell--thrd-r {
-    grid-column: 9 / 13;
-  }
-
-  .grid__cell--qrtr-l {
-    grid-column: 1 / 4;
-  }
-
-  .grid__cell--qrtr-ml {
-    grid-column: 4 / 7;
-  }
-
-  .grid__cell--qrtr-mr {
-    grid-column: 7 / 10;
-  }
-
-  .grid__cell--qrtr-r {
-    grid-column: 10 / 13;
-  }
-
-  .grid__cell--sdbr-lft-l {
-    grid-column: 1 / 5;
-  }
-
-  .grid__cell--sdbr-lft-r {
-    grid-column: 5 / 13;
-  }
-
-  .grid__cell--sdbr-rght-l {
-    grid-column: 1 / 9;
-  }
-
-  .grid__cell--sdbr-rght-r {
-    grid-column: 9 / 13;
-  }
-
-  .grid__cell--sdbr-bth-l {
-    grid-column: 1 / 4;
-  }
-
-  .grid__cell--sdbr-bth-m {
-    grid-column: 4 / 10;
-  }
-
-  .grid__cell--sdbr-bth-r {
-    grid-column: 10 / 13;
-  }
-
-  @media all and (max-width: 962px) {
-    .grid__cell--half-l,
-    .grid__cell--half-r,
-    .grid__cell--thrd-l,
-    .grid__cell--thrd-m,
-    .grid__cell--thrd-r,
-    .grid__cell--qrtr-l,
-    .grid__cell--qrtr-ml,
-    .grid__cell--qrtr-mr,
-    .grid__cell--qrtr-r,
-    .grid__cell--sdbr-lft-l,
-    .grid__cell--sdbr-lft-r,
-    .grid__cell--sdbr-rght-l,
-    .grid__cell--sdbr-rght-r,
-    .grid__cell--sdbr-bth-l,
-    .grid__cell--sdbr-bth-m,
-    .grid__cell--sdbr-bth-r {
+  /*! ---—» Component: Content grid Cells «—--- */
+  .content-grid {
+    &__cell {
+      display: grid;
       grid-column: 1 / 13;
+      grid-gap: 1rem;
+      line-height: 1.5em;
+
+      &--half-l {
+        grid-column: 1 / 7;
+      }
+
+      &--half-r {
+        grid-column: 7 / 13;
+      }
+
+      &--third-l {
+        grid-column: 1 / 5;
+      }
+
+      &--third-m {
+        grid-column: 5 / 9;
+      }
+
+      &--third-r {
+        grid-column: 9 / 13;
+      }
+
+      &--quarter-l {
+        grid-column: 1 / 4;
+      }
+
+      &--quarter-ml {
+        grid-column: 4 / 7;
+      }
+
+      &--quarter-mr {
+        grid-column: 7 / 10;
+      }
+
+      &--quarter-r {
+        grid-column: 10 / 13;
+      }
+
+      &--sidebar-left-l {
+        grid-column: 1 / 5;
+      }
+
+      &--sidebar-left-r {
+        grid-column: 5 / 13;
+      }
+
+      &--sidebar-right-l {
+        grid-column: 1 / 9;
+      }
+
+      &--sidebar-right-r {
+        grid-column: 9 / 13;
+      }
+
+      &--sidebar-both-l {
+        grid-column: 1 / 4;
+      }
+
+      &--sidebar-both-m {
+        grid-column: 4 / 10;
+      }
+
+      &--sidebar-both-r {
+        grid-column: 10 / 13;
+      }
+
+      @media all and (max-width: 768px) {
+        &--half-l,
+        &--half-r,
+        &--third-l,
+        &--third-m,
+        &--third-r,
+        &--quarter-l,
+        &--quarter-ml,
+        &--quarter-mr,
+        &--quarter-r,
+        &--sidebar-left-l,
+        &--sidebar-left-r,
+        &--sidebar-right-l,
+        &--sidebar-right-r,
+        &--sidebar-both-l,
+        &--sidebar-both-m,
+        &--sidebar-both-r {
+          grid-column: 1 / 13;
+        }
+      }
     }
   }
 };
 
-.declare-design-by-option(@bem-grid-design, @use-design__bem-grid);
+.declare-design-by-option(@bem-content-grid-design, @use-design__bem-content-grid);
