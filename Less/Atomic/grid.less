@@ -5,7 +5,7 @@
  *
  * Modlar set of utility classes for modifying settings for grid layouts.
  *
- * @version 0.1.0
+ * @version 0.1.1
  *
  * @author Daniel Rieck
  *   [daniel.rieck@wsu.edu]
@@ -104,19 +104,17 @@
     }
 
     @media all and (max-width: 768px) {
-      .ggap {
-        &-2xs,
-        &-1xs,
-        &-1x,
-        &-1xl,
-        &-2xl,
-        &-col-2xs,
-        &-col-1xs,
-        &-col-1x,
-        &-col-1xl,
-        &-col-2xl {
-          grid-column-gap: 0;
-        }
+      &-2xs,
+      &-1xs,
+      &-1x,
+      &-1xl,
+      &-2xl,
+      &-col-2xs,
+      &-col-1xs,
+      &-col-1x,
+      &-col-1xl,
+      &-col-2xl {
+        grid-column-gap: 0;
       }
     }
   } 
