@@ -1,17 +1,37 @@
 /**=============================================================================
- * █▀▀▄ █▀▀▄ ▀█▀ ▐▀▀▄ ▄▀▀▄▐   ▌  █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
- * █▄▄▀ █▄▄▀  █  █  ▐ █▄▄█ █ █   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
- * █    ▀  ▀▄▀▀▀ ▀  ▐ █  ▀  █  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
+ * █▀▀▄ █▀▀▄ ▀█▀ ▐▀▀▄ ▄▀▀▄▐   ▌░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
+ * █▄▄▀ █▄▄▀  █  █  ▐ █▄▄█ █ █ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
+ * █    ▀  ▀▄▀▀▀ ▀  ▐ █  ▀  █  .less ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
  *
- * Less modules providing BEM style rulesets for the website's primary navigation component.
+ * Less modules providing BEM style rulesets for the website's primary
+ *   navigation component.
  *
- * @version 0.0.2
- * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Components/prinav.less
+ * @version 0.1.0
+ *
+ * @author Daniel Rieck
+ *   [daniel.rieck@wsu.edu]
+ *   (https://github.com/invokeImmediately)
+ *
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
+ *   …/Less/Components/prinav.less
+ *
  * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *   Permission is hereby granted, free of charge, to any person obtaining a
+ *     copy of this software and associated documentation files (the
+ *     "Software"), to deal in the Software without restriction, including
+ *     without limitation the rights to use, copy, modify, merge, publish,
+ *     distribute, sublicense, and/or sell copies of the Software, and to permit
+ *     persons to whom the Software is furnished to do so, subject to the
+ *     following conditions:
+ *   The above copyright notice and this permission notice shall be included in
+ *     all copies or substantial portions of the Software.
+ *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ *     OTHER DEALINGS IN THE SOFTWARE.
  * =============================================================================
  */
 
@@ -25,24 +45,42 @@
     justify-self: end;
 
     &__dest {
-      background-color: #e0e0e0;
-      border-bottom: var(--brdr-wdth-site-hdr) solid var(--brdr-clr-pnav);
-      color: #000;
+      border-bottom: 1px solid var(--brdr-clr-pnav);
+      color: #fff;
       font-weight: 600;
-      padding: .5rem 1rem;
+      padding: .5rem;
+      position: relative;
       text-decoration: none;
       transition: .2s all;
+
+      &:after {
+        background-color: transparent;
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+      }
 
       &:focus,
       &:hover {
         background-color: var(--bg-clr-pg-hi6t);
         border-bottom-color: var(--brdr-clr-hi6t);
         color: #fff;
+
+        &:after {
+          background-color: var(--brdr-clr-hi6t);
+        }
       }
 
       &:active{
         color: var(--brdr-clr-ac3e);
         border-bottom-color: var(--brdr-clr-ac3e);
+
+        &:after {
+          background-color: var(--brdr-clr-ac3e);
+        }
       }
     }
 
