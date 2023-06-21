@@ -6,7 +6,7 @@
  * Less modules providing BEM style rulesets for content grid containers
  *   designed to lay out their contents using CSS grid.
  *
- * @version 0.2.0
+ * @version 0.2.1
  *
  * @author Daniel Rieck
  *   [daniel.rieck@wsu.edu]
@@ -41,7 +41,6 @@
 
   .content-grid {
     display: grid;
-    grid-gap: 2rem;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
 
@@ -51,6 +50,7 @@
 
     &--full-width {
       .main-pg-content > & {
+        box-sizing: border-box;
         grid-column: 1 / 4;
         padding-left: 2rem;
         padding-right: 2rem;
@@ -71,8 +71,22 @@
     }
   }
 
-  /*! ---—» Component: Content grid Cells «—--- */
+  /*! ---—» Component: Content grid cells «—--- */
   .content-grid {
+    --c10d-hor6l-spacing: 2rem;
+
+    &--less-spacing {
+        --c10d-hor6l-spacing: 1rem;
+    }
+
+    &--more-spacing {
+        --c10d-hor6l-spacing: 3rem;
+    }
+
+    @media all and (max-width: 768px) {
+      --c10d-hor6l-spacing: 0;
+    }
+
     &__cell {
       display: grid;
       grid-column: 1 / 13;
@@ -81,66 +95,86 @@
 
       &--half-l {
         grid-column: 1 / 7;
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--half-r {
         grid-column: 7 / 13;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--third-l {
         grid-column: 1 / 5;
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--third-m {
         grid-column: 5 / 9;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--third-r {
         grid-column: 9 / 13;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--quarter-l {
         grid-column: 1 / 4;
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--quarter-ml {
         grid-column: 4 / 7;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--quarter-mr {
         grid-column: 7 / 10;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--quarter-r {
         grid-column: 10 / 13;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--sidebar-left-l {
         grid-column: 1 / 5;
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--sidebar-left-r {
         grid-column: 5 / 13;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--sidebar-right-l {
         grid-column: 1 / 9;
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--sidebar-right-r {
         grid-column: 9 / 13;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--sidebar-both-l {
         grid-column: 1 / 4;
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--sidebar-both-m {
         grid-column: 4 / 10;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
+        margin-right: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       &--sidebar-both-r {
         grid-column: 10 / 13;
+        margin-margin-left: calc( var( --c10d-hor6l-spacing ) / 2 );
       }
 
       @media all and (max-width: 768px) {
