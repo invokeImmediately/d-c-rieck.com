@@ -124,20 +124,24 @@ class AsciiArtGenerator {
     return asciiArtLen;
   }
 
-  getArtFromTxt( txt, newlines = "rn", maxLineLen = 100 ) {
+  getArtFromTxt( txt, maxLineLen = 80, newlines = "rn" ) {
     let asciiArt = "";
     if ( typeof txt === 'undefined' ) {
       return asciiArt;
     }
 
+    // Ensure line length is sufficiently large
+    if ( maxLineLen < 40 ) {
+      maxLineLen = 40;
+    }
+
     // Check line length of hypothetical art generation
     const hypArtLen = this.calcArtLenFromTxt( txt );
     if ( hypArtLen > maxLineLen ) {
-      asciiArt = this.splitSrcTxtBefArtGen( txt, newlines, maxLineLen );
+      asciiArt = this.splitSrcTxtBefArtGen( txt, maxLineLen, newlines );
       return asciiArt;
     }
 
-    // Loop through each row of the ASCII art that will represent the input string
     const nlChars = this.getNewLineChars( newlines );
     const len = txt.length;
     let idx_i = 0;
@@ -224,7 +228,7 @@ Generated from "${this.artHist[ idx ][ 1 ]}" on ${ Date( this.artHist[ idx ][ 2 
     }
   }
 
-  splitSrcTxtBefArtGen( txt, newlines, maxLineLen ) {
+  splitSrcTxtBefArtGen( txt, maxLineLen, newlines ) {
     // TODO: Add a mode for splitting source string only along whitespace characters?
     let asciiArt = "", txtSlice;
     const nlChars = this.getNewLineChars();
@@ -239,9 +243,9 @@ Generated from "${this.artHist[ idx ][ 1 ]}" on ${ Date( this.artHist[ idx ][ 2 
       if ( idx_s > 0 ) {
         asciiArt += nlChars.repeat( 2 );
       }
-      asciiArt += this.getArtFromTxt( txtSlice, newlines, maxLineLen );
-      idx_s = idx_e + 1;
-      idx_e = idx_s +  + Math.ceil( maxLineLen / this.getAvgArtCharLen() );
+      asciiArt += this.getArtFromTxt( txtSlice, maxLineLen, newlines );
+      idx_s = idx_e;
+      idx_e = idx_s + Math.ceil( maxLineLen / this.getAvgArtCharLen() );
     }
     idx_e = txt.length;
     txtSlice = txt.substring( idx_s, idx_e );
@@ -250,10 +254,10 @@ Generated from "${this.artHist[ idx ][ 1 ]}" on ${ Date( this.artHist[ idx ][ 2 
       txtSlice = txt.substring( idx_s, idx_e );
     }
     asciiArt += nlChars.repeat( 2 );
-    asciiArt += this.getArtFromTxt( txtSlice, newlines, maxLineLen );
+    asciiArt += this.getArtFromTxt( txtSlice, maxLineLen, newlines );
     if ( idx_e < txt.length ) {
       asciiArt += nlChars.repeat( 2 );
-      asciiArt += this.getArtFromTxt( txt.substring( idx_e + 1, txt.length ), newlines, maxLineLen );
+      asciiArt += this.getArtFromTxt( txt.substring( idx_e, txt.length ), maxLineLen, newlines );
     }
     return asciiArt;
   }
