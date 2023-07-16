@@ -1,7 +1,7 @@
 /*******************************************************************************
  * ▓▓▓▒ ▄▀▀▀ ▄▀▀▀ ▄▀▀▄ ▐▀▀▄ ▄▀▀▀ ▄▀▀▀ ▄▀▀▀ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓
  * ▓▓▒▒ ▀▀▀█ █    █▄▄█ █  ▐ █    ▀▀▀█ ▀▀▀█ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓
- * ▓▒▒▒ ▀▀▀   ▀▀▀ █  ▀ ▀  ▐  ▀▀▀ ▀▀▀  ▀▀▀  File4Sects.js ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓
+ * ▓▒▒▒ ▀▀▀   ▀▀▀ █  ▀ ▀  ▐  ▀▀▀ ▀▀▀  ▀▀▀  FilesCLI.mjs ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓
  *
  * Node.js module for scanning CSS files for various properties.
  *
@@ -30,6 +30,8 @@
  *  DEALINGS IN THE SOFTWARE.
  ******************************************************************************/
 
+import { createRequire } from 'module'
+const require = createRequire( import.meta.url );
 const fs = require( 'fs' );
 const proc = require( 'process' );
 const opts = proc.argv.slice( 2 );
@@ -49,8 +51,9 @@ function main() {
 function printCssFileSects( filePath, cssCode, codeSectionIndicatorFormat ) {
   const matches = cssCode.matchAll( codeSectionIndicatorFormat );
   console.log(
-`-------------------------------------------------------------------------------
-File sections found in:
+`
+-------------------------------------------------------------------------------
+Topical code sections found in CSS file:
  ${ filePath }
 
 Based on the following regular expression for code section indicators:
@@ -66,7 +69,8 @@ Based on the following regular expression for code section indicators:
   }
   console.log(
 `-------------------------------------------------------------------------------
-Total code sections found = ${ matchCount }`
+Total code sections found = ${ matchCount }
+`
   );
 }
 
