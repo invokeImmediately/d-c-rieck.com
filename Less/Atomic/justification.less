@@ -1,0 +1,168 @@
+﻿/**
+ * ▓▓▓ Atomic CSS: ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+ * ▓▓▒ ─────────────────────────────────────────────────────────── ▒▒▒▒▒▒▒▒▒▒▒▒▒
+ * ▓▒▒    █ █  █ ▄▀▀▀▐▀█▀▌▀█▀ █▀▀▀ ▀█▀ ▄▀▀▀ ▄▀▀▄▐▀█▀▌▀█▀ ▄▀▀▄ ▐▀▀▄ ▒▒▒▒▒▒▒▒▒▒▒▒▓
+ * ▒▒▒ ▄  █ █  █ ▀▀▀█  █   █  █▀▀▀  █  █    █▄▄█  █   █  █  █ █  ▐ ▒▒▒▒▒▒▒▒▒▒▒▓▓
+ * ▒▒▒ ▀▄▄█  ▀▀  ▀▀▀   █  ▀▀▀ ▀    ▀▀▀  ▀▀▀ █  ▀  █  ▀▀▀  ▀▀  ▀  ▐.less ▒▒▒▒▒▓▓▓
+ *
+ * Modular set of utility classes for specifying flexbox or grid properties
+ *  for content, item, or self justification.
+ *
+ * @version 0.0.0
+ *
+ * @author Daniel Rieck
+ *  [daniel.rieck@wsu.edu]
+ *  (https://github.com/invokeImmediately)
+ *
+ * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
+ *  …/Less/Atomic/justification.less
+ *
+ * References:
+ *  @link https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+ *  @link https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
+ *  @link https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
+ *
+ * @license MIT Copyright (c) 2023 Daniel C. Rieck.
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *   copy of this software and associated documentation files (the
+ *   "Software"), to deal in the Software without restriction, including
+ *   without limitation the rights to use, copy, modify, merge, publish,
+ *   distribute, sublicense, and/or sell copies of the Software, and to permit
+ *   persons to whom the Software is furnished to do so, subject to the
+ *   following conditions:
+ *  The above copyright notice and this permission notice shall be included in
+ *   all copies or substantial portions of the Software.
+ *  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ *   THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ *   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ *   ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ *   OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@atomic-css-for-justification: {
+
+  // ·> Declare common justification utility classes ← Mixin                  <·
+  .declare-c4n-j5y-u5y-c5s( @property-type ) {
+    &-c4r {
+      justify-@{property-type}: center;
+    }
+
+    &-end {
+      justify-@{property-type}: end;
+    }
+
+    &-f2x-end {
+      justify-@{property-type}: flex-end;
+    }
+
+    &-f2x-s3t {
+      justify-@{property-type}: flex-start;
+    }
+
+    &-i5t {
+      justify-@{property-type}: inherit;
+    }
+
+    &-l2t {
+      justify-@{property-type}: left;
+    }
+
+    &-n4l {
+      justify-@{property-type}: normal;
+    }
+
+    &-r3t {
+      justify-@{property-type}: right;
+    }
+
+    &-s3t {
+      justify-@{property-type}: start;
+    }
+
+    &-s5h {
+      justify-@{property-type}: stretch;
+    }
+  }
+
+  // ·> Declare unique alignment utility classes ← Mixin                      <·
+  .declare-u4e-j5y-u5y-c5s( @property-type )
+    when ( @property-type = content )
+  {
+    &-s3e-a4d {
+      justify-@{property-type}: space-around;
+    }
+
+    &-s3e-b5n {
+      justify-@{property-type}: space-between;
+    }
+
+    &-s3e-e4y {
+      justify-@{property-type}: space-evenly;
+    }
+  }
+
+  .declare-u4e-j5y-u5y-c5s( @property-type )
+    when ( @property-type = items )
+    or ( @property-type = self )
+  {
+    @a8l-rules-for-self: if( @property-type = self, {
+      &-a2o {
+        justify-@{property-type}: auto;
+      }
+    }, {} );
+    @a8l-rules-for-self();
+
+    &-b6e {
+      justify-@{property-type}: baseline;
+    }
+
+    &-f3t-b6e {
+      justify-@{property-type}: first baseline;
+    }
+
+    &-l2t-b6e {
+      justify-@{property-type}: last baseline;
+    }
+
+    &-s2f-end {
+      justify-@{property-type}: self-end;
+    }
+
+    &-s2f-s3t {
+      justify-@{property-type}: self-start;
+    }
+  }
+
+  // ·> Declare alignment utility classes ← Mixin                             <·
+  .declare-j5y-u5y-c5s( @property-type )
+    when ( @property-type = content )
+    or ( @property-type = self )
+    or ( @property-type = items )
+  {
+    .declare-c4n-j5y-u5y-c5s( @property-type );
+    .declare-u4e-j5y-u5y-c5s( @property-type );
+  }
+
+  /*! ---—» Atomic CSS: Grid/flexbox justification «—--- */
+
+  .j5y {
+    &-c5t {
+      .declare-j5y-u5y-c5s( content );
+    }
+
+    &-i3s {
+      .declare-j5y-u5y-c5s( items );
+    }
+
+    &-s2f {
+      .declare-j5y-u5y-c5s( self );
+    }
+  }
+};
+
+.declare-design-by-option(
+  @atomic-css-for-justification,
+  @use-design__justification-atomic-css
+);
