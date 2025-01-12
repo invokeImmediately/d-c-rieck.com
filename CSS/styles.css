@@ -14,184 +14,6 @@
  *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * =============================================================================
  */
-/**=============================================================================
- * █▀▀▄ █    █▀▀▄    █▀▀▀ ▐▀▀▄▐▀█▀▌█▀▀▄ █  █    █▀▀▄▐▀█▀▌  █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
- * █▀▀▄ █  ▄ █  █ ▀▀ █▀▀  █  ▐  █  █▄▄▀ ▀▄▄█ ▀▀ █▄▄▀  █    █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
- * ▀▀▀  ▀▀▀  ▀▀▀     ▀▀▀▀ ▀  ▐  █  ▀  ▀▄▄▄▄▀    █     █  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
- *
- * Entry point for building the stylesheet for d-c-rieck.com from source files written in the Less/Leaner Style Sheets language extension of CSS.
- *
- * @version 0.3.2
- * @author Daniel Rieck [danielcrieck@gmail.com] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/bld-entry-pt.less
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- *   TABLE OF CONTENTS:
- *   ─────────────────────────────────────────────────────────────────────────
- *   §1: Mixins.............................................................39
- *   §2: Build settings.....................................................45
- *   §3: Base styling.......................................................54
- *   §4: First-draft code...................................................61
- *   §5: Site components....................................................67
- *   §6: Animations.........................................................78
- *   §7: Atomic CSS.........................................................84
- * =============================================================================
- */
-/* =============================================================================
- * §1: Mixins
- */
-/**=============================================================================
- * █▀▀▄ ▄▀▀▀ █▀▀▀ ▐▀▀▄    █  █ ▄▀▀▀ ▄▀▀▄ █▀▀▀ █▀▀▀ ░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █  █ ▀▀▀█ █ ▀▄ █  ▐ ▀▀ █  █ ▀▀▀█ █▄▄█ █ ▀▄ █▀▀  ░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * ▀▀▀  ▀▀▀  ▀▀▀▀ ▀  ▐     ▀▀  ▀▀▀  █  ▀ ▀▀▀▀ ▀▀▀▀ .less ░░░░░░░░░░░░░░░░▒▓█
- *
- * Articulates a logical scheme for declaring modular styling designs based on
- *   boolean flags.
- *
- * @version 0.1.4
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Mixins/dsgn-usage.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
-/* =============================================================================
- * §2: Build settings
- */
-/**=============================================================================
- * █▀▀▄ █▀▀▄ █ ▄▀ █▀▀▄▐▀█▀▌▄▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
- * █▀▀▄ █▄▄▀ █▀▄  █▄▄▀  █  ▀▀▀█   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
- * ▀▀▀  ▀  ▀▄▀  ▀▄█     █  ▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
- *
- * Less variables representing breakpoints for responsive layouts.
- *
- * @version 0.0.1
- * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Settings/brkpts.less
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
-/**=============================================================================
- * █▀▀▄ ▄▀▀▀ █▀▀▀ ▐▀▀▄    █  █ ▄▀▀▀ ▄▀▀▄ █▀▀▀ █▀▀▀ ░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █  █ ▀▀▀█ █ ▀▄ █  ▐ ▀▀ █  █ ▀▀▀█ █▄▄█ █ ▀▄ █▀▀  ░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * ▀▀▀  ▀▀▀  ▀▀▀▀ ▀  ▐     ▀▀  ▀▀▀  █  ▀ ▀▀▀▀ ▀▀▀▀ .less ░░░░░░░░░░░░░░░░▒▓█
- *
- * Specifies default values for the boolean flags that control the declaration
- *   of modular Less rulesets that implement styling designs.
- *
- * @version 0.5.2
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Settings/dsgn-usage.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- *   TABLE OF CONTENTS:
- *   ─────────────────────────────────────────────────────────────────────────
- *   §1: Base styling.......................................................27
- *   §2: Layout of page components..........................................36
- *   §3: Thematic presentation of components................................45
- *   §4: Animations.........................................................52
- *   §5: Atomic CSS.........................................................58
- * =============================================================================
- */
-/**=============================================================================
- * §1: Base styling
- */
-/**=============================================================================
- * §2: Layout of page components
- */
-/**=============================================================================
- * §3: Thematic presentation of page components
- */
-/**=============================================================================
- * §4: Animations
- */
-/**=============================================================================
- * §5: Atomic CSS
- */
-/* =============================================================================
- * §3: Base styling
- */
-/**=============================================================================
- * █▀▀▄ ▄▀▀▄ ▄▀▀▀ █▀▀▀    ▄▀▀▀▐▀█▀▌█  █ █    ▀█▀ ▐▀▀▄ █▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
- * █▀▀▄ █▄▄█ ▀▀▀█ █▀▀  ▀▀ ▀▀▀█  █  ▀▄▄█ █  ▄  █  █  ▐ █ ▀▄   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
- * ▀▀▀  █  ▀ ▀▀▀  ▀▀▀▀    ▀▀▀   █  ▄▄▄▀ ▀▀▀  ▀▀▀ ▀  ▐ ▀▀▀▀ ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
- *
- * Settings to reset and sanitze default browser styling behaviors. Adapted from Richard Clark's HTML5 reset stylesheet.
- *
- * @link https://github.com/richclark/HTML5resetCSS
- * @link https://github.com/csstools/sanitize.css
- *
- * @version 0.1.1
- * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/base-styling.less
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- *   TABLE OF CONTENTS:
- *   ─────────────────────────────────────────────────────────────────────────
- *   §1: CSS Reset Ruleset..................................................32
- *   §2: CSS Normalization Ruleset.........................................117
- *     §2.1: System UI font family corrections across browsers.............123
- *     §2.2: Harmonize usage of default fonts across browsers..............178
- *     §2.3: Normalization of embedded content across browsers.............221
- *     §2.4: Harmonization of forms across browsers........................231
- *     §2.5: Normalization of reduced motion handling across browsers......276
- * =============================================================================
- */
-/**=============================================================================
- * §1: CSS Reset Ruleset
- */
 /*! ---—» Reset: Default browser styles «—--- */
 :where(a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video) {
   background: transparent;
@@ -253,12 +75,6 @@
 :where(input, select) {
   vertical-align: middle;
 }
-/**=============================================================================
- * §2: CSS Normalization Ruleset
- */
-/**  ---------------------------------------------------------------------------
- *   >>> §2.1: System UI font family corrections across browsers
- */
 /*! ---—» Normalization: Ensure the system-ui font-family is correctly set in all browsers «—--- */
 @font-face {
   font-family: system-ui;
@@ -301,9 +117,6 @@
   font-weight: bold;
   src: local(".AppleSystemUIFontMonospaced-BoldItalic"), local("Segoe UI Mono Bold Italic"), local("UbuntuMono-BoldItalic"), local("Roboto-Mono-BoldItalic"), local("Menlo-BoldItalic");
 }
-/**  ---------------------------------------------------------------------------
- *   >>> §2.2: Harmonize usage of default fonts across browsers
- */
 /*! ---—» Normalization: Set the system's UI font as default in all browsers «—--- */
 html {
   font-family: system-ui, -apple-system, /* macOS 10.11-10.12 */ "Segoe UI", /* Windows 6+ */ "Roboto", /* Android 4+ */ "Ubuntu", /* Ubuntu 10.10+ */ "Cantarell", /* Gnome 3+ */ "Noto Sans", /* KDE Plasma 5+ */ sans-serif, /* fallback */ "Apple Color Emoji", /* macOS emoji */ "Segoe UI Emoji", /* Windows emoji */ "Segoe UI Symbol", /* Windows emoji */ "Noto Color Emoji";
@@ -317,17 +130,11 @@ pre {
   font-family: ui-monospace, "Menlo", /* macOS 10.10+ */ "Consolas", /* Windows 6+ */ "Roboto Mono", /* Android 4+ */ "Ubuntu Monospace", /* Ubuntu 10.10+ */ "Noto Mono", /* KDE Plasma 5+ */ "Oxygen Mono", /* KDE Plasma 4+ */ "Liberation Mono", /* Linux/OpenOffice fallback */ monospace, /* fallback */ "Apple Color Emoji", /* macOS emoji */ "Segoe UI Emoji", /* Windows emoji */ "Segoe UI Symbol", /* Windows emoji */ "Noto Color Emoji";
   /* Linux emoji */
 }
-/**  ---------------------------------------------------------------------------
- *   >>> §2.3: Normalization of embedded content across browsers
- */
 /*! ---—» Normalization: Do not permit browsers to display oversized embedded content -------- */
 :where(iframe, img, video) {
   height: auto;
   max-width: 100%;
 }
-/**  ---------------------------------------------------------------------------
- *   >>> §2.4: Harmonization of forms across browsers
- */
 :where(button, input, select, textarea) {
   /*! ---—» Normalization: Harmonize form field appearance across browsers «—--- */
   background-color: transparent;
@@ -359,9 +166,6 @@ pre {
   height: auto;
   max-width: 100%;
 }
-/**  ---------------------------------------------------------------------------
- *   >>> §2.5: Normalization of reduced motion handling across browsers
- */
 /*! ---—» Reduce motion consistently across browsers «—--- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -376,41 +180,6 @@ pre {
     transition-duration: 0s !important;
   }
 }
-/**=============================================================================
- * █▀▀▄ ▄▀▀▄ ▄▀▀▄▐▀█▀▌░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █▄▄▀ █  █ █  █  █  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * ▀  ▀▄ ▀▀   ▀▀   █  .less ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- *
- * Provides settings for CSS variables used in the website's stylesheet.
- *
- * @version 0.0.4
- * 
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Settings/root.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
 /*! ---—» CSS Variables «—--- */
 :root {
   --bg-clr-pg: #0c0c0c;
@@ -435,9 +204,6 @@ pre {
   --fs-h5: 1.3rem;
   --fs-h6: 1.1rem;
 }
-/* =============================================================================
- * §4: First-draft code
- */
 /*! -------- d-c-rieck.com Pages -------- */
 .dcrdc-pg {
   background: var(--bg-clr-pg);
@@ -907,52 +673,6 @@ hr {
     display: none !important;
   }
 }
-/* =============================================================================
- * §5: Site components
- */
-/**=============================================================================
- * █  █ █▀▀▀ ▄▀▀▄ █▀▀▄ █▀▀▀ █▀▀▄ ▄▀▀▀ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █▀▀█ █▀▀  █▄▄█ █  █ █▀▀  █▄▄▀ ▀▀▀█ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █  ▀ ▀▀▀▀ █  ▀ ▀▀▀  ▀▀▀▀ ▀  ▀▄▀▀▀  .less ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- *
- * Less modules providing BEM style rulesets for presenting headers.
- *
- * @version 0.1.0
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Components/headers.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- *   TABLE OF CONTENTS:
- *   ─────────────────────────────────────────────────────────────────────────
- *   §1: Page header designs................................................33
- *   §2: Article header designs.............................................82
- * =============================================================================
- */
-/**=============================================================================
- * §1: Page header designs
- */
 /* ---—» Component: Page header «—--- */
 .pg-hdr {
   background: var(--bg-clr-site-hdr);
@@ -982,9 +702,6 @@ hr {
   height: auto;
   width: 100%;
 }
-/**=============================================================================
- * §2: Article header designs
- */
 /* ---—» Component: Standard article headers «—--- */
 .article-hdr {
   --artcl-hdr-fs: 3em;
@@ -1096,42 +813,6 @@ hr {
   font-size: 2em;
   line-height: var(--artcl-hdr-lh);
 }
-/**=============================================================================
- * █▀▀▄ █▀▀▄ ▀█▀ ▐▀▀▄ ▄▀▀▄▐   ▌░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █▄▄▀ █▄▄▀  █  █  ▐ █▄▄█ █ █ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █    ▀  ▀▄▀▀▀ ▀  ▐ █  ▀  █  .less ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- *
- * Less modules providing BEM style rulesets for the website's primary
- *   navigation component.
- *
- * @version 0.1.0
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Components/prinav.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
 /*! ---—» Component: Primary navigation «—--- */
 .pri-nav {
   align-content: center;
@@ -1180,42 +861,6 @@ hr {
   list-style-type: none;
   margin-right: 1rem;
 }
-/**=============================================================================
- * █▀▀▀ █▀▀▄ ▀█▀ █▀▀▄ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █ ▀▄ █▄▄▀  █  █  █ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * ▀▀▀▀ ▀  ▀▄▀▀▀ ▀▀▀  .less ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- *
- * Less modules providing BEM style rulesets for content grid containers
- *   designed to lay out their contents using CSS grid.
- *
- * @version 0.2.2
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Settings/dsgn-usage.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
 /*! ---—» Component: Page-level content grids «—--- */
 .content-grid {
   display: grid;
@@ -1352,25 +997,6 @@ hr {
     grid-column: 1 / 13;
   }
 }
-/**=============================================================================
- * █▀▀▄ █▀▀▀ ▀█▀ ▄▀▀▀   █    █▀▀▀ ▄▀▀▀ ▄▀▀▀
- * █▀▀▄ █ ▀▄  █  ▀▀▀█   █  ▄ █▀▀  ▀▀▀█ ▀▀▀█
- * ▀▀▀  ▀▀▀▀ ▀▀▀ ▀▀▀  ▀ ▀▀▀  ▀▀▀▀ ▀▀▀  ▀▀▀
- *
- * Optionally declared Less modules providing BEM style rulesets for presenting page components with to thematic backgrounds.
- *
- * @version 0.1.0
- * @author Daniel Rieck [daniel.rieck@wsu.edu] (https://github.com/invokeImmediately)
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main/Less/Presentation/bgis.less
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
-/**---------------------------------------------------------
- * Design Option: Background Images → Light in the Dark
- */
 /*! ---—» Presentation: "Light in the Dark" visual backgrounds «—--- */
 .bgi-voronoi-tiles {
   background: var(--bg-clr-pg) url(/imgs/hdri-lighting-experiment_voronoi-plane_2022-02-05-n1_r2-seamless.jpg) repeat;
@@ -1378,59 +1004,14 @@ hr {
 .bgi-digital-sand {
   background: var(--bg-clr-pg) url(/imgs/bg/pexels-daniel-absi-952670_digital-sand_tileable_960w640h.jpg) repeat;
 }
-/**---------------------------------------------------------
- * Design Option: Background Images → Sandbox
- */
 /*! ---—» Presentation: "Sandbox" visual backgrounds «—--- */
 .bgi-volcanic-sand {
   background: var(--bg-clr-pg) url(/imgs/bg/pexels-daniel-absi-952670_sand-grains_tileable_960w640h.jpg) repeat;
 }
-/**---------------------------------------------------------
- * Design Option: Background Images → Voronoi renders
- */
 /*! ---—» Presentation: "Voronoi" visual backgrounds «—--- */
 .bgi-voronoi-plate {
   background: var(--bg-clr-pg) url(/imgs/bg/seamless-voronoi-plate_20230310225541_1920w1080h.jpg) repeat;
 }
-/* =============================================================================
- * §6: Animations
- */
-/**=============================================================================
- * ▐▀█▀▌▄▀▀▄ ▄▀▀▄ █       ▄▀▀▀▐▀█▀▌▄▀▀▄ ▄▀▀▀ █ ▄▀  ░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- *   █  █  █ █  █ █  ▄ ▀▀ ▀▀▀█  █  █▄▄█ █    █▀▄   ░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- *   █   ▀▀   ▀▀  ▀▀▀     ▀▀▀   █  █  ▀  ▀▀▀ ▀  ▀▄ .less ░░░░░░░░░░░░░░░░▒▓█
- *
- * Rules for styling an animated, growing stack of icons representing the tools
- *   used in development and design work.
- *
- * @version 0.0.4
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Animations/tool-stack.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
 /*! ---—» Animations: Tool stacks «—--- */
 @keyframes tool-mosaic-ico-appear {
   0% {
@@ -1468,11 +1049,13 @@ hr {
 }
 .tool-mosaic__icon {
   animation: tool-mosaic-ico-appear 0.333s, tool-mosaic-ico-sat-cycle 9s infinite;
+  animation-fill-mode: forwards, forwards;
   background: transparent url(/imgs/icons/software-expertise-examples_1280w2048h.png) no-repeat top left / 20rem 32rem;
   color: transparent;
   display: inline-block;
   filter: saturate(0);
   overflow: hidden;
+  opacity: 0;
   height: 4rem;
   width: 4rem;
 }
@@ -1598,177 +1181,283 @@ hr {
 }
 .tool-mosaic__icon--delay-1 {
   animation: tool-mosaic-ico-appear 0.333s linear 1s, tool-mosaic-ico-sat-cycle 5s linear 1s infinite;
+  animation-fill-mode: forwards, forwards;
 }
 .tool-mosaic__icon--delay-2 {
   animation: tool-mosaic-ico-appear 0.333s linear 2s, tool-mosaic-ico-sat-cycle 5s linear 2s infinite;
+  animation-fill-mode: forwards, forwards;
 }
 .tool-mosaic__icon--delay-3 {
   animation: tool-mosaic-ico-appear 0.333s linear 3s, tool-mosaic-ico-sat-cycle 5s linear 3s infinite;
+  animation-fill-mode: forwards, forwards;
 }
 .tool-mosaic__icon--delay-4 {
   animation: tool-mosaic-ico-appear 0.333s linear 4s, tool-mosaic-ico-sat-cycle 5s linear 4s infinite;
+  animation-fill-mode: forwards, forwards;
 }
-/* =============================================================================
- * §7: Atomic CSS
- */
-/**=============================================================================
- * ▄▀▀▄ █    ▀█▀ █▀▀▀ ▐▀▀▄ ▐▀▄▀▌█▀▀▀ ▐▀▀▄▐▀█▀▌░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █▄▄█ █  ▄  █  █ ▀▄ █  ▐ █ ▀ ▌█▀▀  █  ▐  █  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █  ▀ ▀▀▀  ▀▀▀ ▀▀▀▀ ▀  ▐ █   ▀▀▀▀▀ ▀  ▐  █  .less ░░░░░░░░░░░░░░░░░░░░░▒▓█
- *
- * Modular set of utility classes for specifying flexbox/grid alignment settings.
- *
- * @version 0.0.3
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Atomic/grid.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
 /*! ---—» Atomic CSS: Grid/flexbox alignment «—--- */
-.algn-c-1st-bsln {
-  align-content: first baseline;
-}
-.algn-c-auto {
+.a3n-c5t-a2o {
   align-content: auto;
 }
-.algn-c-bsln {
+.a3n-c5t-b6e {
   align-content: baseline;
 }
-.algn-c-cntr {
+.a3n-c5t-c4r {
   align-content: center;
 }
-.algn-c-end {
+.a3n-c5t-end {
   align-content: end;
 }
-.algn-c-flx-end {
+.a3n-c5t-f3t-b6e {
+  align-content: first baseline;
+}
+.a3n-c5t-f2x-end {
   align-content: flex-end;
 }
-.algn-c-flx-strt {
+.a3n-c5t-f2x-s3t {
   align-content: flex-start;
 }
-.algn-c-inh {
+.a3n-c5t-i5t {
   align-content: inherit;
 }
-.algn-c-lst-bsln {
-  align-content: last baseline;
-}
-.algn-c-nrml {
+.a3n-c5t-n4l {
   align-content: normal;
 }
-.algn-c-spc-arnd {
-  align-content: space-around;
+.a3n-c5t-l2t-b6e {
+  align-content: last baseline;
 }
-.algn-c-spc-btwn {
-  align-content: space-between;
-}
-.algn-c-spc-ev3y {
-  align-content: space-evenly;
-}
-.algn-c-st4h {
-  align-content: stretch;
-}
-.algn-c-strt {
+.a3n-c5t-s3t {
   align-content: start;
 }
-.algn-s-1st-bsln {
-  align-self: first baseline;
+.a3n-c5t-s5h {
+  align-content: stretch;
 }
-.algn-s-auto {
+.a3n-c5t-s3e-a4d {
+  align-content: space-around;
+}
+.a3n-c5t-s3e-b5n {
+  align-content: space-between;
+}
+.a3n-c5t-s3e-e4y {
+  align-content: space-evenly;
+}
+.a3n-i3s-a2o {
+  align-items: auto;
+}
+.a3n-i3s-b6e {
+  align-items: baseline;
+}
+.a3n-i3s-c4r {
+  align-items: center;
+}
+.a3n-i3s-end {
+  align-items: end;
+}
+.a3n-i3s-f3t-b6e {
+  align-items: first baseline;
+}
+.a3n-i3s-f2x-end {
+  align-items: flex-end;
+}
+.a3n-i3s-f2x-s3t {
+  align-items: flex-start;
+}
+.a3n-i3s-i5t {
+  align-items: inherit;
+}
+.a3n-i3s-n4l {
+  align-items: normal;
+}
+.a3n-i3s-l2t-b6e {
+  align-items: last baseline;
+}
+.a3n-i3s-s3t {
+  align-items: start;
+}
+.a3n-i3s-s5h {
+  align-items: stretch;
+}
+.a3n-i3s-s2f-end {
+  align-items: self-end;
+}
+.a3n-i3s-s2f-s3t {
+  align-items: self-start;
+}
+.a3n-s2f-a2o {
   align-self: auto;
 }
-.algn-s-bsln {
+.a3n-s2f-b6e {
   align-self: baseline;
 }
-.algn-s-cntr {
+.a3n-s2f-c4r {
   align-self: center;
 }
-.algn-s-end {
+.a3n-s2f-end {
   align-self: end;
 }
-.algn-s-flx-end {
+.a3n-s2f-f3t-b6e {
+  align-self: first baseline;
+}
+.a3n-s2f-f2x-end {
   align-self: flex-end;
 }
-.algn-s-flx-strt {
+.a3n-s2f-f2x-s3t {
   align-self: flex-start;
 }
-.algn-s-inh {
+.a3n-s2f-i5t {
   align-self: inherit;
 }
-.algn-s-lst-bsln {
-  align-self: last baseline;
-}
-.algn-s-nrml {
+.a3n-s2f-n4l {
   align-self: normal;
 }
-.algn-s-st4h {
-  align-self: stretch;
+.a3n-s2f-l2t-b6e {
+  align-self: last baseline;
 }
-.algn-s-slf-end {
-  align-self: self-end;
-}
-.algn-s-slf-strt {
-  align-self: self-start;
-}
-.algn-s-strt {
+.a3n-s2f-s3t {
   align-self: start;
 }
-/**=============================================================================
- * █▀▀▄ ▀█▀ ▐▀▄▀▌█▀▀▀ ▐▀▀▄ ▄▀▀▀ ▀█▀ ▄▀▀▄ ▐▀▀▄ ▄▀▀▀ ░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █  █  █  █ ▀ ▌█▀▀  █  ▐ ▀▀▀█  █  █  █ █  ▐ ▀▀▀█ ░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * ▀▀▀  ▀▀▀ █   ▀▀▀▀▀ ▀  ▐ ▀▀▀  ▀▀▀  ▀▀  ▀  ▐ ▀▀▀  .less ░░░░░░░░░░░░░░░░▒▓█
- *
- * Modlar set of utility classes for specifying and constraining dimensions.
- *
- * @version 0.0.3
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Atomic/dimensions.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
+.a3n-s2f-s5h {
+  align-self: stretch;
+}
+.a3n-s2f-s2f-end {
+  align-self: self-end;
+}
+.a3n-s2f-s2f-s3t {
+  align-self: self-start;
+}
+/*! ---—» Atomic CSS: Grid/flexbox justification «—--- */
+.j5y-c5t-c4r {
+  justify-content: center;
+}
+.j5y-c5t-end {
+  justify-content: end;
+}
+.j5y-c5t-f2x-end {
+  justify-content: flex-end;
+}
+.j5y-c5t-f2x-s3t {
+  justify-content: flex-start;
+}
+.j5y-c5t-i5t {
+  justify-content: inherit;
+}
+.j5y-c5t-l2t {
+  justify-content: left;
+}
+.j5y-c5t-n4l {
+  justify-content: normal;
+}
+.j5y-c5t-r3t {
+  justify-content: right;
+}
+.j5y-c5t-s3t {
+  justify-content: start;
+}
+.j5y-c5t-s5h {
+  justify-content: stretch;
+}
+.j5y-c5t-s3e-a4d {
+  justify-content: space-around;
+}
+.j5y-c5t-s3e-b5n {
+  justify-content: space-between;
+}
+.j5y-c5t-s3e-e4y {
+  justify-content: space-evenly;
+}
+.j5y-i3s-c4r {
+  justify-items: center;
+}
+.j5y-i3s-end {
+  justify-items: end;
+}
+.j5y-i3s-f2x-end {
+  justify-items: flex-end;
+}
+.j5y-i3s-f2x-s3t {
+  justify-items: flex-start;
+}
+.j5y-i3s-i5t {
+  justify-items: inherit;
+}
+.j5y-i3s-l2t {
+  justify-items: left;
+}
+.j5y-i3s-n4l {
+  justify-items: normal;
+}
+.j5y-i3s-r3t {
+  justify-items: right;
+}
+.j5y-i3s-s3t {
+  justify-items: start;
+}
+.j5y-i3s-s5h {
+  justify-items: stretch;
+}
+.j5y-i3s-b6e {
+  justify-items: baseline;
+}
+.j5y-i3s-f3t-b6e {
+  justify-items: first baseline;
+}
+.j5y-i3s-l2t-b6e {
+  justify-items: last baseline;
+}
+.j5y-i3s-s2f-end {
+  justify-items: self-end;
+}
+.j5y-i3s-s2f-s3t {
+  justify-items: self-start;
+}
+.j5y-s2f-c4r {
+  justify-self: center;
+}
+.j5y-s2f-end {
+  justify-self: end;
+}
+.j5y-s2f-f2x-end {
+  justify-self: flex-end;
+}
+.j5y-s2f-f2x-s3t {
+  justify-self: flex-start;
+}
+.j5y-s2f-i5t {
+  justify-self: inherit;
+}
+.j5y-s2f-l2t {
+  justify-self: left;
+}
+.j5y-s2f-n4l {
+  justify-self: normal;
+}
+.j5y-s2f-r3t {
+  justify-self: right;
+}
+.j5y-s2f-s3t {
+  justify-self: start;
+}
+.j5y-s2f-s5h {
+  justify-self: stretch;
+}
+.j5y-s2f-a2o {
+  justify-self: auto;
+}
+.j5y-s2f-b6e {
+  justify-self: baseline;
+}
+.j5y-s2f-f3t-b6e {
+  justify-self: first baseline;
+}
+.j5y-s2f-l2t-b6e {
+  justify-self: last baseline;
+}
+.j5y-s2f-s2f-end {
+  justify-self: self-end;
+}
+.j5y-s2f-s2f-s3t {
+  justify-self: self-start;
+}
 /*! ---—» Atomic CSS: Maximum heights «—--- */
 .mx-hght-qvga {
   max-height: 240px;
@@ -1818,41 +1507,6 @@ hr {
 .mx-hght-qsxga {
   max-height: 2048px;
 }
-/**=============================================================================
- * █▀▀▀ █▀▀▄ ▀█▀ █▀▀▄ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * █ ▀▄ █▄▄▀  █  █  █ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- * ▀▀▀▀ ▀  ▀▄▀▀▀ ▀▀▀  .less ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓█
- *
- * Modlar set of utility classes for modifying settings for grid layouts.
- *
- * @version 0.1.1
- *
- * @author Daniel Rieck
- *   [daniel.rieck@wsu.edu]
- *   (https://github.com/invokeImmediately)
- *
- * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
- *   …/Less/Atomic/grid.less
- *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
- *   Permission is hereby granted, free of charge, to any person obtaining a
- *     copy of this software and associated documentation files (the
- *     "Software"), to deal in the Software without restriction, including
- *     without limitation the rights to use, copy, modify, merge, publish,
- *     distribute, sublicense, and/or sell copies of the Software, and to permit
- *     persons to whom the Software is furnished to do so, subject to the
- *     following conditions:
- *   The above copyright notice and this permission notice shall be included in
- *     all copies or substantial portions of the Software.
- *   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- *     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- *     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- *     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- *     OTHER DEALINGS IN THE SOFTWARE.
- * =============================================================================
- */
 /*! ---—» Atomic CSS: Grid gaps «—--- */
 .ggap-2xs {
   grid-gap: 0.5rem;
