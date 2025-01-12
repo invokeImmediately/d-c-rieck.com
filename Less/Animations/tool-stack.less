@@ -6,7 +6,7 @@
  * Rules for styling an animated, growing stack of icons representing the tools
  *   used in development and design work.
  *
- * @version 0.0.4
+ * @version 0.0.5
  *
  * @author Daniel Rieck
  *   [daniel.rieck@wsu.edu]
@@ -15,7 +15,7 @@
  * @link https://github.com/invokeImmediately/d-c-rieck.com/blob/main…
  *   …/Less/Animations/tool-stack.less
  *
- * @license MIT Copyright (c) 2023 Daniel C. Rieck.
+ * @license MIT Copyright (c) 2025 Daniel C. Rieck.
  *   Permission is hereby granted, free of charge, to any person obtaining a
  *     copy of this software and associated documentation files (the
  *     "Software"), to deal in the Software without restriction, including
@@ -84,11 +84,13 @@
 
     &__icon {
       animation: tool-mosaic-ico-appear @tlstck-appear-dt, tool-mosaic-ico-sat-cycle @tlstck-sat-cycle-dt infinite;
+      animation-fill-mode: forwards, forwards;
       background: transparent url(/imgs/icons/software-expertise-examples_1280w2048h.png) no-repeat top left / @tlstck-srcimg-w @tlstck-srcimg-h;
       color: transparent;
       display: inline-block;
       filter: saturate(0);
       overflow: hidden;
+      opacity: 0;
       height: @tlstck-ico-sz;
       width: @tlstck-ico-sz;
 
@@ -254,18 +256,22 @@
 
       &--delay-1 {
         animation: tool-mosaic-ico-appear 0.333s linear 1s, tool-mosaic-ico-sat-cycle 5s linear 1s infinite;
+        animation-fill-mode: forwards, forwards;
       }
 
       &--delay-2 {
         animation: tool-mosaic-ico-appear 0.333s linear 2s, tool-mosaic-ico-sat-cycle 5s linear 2s infinite;
+        animation-fill-mode: forwards, forwards;
       }
 
       &--delay-3 {
         animation: tool-mosaic-ico-appear 0.333s linear 3s, tool-mosaic-ico-sat-cycle 5s linear 3s infinite;
+        animation-fill-mode: forwards, forwards;
       }
 
       &--delay-4 {
         animation: tool-mosaic-ico-appear 0.333s linear 4s, tool-mosaic-ico-sat-cycle 5s linear 4s infinite;
+        animation-fill-mode: forwards, forwards;
       }
     }
   }
