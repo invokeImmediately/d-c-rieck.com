@@ -57,7 +57,7 @@
  * gulpfile.js - v0.0.0.
  * Gulp automation task definition file for setting up tasks that build CSS and JS files for use on d-c-rieck.com portfolio and sandbox site.
  * By Daniel C. Rieck (danielcrieck@gmail.com). See [GitHub](https://github.com/invokeImmediately/d-c-rieck.com/blob/main/gulpfile.js) for more info.
- * Copyright (c) 2022 Daniel C. Rieck and governed by the MIT license.
+ * Copyright (c) 2025 Daniel C. Rieck and governed by the MIT license.
  ****/
 
 'use strict';
